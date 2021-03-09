@@ -15,6 +15,12 @@ buildscript {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 apply plugin: 'forge'
 
 version = "1.5RC4"
@@ -30,29 +36,8 @@ minecraft {
     runDir = "eclipse"
 }
 
-dependencies {
-  
-    compile files("libs/industrialcraft-2-2.2.828-experimental-dev-deobf.jar")
-    compile files("libs/CodeChickenLib-1.7.10-1.1.1.93-universal.jar")
-    compile files("libs/NotEnoughItems-1.7.10-1.0.5.120-universal.jar")
-    compile files("libs/Avaritia-1.13-deobf.jar")
-    compile files("libs/Draconic-Evolution-1.7.10-1.0.2h-deobf.jar")
-    compile files("libs/Thaumcraft-1.7.10-4.2.3.5.jar")
-    compile files("libs/Botania r1.8-249-deobf.jar")
-	
-	compile files("libs/Galacticraft-API-1.7-3.0.12.504.jar")
-    compile files("libs/GalacticraftCore-Dev-1.7-3.0.12.504.jar")
-    compile files("libs/Galacticraft-Planets-Dev-1.7-3.0.12.504.jar")
-    compile files("libs/GalaxySpace_1.7.10_1.2.7STABLE.jar")
-    compile files("libs/ExtraPlanets_1.7.10_2.1.4.jar")
-    compile files("libs/More-Planets-1.7.10-1.4.4-GC502.jar")
-    
+processResources {
 
-}
-processResources
-{
- 
-    
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 

@@ -116,6 +116,7 @@ run/
 !gradle-wrapper.jar
 /.gradle/
 /bin/
+/eclipse/
 eclipse/asm/ccl_modular/net#minecraft#block#BlockFire.txt
 *.txt
 *.cfg

@@ -7,6 +7,7 @@ import net.minecraft.world.World;
 public class GalaxySpaceIntegration {
 
 	public static double GetPlanetefficienty(int i,World world) {
+		return 1;
 		if(world.isRemote)
 			return 1;
 		if( i == GSConfigDimensions.dimensionIDMercury ) {
@@ -66,8 +67,5 @@ public class GalaxySpaceIntegration {
 		else {
 			return 1;
 		}
-		
-		
-		
 	}
 }
