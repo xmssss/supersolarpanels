@@ -274,7 +274,6 @@ public class TileEntityQuantumQuarry extends TileEntityElectricMachine implement
 		}
 
 
-		System.out.println(proccent);
 		if(this.energy >= proccent) {
 
 			this.setActive(true);

@@ -5,6 +5,7 @@ import com.Denfop.container.ContainerAdvSolarPanel;
 import com.Denfop.item.Modules.ItemWirelessModule;
 import com.Denfop.item.Modules.module7;
 import com.Denfop.tiles.base.TileEntitySolarPanel;
+import com.Denfop.utils.GUIUtilsStorage;
 import com.Denfop.utils.GuiNumberUtils;
 import com.Denfop.utils.NBTData;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -122,12 +123,12 @@ public class GuiAdvSolarPanel extends GuiContainer {
         }
 
 
-        String maxstorage_1 =  GuiNumberUtils.getString(a[0]);
-        String maxstorage_2 =  GuiNumberUtils.getString(this.tileentity.storage);
+        String maxstorage_1 =  GUIUtilsStorage.getString(a[0]);
+        String maxstorage_2 =  GUIUtilsStorage.getString(this.tileentity.storage);
 
         this.fontRendererObj.drawString(storageString + maxstorage_2 + "/" + maxstorage_1, 50-4, 16-1, 13487565);
-        String rf =  GuiNumberUtils.getString(this.tileentity.storage2);
-        String rf1 =  GuiNumberUtils.getString(this.tileentity.maxStorage2);
+        String rf =  GUIUtilsStorage.getString(this.tileentity.storage2);
+        String rf1 =  GUIUtilsStorage.getString(this.tileentity.maxStorage2);
         this.fontRendererObj.drawString(rfstorageString + rf +"/"+ rf1, 50-4, 20+4, 13487565);
         if (maxstorage_dob != 0)
             this.fontRendererObj.drawString(ModulesString2 + maxstorage_dob + "%", 15, 182-2, 13487565);
