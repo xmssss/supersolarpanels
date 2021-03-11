@@ -5,7 +5,6 @@ import java.util.Map;
 import com.Denfop.SuperSolarPanels;
 import com.Denfop.Recipes.CentrifugeRecipe;
 import com.Denfop.render.Cable.RenderBlock;
-import com.Denfop.tiles.ExpGen.TileExpGen2;
 import com.Denfop.tiles.Mechanism.*;
 import com.Denfop.tiles.NeutroniumGenerator.TileBitGen2;
 import com.Denfop.tiles.base.TileEntityChargepadBlock;
@@ -73,10 +72,6 @@ public class CommonProxy implements IGuiHandler{
       if (te instanceof TileEntitySolarPanel) {
           return ((TileEntitySolarPanel)te).getGuiContainer(player.inventory);
       }
-      if(te instanceof TileExpGen2) {
-			
-			return ((TileExpGen2) te).getGuiContainer(player.inventory);			
-		}
       if (te instanceof TileSintezator) {
           return ((TileSintezator)te).getGuiContainer(player.inventory);
       }

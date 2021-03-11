@@ -88,21 +88,22 @@ public class BlockMachine extends BlockContainer {
   
   
   private IIcon[][] iconBuffer;
+
   @Override
   public void registerBlockIcons(final IIconRegister par1IconRegister) {
       this.iconBuffer = new IIcon[9][12];
      
 	      
-      this.iconBuffer[0][0] = par1IconRegister.registerIcon("supersolarpanel:blockAdvMachine");
-      this.iconBuffer[0][1] = par1IconRegister.registerIcon("supersolarpanel:molecularblock");
-      this.iconBuffer[0][2] = par1IconRegister.registerIcon("supersolarpanel:blockAdvMachine");
-      this.iconBuffer[0][3] = par1IconRegister.registerIcon("supersolarpanel:blockAdvMachine");
-      this.iconBuffer[0][4] = par1IconRegister.registerIcon("supersolarpanel:molecularside");
-      this.iconBuffer[0][5] = par1IconRegister.registerIcon("supersolarpanel:molecularside");
-      this.iconBuffer[0][6] = par1IconRegister.registerIcon("supersolarpanel:blockAdvMachine");
+      this.iconBuffer[0][0] = par1IconRegister.registerIcon("supersolarpanel:molecularblockbottom");
+      this.iconBuffer[0][1] = par1IconRegister.registerIcon("supersolarpanel:molecularblock1");
+      this.iconBuffer[0][2] = par1IconRegister.registerIcon("supersolarpanel:molecularblock1");
+      this.iconBuffer[0][3] = par1IconRegister.registerIcon("supersolarpanel:molecularblock1");
+      this.iconBuffer[0][4] = par1IconRegister.registerIcon("supersolarpanel:molecularblock1");
+      this.iconBuffer[0][5] = par1IconRegister.registerIcon("supersolarpanel:molecularblock1");
+      this.iconBuffer[0][6] = par1IconRegister.registerIcon("supersolarpanel:molecularblockbottom");
       this.iconBuffer[0][7] = par1IconRegister.registerIcon("supersolarpanel:molecularblock1");
-      this.iconBuffer[0][8] = par1IconRegister.registerIcon("supersolarpanel:blockAdvMachine");
-      this.iconBuffer[0][9] = par1IconRegister.registerIcon("supersolarpanel:blockAdvMachine");
+      this.iconBuffer[0][8] = par1IconRegister.registerIcon("supersolarpanel:molecularblock1");
+      this.iconBuffer[0][9] = par1IconRegister.registerIcon("supersolarpanel:molecularblock1");
       this.iconBuffer[0][10] = par1IconRegister.registerIcon("supersolarpanel:molecularside1");
       this.iconBuffer[0][11] = par1IconRegister.registerIcon("supersolarpanel:molecularside1");
       

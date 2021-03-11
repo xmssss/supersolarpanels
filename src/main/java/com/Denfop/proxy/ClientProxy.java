@@ -16,7 +16,6 @@ import com.Denfop.Recipes.CentrifugeRecipe;
 import com.Denfop.Recipes.CompressorRecipe;
 import com.Denfop.Recipes.FurnaceRecipes;
 import com.Denfop.Recipes.MaceratorRecipe;
-import com.Denfop.block.expgen.TextureHooks;
 import com.Denfop.container.*;
 import com.Denfop.events.EventDarkQuantumSuitEffect;
 import com.Denfop.events.SSPEventHandler;
@@ -44,7 +43,6 @@ import com.Denfop.render.Sintezaor.TileEntitySintezatorItemRender;
 import com.Denfop.render.Sintezaor.TileEntitySintezatorRender;
 import com.Denfop.render.tile.TileEntityPanelItemRender;
 import com.Denfop.render.tile.TileEntityPanelRender;
-import com.Denfop.tiles.ExpGen.TileExpGen2;
 import com.Denfop.tiles.Mechanism.*;
 import com.Denfop.tiles.NeutroniumGenerator.TileBitGen2;
 import com.Denfop.tiles.Sintezator.TileEntitySintezator;
@@ -175,7 +173,6 @@ public boolean isClient() {
 		  ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySintezator.class, new TileEntitySintezatorRender());
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(SSPItem.blocksintezator),
 					new TileEntitySintezatorItemRender());
-			MinecraftForge.EVENT_BUS.register(new TextureHooks());
   }
   public void integration() {
 		
@@ -253,11 +250,6 @@ MaceratorRecipe.recipe();
       if (te == null) {
           return null;
       }
-      if(te instanceof TileExpGen2) {
-			
-			return new GuiExpGen(player.inventory, (TileExpGen2) te,X, Y, Z, world);
-			
-		}
 	
       if (te instanceof TileEntitySolarPanel) {
           return new GuiAdvSolarPanel(player.inventory, (TileEntitySolarPanel)te);

@@ -2,6 +2,7 @@ package com.Denfop.tiles.base;
 
 import cofh.api.energy.IEnergyContainerItem;
 import cofh.api.energy.IEnergyHandler;
+import com.Denfop.Config;
 import com.Denfop.api.module.*;
 import com.Denfop.container.ContainerAdvSolarPanel;
 import com.Denfop.integration.GC.ExtraPlanetsIntegration;
@@ -279,11 +280,7 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
                                     } else {
                                         setTransfer(false);
                                     }
-
-
-
                                 }
-
                             }
                         }
                     }
@@ -293,11 +290,11 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
                         if (this.storage >= 0 && this.storage2 < this.maxStorage2 ) {
 
 
-                            this.storage2 += this.storage*8;
+                            this.storage2 += this.storage * Config.convertratio;
                             this.storage -= this.storage;
                             if (this.storage2 > this.maxStorage2) {
                                 int temp = this.storage2 - this.maxStorage2;
-                                this.storage += temp / 8;
+                                this.storage += temp / Config.convertratio;
                             }
                         }
 
@@ -305,7 +302,7 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
                         for (ForgeDirection side : ForgeDirection.VALID_DIRECTIONS) {
                             TileEntity tile = this.worldObj.getTileEntity(this.xCoord + side.offsetX, this.yCoord + side.offsetY, this.zCoord + side.offsetZ);
                             if (tile instanceof IEnergyHandler)
-                                extractEnergy(side.getOpposite(), ((IEnergyHandler)tile).receiveEnergy(side.getOpposite(), extractEnergy(side.getOpposite(), (this.production * 8), true), false), false);
+                                extractEnergy(side.getOpposite(), ((IEnergyHandler)tile).receiveEnergy(side.getOpposite(), extractEnergy(side.getOpposite(), (this.production * Config.convertratio), true), false), false);
                         }
 
                     }
@@ -345,7 +342,7 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
 
 
             }
-        }else {
+        } else {
 
             nbttagcompound1.setInteger("type",0);
             this.solarType = 0;
@@ -393,8 +390,7 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
         if (this.worldObj.getTileEntity(panelx, panely, panelz) != null && this.worldObj.getTileEntity(panelx, panely, panelz) instanceof TileEntityElectricBlock&& panelx != 0 && panely != 0 && panelz != 0 && wirelees != 0) {
             TileEntityElectricBlock tile =  (TileEntityElectricBlock) this.worldObj.getTileEntity(panelx, panely, panelz);
             if (tile.tier == this.blocktier && tile.getWorldObj().provider.dimensionId == this.world1) {
-                if ( this.storage > 0 &&  tile.energy < tile.maxStorage
-                ) {
+                if ( this.storage > 0 &&  tile.energy < tile.maxStorage) {
                     int temp =  (int) (tile.maxStorage - tile.energy);
                     if (this.storage > temp ) {
                         tile.energy=temp;
@@ -529,7 +525,7 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
 
 
 
-            }else {
+             }else {
                 if (this.ticker++ % this.tickRate() == 0) {
                     this.updateVisibility();
                 }
@@ -557,7 +553,7 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
 
 
 
-            }else {
+            } else {
                 if (this.ticker++ % this.tickRate() == 0) {
                     this.updateVisibility();
                 }

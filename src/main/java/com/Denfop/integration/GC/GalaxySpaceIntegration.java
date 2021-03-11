@@ -1,14 +1,14 @@
 package com.Denfop.integration.GC;
 
 
-import galaxyspace.core.configs.GSConfigDimensions;
+//import galaxyspace.core.configs.GSConfigDimensions;
 import net.minecraft.world.World;
 
 public class GalaxySpaceIntegration {
 
 	public static double GetPlanetefficienty(int i,World world) {
 		return 1;
-		if(world.isRemote)
+		/*if(world.isRemote)
 			return 1;
 		if( i == GSConfigDimensions.dimensionIDMercury ) {
 			return 2;
@@ -66,6 +66,6 @@ public class GalaxySpaceIntegration {
 		
 		else {
 			return 1;
-		}
+		}*/
 	}
 }
