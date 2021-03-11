@@ -1,8 +1,6 @@
 package com.Denfop.Recipes;
 
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
-import com.Denfop.tiles.NeutroniumGenerator.TileBitGen2;
 
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -273,7 +271,7 @@ public class BasicRecipe {
 		GameRegistry.addShapelessRecipe(new ItemStack(SSPItem.module6, 1, 8), new ItemStack(SSPItem.blockSSPSolarPanel, 1, 8));
 		GameRegistry.addShapelessRecipe(new ItemStack(SSPItem.module6, 1, 9), new ItemStack(SSPItem.blockSSPSolarPanel, 1, 9));
 		//TODO modules wirelles and transformer
-		GameRegistry.addRecipe(new ItemStack(SSPItem.module8, 1) , "AAA"," D ","ECE", 'A', SSPItem.spinel_plate,'C',SSPItem.michail_plate,'D',new ItemStack(SSPItem.itemSSP, 1,4),'E',SSPItem.QuantumItems4);
+		GameRegistry.addRecipe(new ItemStack(SSPItem.moduleWireless, 1) , "AAA"," D ","ECE", 'A', SSPItem.spinel_plate,'C',SSPItem.michail_plate,'D',new ItemStack(SSPItem.itemSSP, 1,4),'E',SSPItem.QuantumItems4);
 		GameRegistry.addRecipe(new ItemStack(SSPItem.module7, 1, 1) , "AAA","BDB","ECE", 'A', SSPItem.compresscarbonultra,'B',SSPItem.chromium_plate,'C',SSPItem.wolfram_plate,'D',new ItemStack(SSPItem.itemSSP, 1,4),'E',SSPItem.QuantumItems4);
 		GameRegistry.addRecipe(new ItemStack(SSPItem.module7, 1, 2) , "AAA","BDB","ECE", 'A', SSPItem.compresscarbon,'B',SSPItem.michail_plate,'C',SSPItem.chromium_plate,'D',new ItemStack(SSPItem.itemSSP, 1,4),'E',SSPItem.QuantumItems4);
 
@@ -281,10 +279,10 @@ public class BasicRecipe {
 		GameRegistry.addRecipe(new ItemStack(SSPItem.module7, 1, 4) , "AAA","BDB","ECE", 'A', SSPItem.compresscarbonultra,'B',SSPItem.spinel_plate,'C',SSPItem.electriumplate,'D',new ItemStack(SSPItem.itemSSP, 1,4),'E',SSPItem.QuantumItems9);
 
 		GameRegistry.addRecipe(new ItemStack(SSPItem.module7, 1, 0) , "ACB","A B","   ", 'A', SSPItem.invarplate,'B',SSPItem.electriumplate,'C',SSPItem.module3);
-		GameRegistry.addRecipe(new ItemStack(SSPItem.module7, 1, 6) , "AC ","   ","   ", 'A', new ItemStack(SSPItem.module8),'C',new ItemStack(SSPItem.module7, 1, 3));
+		GameRegistry.addRecipe(new ItemStack(SSPItem.module7, 1, 6) , "AC ","   ","   ", 'A', new ItemStack(SSPItem.moduleWireless),'C',new ItemStack(SSPItem.module7, 1, 3));
 		GameRegistry.addRecipe(new ItemStack(SSPItem.module7, 1, 8) , "AC ","   ","   ", 'A', new ItemStack(SSPItem.module7, 1, 6),'C',new ItemStack(SSPItem.module7, 1, 4));
-		GameRegistry.addRecipe(new ItemStack(SSPItem.module7, 1, 5) , "ACA","   ","   ", 'A', new ItemStack(SSPItem.module7, 1, 6),'C',new ItemStack(SSPItem.module8));
-		GameRegistry.addRecipe(new ItemStack(SSPItem.module7, 1, 7) , "ACA","   ","   ", 'A', new ItemStack(SSPItem.module7, 1, 8),'C',new ItemStack(SSPItem.module8));
+		GameRegistry.addRecipe(new ItemStack(SSPItem.module7, 1, 5) , "ACA","   ","   ", 'A', new ItemStack(SSPItem.module7, 1, 6),'C',new ItemStack(SSPItem.moduleWireless));
+		GameRegistry.addRecipe(new ItemStack(SSPItem.module7, 1, 7) , "ACA","   ","   ", 'A', new ItemStack(SSPItem.module7, 1, 8),'C',new ItemStack(SSPItem.moduleWireless));
 
 		//TODO Recipes cables
 		GameRegistry.addRecipe(SSPItem.insulatedCopperCableItem, "BBB","AAA","BBB", 'B', Ic2Items.glassFiberCableItem,'A',SSPItem.photoniy);

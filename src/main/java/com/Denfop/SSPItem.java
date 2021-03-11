@@ -160,7 +160,7 @@ public class SSPItem {
 			public static ItemStack module70;
 			
 			public static Block expgen;
-			public static Item module8;
+			public static Item moduleWireless;
 			public static Item goldenwrench;
 			public static ItemStack module71;
 			public static ItemStack module72;
@@ -326,7 +326,7 @@ public class SSPItem {
 
 			public static ItemStack mfsUnit1;
 
-			public static Item module9;
+			public static Item module8;
 
 			
 			public static class FluidXP {

@@ -4,13 +4,8 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
 import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.common.registry.GameRegistry;
-import ic2.api.info.Info;
-import ic2.core.IC2;
-import ic2.core.Ic2Items;
-import ic2.core.util.ConfigUtil;
-import ic2.core.util.StackUtil;
+
 import java.util.Collection;
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Locale;
@@ -21,8 +16,6 @@ import com.Denfop.Config;
 import com.Denfop.SSPItem;
 import com.Denfop.SuperSolarPanels;
 import com.Denfop.SSPItem.FluidXP;
-import com.Denfop.block.Chargepad.BlockChargepad;
-import com.Denfop.block.cable.BlockCable;
 import com.Denfop.block.mechanism.BlockMachine;
 import com.Denfop.fluid.Ic2Fluid;
 import com.Denfop.integration.Botania.BotaniaIntegration;
@@ -44,13 +37,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialLiquid;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
@@ -106,7 +95,7 @@ public class BlocksItems {
         SSPItem. quantumLeggings = new ItemArmorImprovemedQuantum("itemArmorQuantumLegs", 2, Config.armor_maxcharge, Config.armor_transferlimit, Config.tier);
         SSPItem.quantumBoots = new ItemArmorImprovemedQuantum("itemArmorQuantumBoots", 3, Config.armor_maxcharge, Config.armor_transferlimit, Config.tier);
 
-        SSPItem.module8 = new ItemWirelessModule();
+        SSPItem.moduleWireless = new ItemWirelessModule();
         //
         SSPItem.iridium = new ItemStack((Item)new ItemAdvancedWindRotor("iridium", Config.Radius, Config.durability, Config.efficiency, Config.minWindStrength, Config.maxWindStrength, new ResourceLocation("supersolarpanel", "textures/items/carbon_rotor_model1.png")));
         SSPItem.compressiridium = new ItemStack((Item)new ItemAdvancedWindRotor("compressiridium", Config.Radius1, Config.durability1, Config.efficiency1, Config.minWindStrength1, Config.maxWindStrength1, new ResourceLocation("supersolarpanel", "textures/items/carbon_rotor_model2.png")));

@@ -14,7 +14,7 @@ import net.minecraft.util.StatCollector;
 public class ItemWirelessModule extends Item {
 	
 	public ItemWirelessModule() {
-		 setCreativeTab(SuperSolarPanels.tabssp);
+		this.setCreativeTab(SuperSolarPanels.tabssp);
 		this.setUnlocalizedName("WirelessModule");
 		this.setTextureName("supersolarpanel:wirelessmodule");
 		this.setMaxStackSize(64);
@@ -26,7 +26,7 @@ public class ItemWirelessModule extends Item {
 	   public void addInformation(ItemStack itemStack, EntityPlayer player, List info, boolean b) {
 	        NBTTagCompound nbttagcompound = NBTData.getOrCreateNbtData(itemStack);
 	        info.add(StatCollector.translateToLocal("ssp.modules"));
-      	    info.add(StatCollector.translateToLocal("wirelles") );
+      	    info.add(StatCollector.translateToLocal("wirelless") );
 	        info.add(StatCollector.translateToLocal("ssp.Name") + ": " +nbttagcompound.getString("Name"));
 	        info.add(StatCollector.translateToLocal("ssp.World") + ": " +nbttagcompound.getString("World"));
 	        
