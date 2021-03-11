@@ -297,6 +297,7 @@ public class Config {
     public static int enerycost;
     public static int expstorage;
     public static int convertratio;
+
     public static void config(final FMLPreInitializationEvent event) {
         final Configuration config = new Configuration(event.getSuggestedConfigurationFile());
         try {

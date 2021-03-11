@@ -25,7 +25,7 @@ public class GuiMolecularTransformer extends GuiSSP {
     }
     public void initGui() {
         super.initGui();
-        this.buttonList.add(new GuiButton(0, (this.width - this.xSize) / 2 + 194, (this.height - this.ySize) / 2 +3, 20, 17, I18n.format("button.rg")));
+        this.buttonList.add(new GuiButton(0, (this.width - this.xSize) / 2 + 194, (this.height - this.ySize) / 2 + 3, 15, 12, I18n.format("button.rg")));
     }
 
     protected void drawGuiContainerBackgroundLayer(float f, int x, int y) {
