@@ -21,10 +21,7 @@ import cpw.mods.fml.common.LoaderException;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import ic2.api.energy.EnergyNet;
@@ -70,7 +67,11 @@ public class IUCore {
         return newStack;
     }
     @Mod.EventHandler
-    public void load(final FMLInitializationEvent event) {}
+    public void load(final FMLInitializationEvent event) {
+        if(Loader.isModLoaded("Waila"))
+            FMLInterModComms.sendMessage("Waila", "register", "com.Denfop.integration.Waila.WailaHandler.callbackRegister");
+    }
+
     public static void initENet() {EnergyNet.instance = (IEnergyNet)EnergyNetGlobal.initialize();  }
 
     public static int getSeaLevel(World world) {return world.provider.getAverageGroundLevel(); }

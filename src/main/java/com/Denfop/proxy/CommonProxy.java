@@ -1,6 +1,12 @@
 package com.Denfop.proxy;
 
+import com.Denfop.Config;
 import com.Denfop.IUCore;
+import com.Denfop.Recipes.*;
+import com.Denfop.integration.Avaritia.AvaritiaIntegration;
+import com.Denfop.integration.Botania.BotaniaIntegration;
+import com.Denfop.integration.DE.DraconicIntegration;
+import com.Denfop.integration.crafttweaker.CTCore;
 import com.Denfop.render.Cable.RenderBlock;
 import com.Denfop.tiles.Mechanism.*;
 import com.Denfop.tiles.NeutroniumGenerator.TileBitGen2;
@@ -16,9 +22,11 @@ import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFE;
 import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFSU;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.LoaderException;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import modtweaker2.utils.TweakerPlugin;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -163,15 +171,55 @@ public class CommonProxy implements IGuiHandler{
 
 
 
-    public void initCore() {}
+    public void initCore() {
+        TileEntityAlloySmelter.init();
+        TileEntityMolecularTransformer.init();
+        TileEntityGenerationMicrochip.init();
+        TileEntityGenerationStone.init();
+
+    }
 
     public static Void throwInitException(LoaderException e) {
         throw e;
     }
 
-    public void registerRecipe() {}
+    public void registerRecipe() {
 
-    public void integration() {}
+        if (Config.BotaniaLoaded && Config.Botania)
+            BotaniaIntegration.recipe();
+        BasicRecipe.recipe();
+        if (Config.DraconicLoaded && Config.Draconic)
+            DraconicIntegration.Recipes();
+        if (Config.AvaritiaLoaded && Config.Avaritia)
+            AvaritiaIntegration.recipe();
+
+        AlloySmelterRecipe.recipe();
+        CompressorRecipe.recipe();
+        CannerRecipe.recipe();
+        FurnaceRecipes.recipe();
+        CentrifugeRecipe.init();
+        MaceratorRecipe.recipe();
+    }
+
+    public void integration() {
+        Config.DraconicLoaded = Loader.isModLoaded("DraconicEvolution");
+        Config.AvaritiaLoaded = Loader.isModLoaded("Avaritia");
+        Config.BotaniaLoaded = Loader.isModLoaded("Botania");
+        Config.EnchantingPlus = Loader.isModLoaded("eplus");
+        Config.MineFactory = Loader.isModLoaded("MineFactoryReloaded");
+        if (Loader.isModLoaded("modtweaker2")) {
+            TweakerPlugin.register("industrialupgrade", CTCore.class);
+        }
+        if (Config.DraconicLoaded && Config.Draconic) {
+            DraconicIntegration.init();
+        }
+        if (Config.AvaritiaLoaded && Config.Avaritia) {
+            AvaritiaIntegration.init();
+        }
+        if(Config.BotaniaLoaded && Config.Botania) {
+            BotaniaIntegration.init();
+        }
+    }
 
     public void check() {}
 }

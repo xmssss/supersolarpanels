@@ -355,6 +355,7 @@ ssp.itemCable=§aСпектральный провод
 ssp.itemCableO=§9Протонный провод
 ssp.itemCellEmpty=Хранилище нейтрония
 ssp.itemCellUuMatter=§9Капсула жидкого нейтрония
+ssp.moduletype=Модуль тип: Круглосуточная
 ssp.itemGlassCable=§cДифракционный провод
 ssp.itemGlassCableI=§7Провод бесконечности
 ssp.itemGoldCable=§eСингулярный провод
