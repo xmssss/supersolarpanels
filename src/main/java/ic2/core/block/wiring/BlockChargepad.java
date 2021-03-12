@@ -26,7 +26,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import org.apache.commons.lang3.mutable.MutableObject;
 
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.item.Modules.module7;
 import com.Denfop.tiles.base.TileEntityChargepadBlock;
 import com.Denfop.tiles.base.TileEntityElectricBlock;

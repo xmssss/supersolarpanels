@@ -12,11 +12,10 @@ import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.ArrayList;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.StatCollector;
 
 import java.util.List;
 
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 
 import net.minecraft.item.Item;
 
@@ -31,7 +30,7 @@ public class matter extends Item
         this.IIconsList = new IIcon[8];
         this.itemsCount = 7;
         this.setHasSubtypes(true);
-        this.setCreativeTab(SuperSolarPanels.tabssp3);
+        this.setCreativeTab(IUCore.tabssp3);
         this.setMaxStackSize(64);
         this.addItemsNames();
        

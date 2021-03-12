@@ -1,6 +1,6 @@
 package com.Denfop.item.base;
 
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 import com.Denfop.block.cable.BlockCable;
 
 import cpw.mods.fml.relauncher.Side;
@@ -8,7 +8,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import ic2.core.Ic2Items;
 import ic2.core.util.StackUtil;
 import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -20,7 +19,7 @@ public class ItemBlockIC2 extends ItemBlock {
   public ItemBlockIC2(Block block) {
     super(block);
     this.block = block;
-    setCreativeTab(SuperSolarPanels.tabssp);
+    setCreativeTab(IUCore.tabssp);
   }
   
   public String getUnlocalizedName() {

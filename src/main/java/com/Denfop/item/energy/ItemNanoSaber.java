@@ -1,7 +1,7 @@
 package com.Denfop.item.energy;
 
 import com.Denfop.Constants;
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
@@ -17,19 +17,15 @@ import ic2.core.util.StackUtil;
 
 import java.util.Arrays;
 import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -78,7 +74,7 @@ public ItemNanoSaber(String internalName,int maxCharge,int transferLimit,int tie
     setMaxStackSize(1);
     setNoRepair();
     setUnlocalizedName(name);
-    setCreativeTab((CreativeTabs)SuperSolarPanels.tabssp2);
+    setCreativeTab((CreativeTabs) IUCore.tabssp2);
     for (ToolClass toolClass : toolClasses) {
         if (toolClass.name != null)
           setHarvestLevel(toolClass.name, harvestLevel.level); 

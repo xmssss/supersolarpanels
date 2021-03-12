@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 import com.Denfop.api.utils.textures.TextureAtlasSheet;
-import com.Denfop.proxy.ClientProxy;
 import com.Denfop.tiles.Mechanism.*;
 import com.Denfop.tiles.base.TileEntityMultiMachine;
 import com.Denfop.utils.ExperienceUtils;
@@ -51,7 +50,7 @@ public class BlockMachines extends BlockContainer {
 		super(Material.iron);
 		setHardness(2.0F);
 		setStepSound(soundTypeMetal);
-		  this.setCreativeTab(SuperSolarPanels.tabssp);
+		  this.setCreativeTab(IUCore.tabssp);
 	}
 
 	@Override
@@ -207,7 +206,7 @@ public class BlockMachines extends BlockContainer {
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par6, float par7,
 			float par8, float par9) {
 		if (!entityPlayer.isSneaking()) {
-			entityPlayer.openGui(SuperSolarPanels.instance, 0, world, x, y, z);
+			entityPlayer.openGui(IUCore.instance, 0, world, x, y, z);
 			return true;
 		}else {
 			TileEntityMultiMachine	tile = (TileEntityMultiMachine) world.getTileEntity(x, y, z);

@@ -1,21 +1,17 @@
 package com.Denfop.block.cable;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.Direction;
-import ic2.api.energy.EnergyNet;
 import ic2.api.event.PaintEvent;
 import ic2.api.event.RetextureEvent;
 import ic2.api.tile.IWrenchable;
 import ic2.core.ContainerBase;
 import ic2.core.IC2;
-import ic2.core.IC2Potion;
 import ic2.core.IHasGui;
 import ic2.core.block.BlockTextureStitched;
 import ic2.core.block.TileEntityBlock;
-import ic2.core.item.armor.ItemArmorHazmat;
 import ic2.core.item.tool.ItemToolCutter;
 import ic2.core.util.AabbUtil;
 import ic2.core.util.LogCategory;
@@ -46,7 +42,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
@@ -60,11 +55,7 @@ import org.apache.commons.lang3.mutable.MutableObject;
 
 import com.Denfop.Constants;
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
-import com.Denfop.item.armour.ItemArmorImprovemedQuantum;
-import com.Denfop.item.base.ItemBlockIC2;
-import com.Denfop.proxy.ClientProxy;
-import com.Denfop.tiles.base.TileEntityBase;
+import com.Denfop.IUCore;
 import com.Denfop.tiles.base.TileEntityCable;
 
 public class BlockCable extends Block {
@@ -81,12 +72,12 @@ public class BlockCable extends Block {
     setHardness(0.2F);
     this.renderMask = 63;
     setStepSound(soundTypeCloth);
-    setCreativeTab(SuperSolarPanels.tabssp);
+    setCreativeTab(IUCore.tabssp);
 
 
     MinecraftForge.EVENT_BUS.register(this);
     setBlockName("blockCable");
-    setCreativeTab((CreativeTabs)SuperSolarPanels.tabssp);
+    setCreativeTab((CreativeTabs) IUCore.tabssp);
     
   
     
@@ -483,7 +474,7 @@ public IIcon getIcon(int side, int meta) {
       
       
       if ((StackUtil.equals((Block)Blocks.sand, cur) && te.foamed == 1 && te.changeFoam((byte)2)) || (cur.getItem() == SSPItem.constructionFoam.getItem() && te.foamed == 0 && te.changeFoam((byte)1))) {
-        if (SuperSolarPanels.proxy.isSimulating() && !player.capabilities.isCreativeMode) {
+        if (IUCore.proxy.isSimulating() && !player.capabilities.isCreativeMode) {
           cur.stackSize--;
           if (cur.stackSize <= 0)
             player.inventory.mainInventory[player.inventory.currentItem] = null; 
@@ -496,7 +487,7 @@ public IIcon getIcon(int side, int meta) {
   
   public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbor) {
     super.onNeighborBlockChange(world, x, y, z, neighbor);
-    if (SuperSolarPanels.proxy.isSimulating()) {
+    if (IUCore.proxy.isSimulating()) {
       TileEntityCable te = (TileEntityCable)getOwnTe((IBlockAccess)world, x, y, z);
       if (te == null)
         return; 
@@ -576,7 +567,7 @@ public IIcon getIcon(int side, int meta) {
   }
   
   public int getRenderType() {
-    return SuperSolarPanels.proxy.getRenderId("cable");
+    return IUCore.proxy.getRenderId("cable");
   }
   
   public boolean isOpaqueCube() {
@@ -655,7 +646,7 @@ public IIcon getIcon(int side, int meta) {
   }
   
   public int getComparatorInputOverride(World world, int x, int y, int z, int side) {
-    if (SuperSolarPanels.proxy.isSimulating()) {
+    if (IUCore.proxy.isSimulating()) {
       TileEntityCable te = (TileEntityCable)getOwnTe((IBlockAccess)world, x, y, z);
       if (te == null)
         return 0; 

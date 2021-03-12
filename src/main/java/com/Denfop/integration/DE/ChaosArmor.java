@@ -1,7 +1,7 @@
 package com.Denfop.integration.DE;
 
 import com.Denfop.Constants;
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 import com.brandon3055.brandonscore.BrandonsCore;
 import com.brandon3055.brandonscore.common.utills.InfoHelper;
 import com.brandon3055.brandonscore.common.utills.ItemNBTHelper;
@@ -51,7 +51,6 @@ import net.minecraftforge.common.ISpecialArmor;
 import thaumcraft.api.IGoggles;
 import thaumcraft.api.nodes.IRevealer;
 
-import java.util.ArrayList;
 @InterfaceList({@Interface(iface = "thaumcraft.api.IGoggles", modid = "Thaumcraft"), @Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Thaumcraft")})
 public class ChaosArmor extends ItemArmor implements ISpecialArmor, IConfigurableItem, IInventoryTool, IGoggles, IRevealer, IUpgradableItem, ICustomArmor {
   @SideOnly(Side.CLIENT)
@@ -78,7 +77,7 @@ public class ChaosArmor extends ItemArmor implements ISpecialArmor, IConfigurabl
   public ChaosArmor(ItemArmor.ArmorMaterial material, int armorType, String name) {
     super(material, 0, armorType);
     setUnlocalizedName(name);
-    setCreativeTab((CreativeTabs)SuperSolarPanels.tabssp2);
+    setCreativeTab((CreativeTabs) IUCore.tabssp2);
     if (ModItems.isEnabled((Item)this))
       GameRegistry.registerItem((Item)this, name); 
   }

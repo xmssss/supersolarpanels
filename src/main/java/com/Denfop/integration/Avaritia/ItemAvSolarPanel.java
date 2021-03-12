@@ -16,9 +16,8 @@ import net.minecraft.entity.player.EntityPlayer;
 
 import java.util.List;
 
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 import com.Denfop.api.IPanel;
-import com.Denfop.block.Base.BlockSSPSolarPanel;
 import com.Denfop.tiles.base.TileEntitySolarPanel;
 
 import net.minecraft.item.ItemBlock;
@@ -33,7 +32,7 @@ public class ItemAvSolarPanel extends ItemBlock implements IPanel
         this.setHasSubtypes(true);
         this.itemNames = new ArrayList<String>();
         this.addItemsNames();
-        this.setCreativeTab(SuperSolarPanels.tabssp);
+        this.setCreativeTab(IUCore.tabssp);
     }
     
     public int getMetadata(final int i) {

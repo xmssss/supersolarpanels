@@ -1,6 +1,5 @@
 package com.Denfop.block.Base;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.item.ElectricItem;
@@ -17,7 +16,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,14 +33,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import org.apache.commons.lang3.mutable.MutableObject;
-import com.Denfop.SuperSolarPanels;
-import com.Denfop.item.Modules.module7;
-import com.Denfop.item.base.ItemElectricBlock;
+import com.Denfop.IUCore;
 import com.Denfop.proxy.ClientProxy;
-import com.Denfop.tiles.base.TileEntityBase;
 import com.Denfop.tiles.base.TileEntityElectricBlock;
-import com.Denfop.tiles.base.TileEntitySolarPanel;
 import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFE;
 import com.Denfop.tiles.wiring.Storage.*;
 import com.Denfop.utils.NBTData;
@@ -55,7 +48,7 @@ public class BlockElectric extends BlockContainer {
     super(Material.iron);
     setHardness(1.5F);
     setStepSound(soundTypeMetal);
-   this.setCreativeTab(SuperSolarPanels.tabssp);
+   this.setCreativeTab(IUCore.tabssp);
    setBlockUnbreakable();
     
   }
@@ -318,19 +311,17 @@ public class BlockElectric extends BlockContainer {
           	if(world.getTileEntity(x, y, z) instanceof TileEntityElectricBlock) {
           		TileEntityElectricBlock	tile = (TileEntityElectricBlock) world.getTileEntity(x, y, z);
           		
-          		if(tile.personality && tile.UUID == entityPlayer.getDisplayName()) {
-          			entityPlayer.openGui((Object)SuperSolarPanels.instance, 1, world, x, y, z);
-          				 
-          			
-          				
-          				
-             }else {
-          	   if(tile.personality == false) {
-            
-          		 entityPlayer.openGui((Object)SuperSolarPanels.instance, 1, world, x, y, z);}else {
-              	
-          			entityPlayer.addChatMessage(new ChatComponentTranslation(String.format("ssp.error", new Object[0]), new Object[0]));
+          		if (tile.personality && tile.UUID == entityPlayer.getDisplayName()) {
+          			entityPlayer.openGui((Object) IUCore.instance, 1, world, x, y, z);
 
+             } else {
+          	   if(!tile.personality) {
+            
+          		 entityPlayer.openGui((Object) IUCore.instance, 1, world, x, y, z);
+          	   } else {
+                   if (tile.personality && tile.UUID != entityPlayer.getDisplayName()) {
+                       entityPlayer.addChatMessage(new ChatComponentTranslation(String.format("ssp.error", new Object[0]), new Object[0]));
+                   }
               }}
           		
           		

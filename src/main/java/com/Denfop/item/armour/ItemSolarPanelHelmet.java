@@ -14,14 +14,13 @@ import java.util.List;
 import java.util.Map;
 
 import com.Denfop.Config;
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 import com.Denfop.utils.NBTData;
 import com.brandon3055.draconicevolution.common.utills.IConfigurableItem;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.entity.EntityLivingBase;
 import ic2.api.item.ElectricItem;
@@ -35,7 +34,6 @@ import net.minecraftforge.common.ISpecialArmor;
 import ic2.api.item.IMetalArmor;
 import ic2.core.IC2;
 import ic2.core.IC2Potion;
-import ic2.core.util.StackUtil;
 import ic2.api.item.IElectricItem;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemFood;
@@ -130,7 +128,7 @@ public class ItemSolarPanelHelmet extends ItemArmor implements IElectricItem, IM
             this.storage = 0;
             this.maxstorage = Config.singularpanelstorage /2; 
         }
-        this.setCreativeTab(SuperSolarPanels.tabssp2);
+        this.setCreativeTab(IUCore.tabssp2);
         this.setMaxDamage(27);
         potionRemovalCost.put(Integer.valueOf(Potion.poison.id), Integer.valueOf(100));
         potionRemovalCost.put(Integer.valueOf(IC2Potion.radiation.id), Integer.valueOf(20));

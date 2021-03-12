@@ -1,7 +1,6 @@
 package com.Denfop.integration.DE;
 
 import com.Denfop.Config;
-import com.Denfop.SuperSolarPanels;
 
 public class modules {
 	   public static int GenDay(int meta) {

@@ -2,27 +2,17 @@ package com.Denfop.integration.nei;
 
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeOutput;
-import ic2.core.IC2;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.client.renderer.RenderHelper;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.lwjgl.opengl.GL11;
 
 import com.Denfop.Constants;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.api.Recipes;
 
 import codechicken.lib.gui.GuiDraw;
-import codechicken.nei.PositionedStack;
-import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
 
 public class NeiMolecularTransfomator extends MolecularRecipeHandler {
   public Class<? extends GuiContainer> getGuiClass() {

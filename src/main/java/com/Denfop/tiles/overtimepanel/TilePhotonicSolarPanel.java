@@ -2,7 +2,6 @@
 package com.Denfop.tiles.overtimepanel;
 import com.Denfop.tiles.base.TileEntitySolarPanel;
 import com.Denfop.Config;
-import com.Denfop.SuperSolarPanels;
 
 
 public class TilePhotonicSolarPanel extends TileEntitySolarPanel

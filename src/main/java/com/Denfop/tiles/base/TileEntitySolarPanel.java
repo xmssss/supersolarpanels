@@ -309,17 +309,19 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
                 }
         	}
         }
-        if(this.chargeSlots[7] != null && this.chargeSlots[7].getItem() instanceof module7) {
-    		int kk = chargeSlots[7].getItemDamage();
-    		if (kk == 0) {
-    			personality = true;
-    			
-    		} else {
-    			this.personality  = false;
-    		}
-    	} else {
-    		this.personality  = false;
-    	}
+        for (int m =0; m < 9;m++) {
+            if (this.chargeSlots[m] != null && this.chargeSlots[m].getItem() instanceof module7) {
+                int kk = chargeSlots[m].getItemDamage();
+                if (kk == 0) {
+                    personality = true;
+                    break;
+                } else {
+                    this.personality = false;
+                }
+            } else {
+                this.personality = false;
+            }
+        }
       if (this.storage2 >= this.maxStorage2) {
     	  this.storage2 = this.maxStorage2;
       }else if(this.storage2 < 0) {

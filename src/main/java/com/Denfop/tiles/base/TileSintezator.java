@@ -8,34 +8,22 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.inventory.Container;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagCompound;
-import ic2.api.item.ElectricItem;
-import ic2.api.item.IElectricItem;
 import ic2.api.energy.event.EnergyTileUnloadEvent;
 import cpw.mods.fml.common.eventhandler.Event;
 import ic2.api.energy.event.EnergyTileLoadEvent;
 import net.minecraftforge.common.MinecraftForge;
 import java.util.List;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import java.util.Random;
 
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.api.IPanel;
-import com.Denfop.block.Base.BlockSSPSolarPanel;
 import com.Denfop.container.ContainerSinSolarPanel;
-import com.Denfop.integration.Avaritia.ItemAvSolarPanel;
-import com.Denfop.integration.Avaritia.modules2;
-import com.Denfop.integration.Botania.ItemBotSolarPanel;
-import com.Denfop.integration.Botania.modules1;
-import com.Denfop.integration.DE.ItemDESolarPanel;
 import com.Denfop.item.Modules.module6;
-import com.Denfop.item.base.ItemSSPSolarPanel;
 import com.Denfop.utils.NBTData;
 
 import ic2.api.network.INetworkUpdateListener;

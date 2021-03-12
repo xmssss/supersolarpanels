@@ -2,9 +2,6 @@ package com.Denfop.integration.DE;
 
 import com.Denfop.Config;
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
-import com.Denfop.item.base.SSPItemBase;
-import com.Denfop.tiles.overtimepanel.TileNeutronSolarPanel;
 import com.brandon3055.draconicevolution.common.ModItems;
 import com.brandon3055.draconicevolution.common.handler.ConfigHandler;
 

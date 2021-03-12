@@ -1,7 +1,6 @@
 package com.Denfop.gui;
 
 import com.Denfop.Constants;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.container.ContainerNeutrniumGenerator;
 import com.Denfop.tiles.NeutroniumGenerator.TileBitGen2;
 
@@ -9,7 +8,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.core.ContainerBase;
 import ic2.core.GuiIC2;
-import ic2.core.IC2;
 import ic2.core.util.DrawUtil;
 import ic2.core.util.GuiTooltipHelper;
 import net.minecraft.client.renderer.texture.TextureMap;

@@ -1,7 +1,7 @@
 package com.Denfop.integration.Botania;
 
 
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 import com.Denfop.proxy.CommonProxy;
 import com.Denfop.utils.Helpers;
 import com.Denfop.utils.NBTData;
@@ -22,7 +22,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -36,8 +35,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S23PacketBlockChange;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
@@ -85,7 +82,7 @@ public class Terradrill extends ItemTool implements IElectricItem {
     super(0.0F, toolMaterial, new HashSet());
     setMaxDamage(27);
     this.efficiencyOnProperMaterial = this.normalPower;
-    setCreativeTab(SuperSolarPanels.tabssp2);
+    setCreativeTab(IUCore.tabssp2);
   }
   
   public boolean hitEntity(ItemStack stack, EntityLivingBase damagee, EntityLivingBase damager) {
@@ -210,7 +207,7 @@ public class Terradrill extends ItemTool implements IElectricItem {
       } 
       if (lowPower) {
         CommonProxy.sendPlayerMessage(player, "Not enough energy to complete this operation !");
-      } else if (!SuperSolarPanels.isSimulating()) {
+      } else if (!IUCore.isSimulating()) {
         world.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(block) + (meta << 12));
       } 
       return true;
@@ -280,7 +277,7 @@ public class Terradrill extends ItemTool implements IElectricItem {
           } 
           if (lowPower) {
             CommonProxy.sendPlayerMessage(player, "Not enough energy to complete this operation !");
-          } else if (!SuperSolarPanels.isSimulating()) {
+          } else if (!IUCore.isSimulating()) {
             world.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(block) + (meta << 12));
           } 
           return true;
@@ -290,7 +287,7 @@ public class Terradrill extends ItemTool implements IElectricItem {
   }
   
   public boolean onBlockDestroyed(ItemStack stack, World world, Block block, int xPos, int yPos, int zPos, EntityLivingBase entity) {
-    if (!SuperSolarPanels.isSimulating())
+    if (!IUCore.isSimulating())
       return true; 
     if (block == null)
       return false; 
@@ -425,7 +422,7 @@ public class Terradrill extends ItemTool implements IElectricItem {
   
   public String getRandomDrillSound() {
 	  
-    switch (SuperSolarPanels.random.nextInt(4)) {
+    switch (IUCore.random.nextInt(4)) {
       case 1:
         return "drillOne";
       case 2:

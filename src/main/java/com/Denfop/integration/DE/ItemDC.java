@@ -1,6 +1,5 @@
 package com.Denfop.integration.DE;
 import com.Denfop.Constants;
-import com.Denfop.SuperSolarPanels;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;

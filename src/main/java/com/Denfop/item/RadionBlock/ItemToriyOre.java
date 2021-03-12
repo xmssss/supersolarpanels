@@ -6,21 +6,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 import ic2.core.IC2Potion;
 import ic2.core.item.armor.ItemArmorHazmat;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 
 import java.util.List;
 
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 
 import net.minecraft.item.ItemBlock;
 
@@ -36,7 +32,7 @@ public class ItemToriyOre extends ItemBlock
         this.setHasSubtypes(true);
         this.itemNames = new ArrayList<String>();
         this.addItemsNames();
-        this.setCreativeTab(SuperSolarPanels.tabssp);
+        this.setCreativeTab(IUCore.tabssp);
         this.radiationLength =10;
         this.amplifier= 100;
     }

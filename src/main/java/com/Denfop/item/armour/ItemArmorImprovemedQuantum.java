@@ -1,6 +1,5 @@
 package com.Denfop.item.armour;
 
-import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.Optional.Method;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -13,14 +12,10 @@ import ic2.api.item.IItemHudInfo;
 import ic2.api.item.IMetalArmor;
 import ic2.core.IC2;
 import ic2.core.IC2Potion;
-import ic2.core.Ic2Items;
 import ic2.core.audio.AudioSource;
-import ic2.core.audio.PositionSpec;
 import ic2.core.init.MainConfig;
-import ic2.core.item.ItemTinCan;
-import ic2.core.item.armor.ItemArmorElectric;
 import ic2.core.util.ConfigUtil;
-import ic2.core.util.StackUtil;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,13 +24,10 @@ import java.util.Map;
 import com.Denfop.Config;
 import com.Denfop.Constants;
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
-import com.Denfop.proxy.CommonProxy;
-import com.Denfop.utils.Helpers;
+import com.Denfop.IUCore;
 import com.Denfop.utils.NBTData;
 import com.brandon3055.draconicevolution.common.utills.IConfigurableItem;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -52,13 +44,12 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
-import java.util.LinkedList;
+
 public class ItemArmorImprovemedQuantum extends ItemArmor implements ISpecialArmor, IElectricItem, IItemHudInfo, ICustomDamageItem,IMetalArmor {
   private static int   minCharge = 10000;;
 
@@ -81,7 +72,7 @@ private final String armorName;
 
 private final Object repairMaterial;
 public ItemArmorImprovemedQuantum(String name, int armorType1, double maxCharge1, double transferLimit1, int tier1) {
-    super(ItemArmor.ArmorMaterial.DIAMOND, SuperSolarPanels.proxy.addArmor(name), armorType1);
+    super(ItemArmor.ArmorMaterial.DIAMOND, IUCore.proxy.addArmor(name), armorType1);
     if (armorType1 == 3)
       MinecraftForge.EVENT_BUS.register(this); 
     potionRemovalCost.put(Integer.valueOf(Potion.poison.id), Integer.valueOf(100));
@@ -99,7 +90,7 @@ public ItemArmorImprovemedQuantum(String name, int armorType1, double maxCharge1
     this.armorName = name;
     setMaxDamage(ItemArmor.ArmorMaterial.DIAMOND.getDurability(armorType1));
     setUnlocalizedName(name);
-    setCreativeTab((CreativeTabs)SuperSolarPanels.tabssp2);
+    setCreativeTab((CreativeTabs) IUCore.tabssp2);
     GameRegistry.registerItem((Item)this, name);
   }
 public List<String> getHudInfo(ItemStack itemStack) {

@@ -1,35 +1,25 @@
 package com.Denfop.tiles.base;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.network.INetworkClientTileEntityEventListener;
 import ic2.api.recipe.IMachineRecipeManager;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeInputItemStack;
-import ic2.api.recipe.RecipeOutput;
 import ic2.core.BasicMachineRecipeManager;
-import ic2.core.IC2;
 import ic2.core.Ic2Items;
 import ic2.core.block.invslot.InvSlotProcessable;
 import ic2.core.block.invslot.InvSlotProcessableGeneric;
-import ic2.core.upgrade.UpgradableProperty;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Vector;
 
 import com.Denfop.Config;
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.api.Recipes;
 import com.Denfop.container.ContainerBaseMolecular;
 import com.Denfop.gui.GuiMolecularTransformer;
-import com.Denfop.integration.Avaritia.AvaritiaIntegration;
 
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,7 +27,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.StatCollector;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class TileEntityMolecularTransformer extends TileEntityBaseMolecular implements INetworkClientTileEntityEventListener {

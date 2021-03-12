@@ -4,13 +4,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.core.IC2;
-import ic2.core.Ic2Items;
-import ic2.core.util.LiquidUtil;
-import ic2.core.util.StackUtil;
+
 import java.util.Random;
 
 import com.Denfop.Constants;
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 import com.Denfop.item.base.ItemBlockIC2;
 
 import net.minecraft.block.Block;
@@ -19,19 +17,11 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 
 public class BlockIC2Fluid extends BlockFluidClassic {
   protected IIcon[] fluidIcon;
@@ -44,7 +34,7 @@ public class BlockIC2Fluid extends BlockFluidClassic {
     super(fluid, material);
     if (!fluid.getName().startsWith("ic3"))
       throw new RuntimeException("Invalid fluid name: " + fluid.getName()); 
-    setCreativeTab((CreativeTabs)SuperSolarPanels.tabssp);
+    setCreativeTab((CreativeTabs) IUCore.tabssp);
     setBlockName(internalName);
     GameRegistry.registerBlock((Block)this, ItemBlockIC2.class, internalName);
     this.fluid = fluid;

@@ -1,7 +1,6 @@
 package com.Denfop.Recipes;
 
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
 
 import ic2.api.item.IC2Items;
 import ic2.api.recipe.IRecipeInput;

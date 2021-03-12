@@ -1,23 +1,19 @@
 package com.Denfop.block.ore;
 
-import java.util.ArrayList;
 import java.util.Random;
 
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraft.block.Block;
+
 public class BlockSSPLapis extends Block{
 
 	public BlockSSPLapis(Material material) {
 		super(material);
-		this.setCreativeTab(SuperSolarPanels.tabssp4);
+		this.setCreativeTab(IUCore.tabssp4);
 		this.setHarvestLevel("pickaxe", 2);
 		this.setHardness(1F);
 		this.setLightLevel(0.3F);

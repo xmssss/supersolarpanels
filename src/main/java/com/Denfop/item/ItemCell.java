@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 import com.Denfop.block.Base.BlocksItems;
 
 import cpw.mods.fml.relauncher.Side;
@@ -20,8 +20,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -29,7 +27,6 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
 public class ItemCell extends Item {
@@ -50,7 +47,7 @@ public class ItemCell extends Item {
     this.IIconsList = new IIcon[2];
     this.itemsCount = 1;
     this.addItemsNames();
-   this.setCreativeTab(SuperSolarPanels.tabssp3);
+   this.setCreativeTab(IUCore.tabssp3);
    
     }
   

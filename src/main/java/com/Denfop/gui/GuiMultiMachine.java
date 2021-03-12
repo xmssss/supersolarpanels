@@ -3,7 +3,6 @@ package com.Denfop.gui;
 import java.util.List;
 
 import com.Denfop.Constants;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.api.inv.IInvSlotProcessableMulti;
 import com.Denfop.container.ContainerMultiMachine;
 import com.Denfop.tiles.base.TileEntityMultiMachine;

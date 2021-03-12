@@ -3,7 +3,6 @@ package com.Denfop.item.base;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ic2.core.util.StackUtil;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,7 +16,6 @@ import net.minecraft.entity.player.EntityPlayer;
 
 import java.util.List;
 
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.api.IPanel;
 import com.Denfop.block.Base.BlockSSPSolarPanel;
 import com.Denfop.tiles.base.TileEntitySolarPanel;

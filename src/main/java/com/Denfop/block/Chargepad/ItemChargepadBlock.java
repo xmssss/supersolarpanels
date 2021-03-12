@@ -2,14 +2,11 @@ package com.Denfop.block.Chargepad;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ic2.api.item.ElectricItem;
-import ic2.core.Ic2Items;
 import ic2.core.util.StackUtil;
 import java.util.List;
 
 import com.Denfop.Config;
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.item.base.ItemBlockIC2;
 
 import net.minecraft.block.Block;

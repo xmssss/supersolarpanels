@@ -1,7 +1,6 @@
 package com.Denfop.integration.Avaritia;
 
 import com.Denfop.Config;
-import com.Denfop.SuperSolarPanels;
 
 public class modules2 {
 	   public static int GenDay(int meta) {

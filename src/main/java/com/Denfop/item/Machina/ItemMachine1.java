@@ -2,8 +2,7 @@ package com.Denfop.item.Machina;
 
 import java.util.List;
 
-import com.Denfop.SuperSolarPanels;
-import com.Denfop.item.base.ItemBlockIC2;
+import com.Denfop.IUCore;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -11,14 +10,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
 
 public class ItemMachine1 extends ItemBlock {
   public ItemMachine1(Block block) {
     super(block);
     setMaxDamage(0);
     setHasSubtypes(true);
-    setCreativeTab(SuperSolarPanels.tabssp);
+    setCreativeTab(IUCore.tabssp);
   }
   @Override
   public int getMetadata(int i) {

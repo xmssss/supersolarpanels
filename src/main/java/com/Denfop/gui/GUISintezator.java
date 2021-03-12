@@ -5,16 +5,8 @@ package com.Denfop.gui;
 import org.lwjgl.opengl.GL11;
 
 import com.Denfop.Config;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.api.IPanel;
 import com.Denfop.container.ContainerSinSolarPanel;
-import com.Denfop.integration.Avaritia.ItemAvSolarPanel;
-import com.Denfop.integration.Avaritia.modules2;
-import com.Denfop.integration.Botania.ItemBotSolarPanel;
-import com.Denfop.integration.Botania.modules1;
-import com.Denfop.integration.DE.ItemDESolarPanel;
-import com.Denfop.item.Modules.module6;
-import com.Denfop.item.base.ItemSSPSolarPanel;
 import com.Denfop.tiles.base.TileSintezator;
 import com.Denfop.utils.GuiNumberUtils;
 import com.Denfop.utils.NBTData;

@@ -24,7 +24,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-@ZenClass("mods.SuperSolarPanel.MoleculatTransformer")
+@ZenClass("mods.IndustrialUpgrade.MolecularTransformer")
 public class CTMoleculatTransformer {
   @ZenMethod
   public static void addRecipe(IItemStack[] output, IIngredient ingredient, int minHeat) {

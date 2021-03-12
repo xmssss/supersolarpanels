@@ -3,10 +3,7 @@ package com.Denfop.tiles.overtimepanel;
 
 
 import com.Denfop.Config;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.tiles.base.TileEntitySolarPanel;
-
-import net.minecraft.util.AxisAlignedBB;
 
 
 public class TileAdminSolarPanel extends TileEntitySolarPanel

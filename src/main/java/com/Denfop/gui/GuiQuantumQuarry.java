@@ -1,19 +1,14 @@
 package com.Denfop.gui;
 
 import com.Denfop.Constants;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.container.ContainerQuantumQuarry;
-import com.Denfop.container.ContainerStandardMachine;
-import com.Denfop.tiles.Mechanism.TileEntityAlloySmelter;
 import com.Denfop.tiles.Mechanism.TileEntityQuantumQuarry;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.core.ContainerBase;
 import ic2.core.GuiIC2;
-import ic2.core.IC2;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 
 @SideOnly(Side.CLIENT)
 public class GuiQuantumQuarry extends GuiIC2 {

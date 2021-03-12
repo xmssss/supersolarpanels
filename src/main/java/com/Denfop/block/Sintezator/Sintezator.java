@@ -1,27 +1,19 @@
 package com.Denfop.block.Sintezator;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import java.util.List;
 import java.util.Random;
 
-import com.Denfop.SuperSolarPanels;
-import com.Denfop.proxy.ClientProxy;
+import com.Denfop.IUCore;
 import com.Denfop.tiles.Sintezator.TileEntitySintezator;
 import com.Denfop.tiles.base.TileEntityBase;
-import com.Denfop.tiles.base.TileEntitySolarPanel;
 import com.Denfop.tiles.base.TileSintezator;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -37,7 +29,7 @@ private IIcon icon;
   public Sintezator() {
     super(Material.iron);
     setHardness(3.0F);
-    setCreativeTab(SuperSolarPanels.tabssp);
+    setCreativeTab(IUCore.tabssp);
    
   }
   
@@ -88,7 +80,7 @@ private IIcon icon;
       return true; 
     TileEntity tileentity = world.getTileEntity(i, j, k);
     if (tileentity != null)
-      player.openGui(SuperSolarPanels.instance, 1, world, i, j, k); 
+      player.openGui(IUCore.instance, 1, world, i, j, k);
     return true;
   }
   

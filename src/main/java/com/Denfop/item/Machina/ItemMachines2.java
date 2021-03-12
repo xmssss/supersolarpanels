@@ -2,9 +2,7 @@ package com.Denfop.item.Machina;
 
 import java.util.List;
 
-import com.Denfop.SuperSolarPanels;
-import com.Denfop.block.mechanism.BlockMachine;
-import com.Denfop.block.mechanism.BlockMachines;
+import com.Denfop.IUCore;
 import com.Denfop.block.mechanism.BlockMachines1;
 import com.Denfop.tiles.Mechanism.EnumMultiMachine;
 
@@ -21,7 +19,7 @@ public class ItemMachines2 extends ItemBlock {
 		super(block);
 		setMaxDamage(0);
 		setHasSubtypes(true);
-		  this.setCreativeTab(SuperSolarPanels.tabssp);
+		  this.setCreativeTab(IUCore.tabssp);
 	}
 
 	@Override

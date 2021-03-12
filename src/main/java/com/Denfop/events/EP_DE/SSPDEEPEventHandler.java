@@ -3,15 +3,12 @@ package com.Denfop.events.EP_DE;
 import java.util.Map;
 
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.utils.NBTData;
 import com.aesireanempire.eplus.inventory.ContainerEnchantTable;
 import com.brandon3055.draconicevolution.common.container.ContainerDissEnchanter;
 
-import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import ic2.core.Ic2Items;
-import ic2.core.util.StackUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

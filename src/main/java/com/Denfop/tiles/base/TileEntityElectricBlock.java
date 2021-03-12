@@ -1,9 +1,7 @@
 package com.Denfop.tiles.base;
 
 import com.Denfop.Config;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.api.module.IModulOutput;
-import com.Denfop.api.module.IModulStorage;
 import com.Denfop.container.ContainerElectricBlock;
 import com.Denfop.gui.GuiElectricBlock;
 import com.Denfop.item.Modules.ItemWirelessModule;
@@ -29,13 +27,9 @@ import ic2.core.ContainerBase;
 import ic2.core.IC2;
 import ic2.core.IHasGui;
 import ic2.core.block.TileEntityInventory;
-import ic2.core.block.invslot.InvSlot;
-import ic2.core.block.invslot.InvSlotCharge;
-import ic2.core.block.invslot.InvSlotDischarge;
 import ic2.core.init.MainConfig;
 import ic2.core.util.ConfigUtil;
 import ic2.core.util.Util;
-import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -44,11 +38,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import cofh.api.energy.IEnergyContainerItem;
 public abstract class TileEntityElectricBlock extends TileEntityInventory implements IEnergySink, IEnergySource, IHasGui, INetworkClientTileEntityEventListener, IEnergyStorage,IEnergyHandler,IEnergyReceiver {
     public final int tier;
 

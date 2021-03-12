@@ -1,6 +1,5 @@
 package com.Denfop.integration.DE;
 import com.Denfop.Constants;
-import com.Denfop.SuperSolarPanels;
 import com.brandon3055.draconicevolution.client.gui.componentguis.GUIManual;
 import com.brandon3055.draconicevolution.client.utill.CustomResourceLocation;
 import com.brandon3055.draconicevolution.common.utills.LogHelper;

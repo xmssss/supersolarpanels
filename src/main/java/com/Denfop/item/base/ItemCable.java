@@ -1,18 +1,16 @@
 package com.Denfop.item.base;
 
 import ic2.api.item.IBoxable;
-import ic2.core.util.StackUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.Denfop.Constants;
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 import com.Denfop.block.cable.BlockCable;
 import com.Denfop.tiles.base.TileEntityCable;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -22,7 +20,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -42,7 +39,7 @@ public ItemCable() {
     
     this.itemNames = new ArrayList<String>();
     this.IIconsList = new IIcon[11];
-    this.setCreativeTab(SuperSolarPanels.tabssp);
+    this.setCreativeTab(IUCore.tabssp);
     this.itemsCount = 10;
     this.addItemsNames();
 //    this.setTextureName(Constants.TEXTURES_MAIN + getUnlocalizedName(new ItemStack( ( (Item)this,1,this.me ) ) ) );

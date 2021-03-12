@@ -1,5 +1,5 @@
 package com.Denfop.integration.DE;
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 import com.brandon3055.brandonscore.common.utills.InfoHelper;
 import com.brandon3055.draconicevolution.client.render.IRenderTweak;
 import com.brandon3055.draconicevolution.common.handler.BalanceConfigHandler;
@@ -9,7 +9,6 @@ import com.brandon3055.draconicevolution.common.utills.IInventoryTool;
 import com.brandon3055.draconicevolution.common.utills.IUpgradableItem;
 import com.brandon3055.draconicevolution.common.utills.ItemConfigField;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
@@ -19,7 +18,6 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
@@ -39,7 +37,7 @@ public class ChaosDistructionStaff extends MiningTool implements IInventoryTool,
     setMaxReceive(BalanceConfigHandler.draconicToolsMaxTransfer * 2 + BalanceConfigHandler.draconicWeaponsMaxTransfer* 2);
     this.energyPerOperation = BalanceConfigHandler.draconicToolsEnergyPerAction * 2;
     DraconicIntegration.register((ItemDC)this);
-    setCreativeTab((CreativeTabs)SuperSolarPanels.tabssp2);
+    setCreativeTab((CreativeTabs) IUCore.tabssp2);
   }
   
   public float func_150893_a(ItemStack stack, Block block) {

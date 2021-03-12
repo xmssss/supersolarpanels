@@ -1,9 +1,5 @@
 package com.Denfop.tiles.base;
 
-import com.Denfop.SuperSolarPanels;
-
-import net.minecraft.util.AxisAlignedBB;
-
 
 public class TileEntityAdminSolarPanel extends TileEntitySolarPanel 
 {

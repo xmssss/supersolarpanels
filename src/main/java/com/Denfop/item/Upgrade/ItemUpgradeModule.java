@@ -1,6 +1,5 @@
 package com.Denfop.item.Upgrade;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.Direction;
@@ -9,9 +8,8 @@ import ic2.core.upgrade.IUpgradableBlock;
 import ic2.core.upgrade.IUpgradeItem;
 import ic2.core.upgrade.UpgradableProperty;
 import ic2.core.upgrade.UpgradeRegistry;
-import ic2.core.util.LiquidUtil;
 import ic2.core.util.StackUtil;
-import ic2.core.util.Util;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,12 +19,11 @@ import java.util.Set;
 
 import com.Denfop.Constants;
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -44,7 +41,7 @@ public class ItemUpgradeModule extends Item implements IUpgradeItem, IItemHudInf
 public ItemUpgradeModule() {
     super();
     setHasSubtypes(true);
-    this.setCreativeTab(SuperSolarPanels.tabssp3);
+    this.setCreativeTab(IUCore.tabssp3);
     SSPItem.overclockerUpgrade = UpgradeRegistry.register(new ItemStack(this, 1, Type.Overclocker1.ordinal()));
     SSPItem.overclockerUpgrade1 = UpgradeRegistry.register(new ItemStack(this, 1, Type.Overclocker2.ordinal()));
     SSPItem.overclockerUpgrade= new ItemStack((Item)this, 1, 0);

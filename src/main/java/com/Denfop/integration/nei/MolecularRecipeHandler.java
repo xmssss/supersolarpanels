@@ -123,9 +123,7 @@ public abstract class MolecularRecipeHandler extends TemplateRecipeHandler {
     MolecularRecipeHandler.CachedIORecipe recipe =  (CachedIORecipe) this.arecipes.get(i);
   
     
-   
-   
-    String energyPerTick = I18n.format("gui.MolecularTransformer.energyPerOperation", new Object[0]) + ": ";
+String energyPerTick = I18n.format("gui.MolecularTransformer.energyPerOperation", new Object[0]) + ": ";
 String input2 = I18n.format("gui.MolecularTransformer.input", new Object[0]) + ": ";
 String output2 = I18n.format("gui.MolecularTransformer.output", new Object[0]) + ": ";
 GuiDraw.drawString(energyPerTick + recipe.meta.getInteger("energy") + " EU",  60+10, 25+11, 13487565);

@@ -3,7 +3,6 @@
 package com.Denfop.integration.Botania;
 
 import com.Denfop.Config;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.tiles.base.TileEntitySolarPanel;
 
 

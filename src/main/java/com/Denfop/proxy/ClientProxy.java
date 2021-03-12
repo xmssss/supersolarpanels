@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.Denfop.Config;
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 import com.Denfop.Recipes.AlloySmelterRecipe;
 import com.Denfop.Recipes.BasicRecipe;
 import com.Denfop.Recipes.CannerRecipe;
@@ -55,12 +55,8 @@ import com.Denfop.tiles.base.TileEntityMultiMachine1;
 import com.Denfop.tiles.base.TileEntityMultiMatter;
 import com.Denfop.tiles.base.TileEntitySolarPanel;
 import com.Denfop.tiles.base.TileSintezator;
-import com.Denfop.tiles.overtimepanel.TileAdminSolarPanel;
-import com.Denfop.tiles.wiring.Chargepad.TileEntityChargepadMFES;
 import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFE;
-import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFSU;
 import com.brandon3055.draconicevolution.client.render.IRenderTweak;
-import com.brandon3055.draconicevolution.client.render.item.RenderBow;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
@@ -68,23 +64,17 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.network.IGuiHandler;
-import ic2.core.ContainerBase;
 import ic2.core.Ic2Items;
 import modtweaker2.utils.TweakerPlugin;
 import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.client.model.AdvancedModelLoader;
-import net.minecraftforge.client.model.IModelCustom;
 import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy  implements IGuiHandler {
@@ -218,7 +208,7 @@ MaceratorRecipe.recipe();
     if(Config.Streak == true) {
     FMLCommonHandler.instance().bus().register(new EventDarkQuantumSuitEffect());}
     if(Config.newsystem)
-    	SuperSolarPanels.initENet();
+    	IUCore.initENet();
     
 	if(Config.DraconicLoaded && Config.EnchantingPlus &&Config.MineFactory) {
 		 MinecraftForge.EVENT_BUS.register(new SSPMFDEEventHandler());

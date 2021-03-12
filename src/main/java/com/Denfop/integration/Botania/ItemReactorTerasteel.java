@@ -2,11 +2,9 @@ package com.Denfop.integration.Botania;
 
 import com.Denfop.Config;
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.item.reactor.ItemReactorUranium;
 
 import ic2.api.reactor.IReactor;
-import ic2.core.Ic2Items;
 import net.minecraft.item.ItemStack;
 
 public class ItemReactorTerasteel extends ItemReactorUranium {

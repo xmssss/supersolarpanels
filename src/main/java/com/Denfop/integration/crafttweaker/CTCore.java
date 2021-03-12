@@ -4,7 +4,7 @@ import minetweaker.MineTweakerAPI;
 
 public class CTCore {
   public CTCore() {
-    MineTweakerAPI.registerClass(CTMoleculatTransformer.class);
+    MineTweakerAPI.registerClass(CTMolecularTransformer.class);
     MineTweakerAPI.registerClass(CTAlloySmelter.class);
     
   }

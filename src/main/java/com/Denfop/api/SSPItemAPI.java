@@ -15,7 +15,7 @@ public class SSPItemAPI
     private static void lazyInit() {
         if (!SSPItemAPI.inited) {
             try {
-                SSPItemAPI.aspClass = Class.forName("com.Denfop.SuperSolarPanels");
+                SSPItemAPI.aspClass = Class.forName("com.Denfop.IUCore");
             }
             catch (Exception e) {
                 FMLLog.severe("Fatal exception hapenned when tried to instantiate SSP API.", new Object[0]);

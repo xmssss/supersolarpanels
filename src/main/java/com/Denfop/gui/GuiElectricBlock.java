@@ -2,26 +2,20 @@ package com.Denfop.gui;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ic2.core.GuiIconButton;
 import ic2.core.IC2;
 import ic2.core.network.NetworkManager;
-import ic2.core.util.GuiTooltipHelper;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
 import com.Denfop.Constants;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.container.ContainerElectricBlock;
 import com.Denfop.tiles.base.TileEntityElectricBlock;
-import com.Denfop.utils.GUIUtilsStorage;
 import com.Denfop.utils.GuiNumberUtils;
 
 @SideOnly(Side.CLIENT)

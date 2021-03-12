@@ -1,14 +1,12 @@
 package com.Denfop.Recipes;
 
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
 
 import cpw.mods.fml.common.Loader;
 import ic2.api.item.IC2Items;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeInputItemStack;
 import ic2.api.recipe.Recipes;
-import ic2.core.Ic2Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 

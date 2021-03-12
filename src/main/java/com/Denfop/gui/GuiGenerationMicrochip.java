@@ -1,7 +1,6 @@
 package com.Denfop.gui;
 
 import com.Denfop.Constants;
-import com.Denfop.SuperSolarPanels;
 import com.Denfop.container.ContainerBaseGenerationChipMachine;
 import com.Denfop.tiles.Mechanism.TileEntityGenerationMicrochip;
 
@@ -9,9 +8,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.core.ContainerBase;
 import ic2.core.GuiIC2;
-import ic2.core.IC2;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 
 @SideOnly(Side.CLIENT)
 public class GuiGenerationMicrochip extends GuiIC2 {

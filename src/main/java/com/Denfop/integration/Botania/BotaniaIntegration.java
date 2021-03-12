@@ -1,13 +1,6 @@
 package com.Denfop.integration.Botania;
 
 import com.Denfop.SSPItem;
-import com.Denfop.SuperSolarPanels;
-import com.Denfop.integration.DE.ItemDESolarPanel;
-import com.Denfop.integration.DE.SSPDEItem;
-import com.Denfop.integration.DE.TileEntityAwakenedSolarPanel;
-import com.Denfop.integration.DE.TileEntityChaosSolarPanel;
-import com.Denfop.integration.DE.TileEntityDraconSolarPanel;
-import com.Denfop.integration.DE.blockDESolarPanel;
 import com.Denfop.item.base.SSPItemBase;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -23,11 +16,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.common.item.ModItems;
-import vazkii.botania.common.item.material.ItemManaResource;
 import vazkii.botania.common.lib.LibOreDict;
 
-import ic2.api.recipe.IRecipeInput;
-import ic2.api.recipe.RecipeInputItemStack;
 public class BotaniaIntegration {
 
 	public static Block blockBotSolarPanel;

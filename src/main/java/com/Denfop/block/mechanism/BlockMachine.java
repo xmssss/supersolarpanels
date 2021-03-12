@@ -1,18 +1,9 @@
 package com.Denfop.block.mechanism;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.item.IC2Items;
 import ic2.api.tile.IWrenchable;
 import ic2.core.IC2;
-import ic2.core.Ic2Items;
 import ic2.core.block.TileEntityBlock;
-import ic2.core.block.machine.tileentity.TileEntityCompressor;
-import ic2.core.block.machine.tileentity.TileEntityInduction;
-import ic2.core.block.machine.tileentity.TileEntityMatter;
-import ic2.core.init.MainConfig;
-import ic2.core.util.ConfigUtil;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,12 +12,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -36,21 +25,18 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import org.apache.commons.lang3.mutable.MutableObject;
-import com.Denfop.item.Machina.ItemMachine1;
 import com.Denfop.proxy.ClientProxy;
 import com.Denfop.tiles.Mechanism.*;
 import com.Denfop.tiles.NeutroniumGenerator.TileBitGen2;
-import com.Denfop.tiles.base.TileEntityBase;
 import com.Denfop.tiles.base.TileEntityMolecularTransformer;
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 
 public class BlockMachine extends BlockContainer {
   public BlockMachine() {
     super(Material.iron);
     setHardness(2.0F);
     setStepSound(soundTypeMetal);
-    this.setCreativeTab(SuperSolarPanels.tabssp);
+    this.setCreativeTab(IUCore.tabssp);
    
 
   }
@@ -333,7 +319,7 @@ public class BlockMachine extends BlockContainer {
   {
       if (!entityPlayer.isSneaking())
       {
-          entityPlayer.openGui(SuperSolarPanels.instance, 0, world, x, y, z);
+          entityPlayer.openGui(IUCore.instance, 0, world, x, y, z);
           return true;
       }
 

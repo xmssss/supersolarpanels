@@ -1,19 +1,17 @@
 package com.Denfop.integration.DE;
 import com.Denfop.Constants;
-import com.Denfop.SuperSolarPanels;
+import com.Denfop.IUCore;
 import com.brandon3055.brandonscore.BrandonsCore;
 import com.brandon3055.brandonscore.common.utills.InfoHelper;
 import com.brandon3055.brandonscore.common.utills.ItemNBTHelper;
 import com.brandon3055.brandonscore.common.utills.Utills;
 import com.brandon3055.draconicevolution.DraconicEvolution;
-import com.brandon3055.draconicevolution.common.ModItems;
 import com.brandon3055.draconicevolution.common.entity.EntityPersistentItem;
 import com.brandon3055.draconicevolution.common.handler.BalanceConfigHandler;
 import com.brandon3055.draconicevolution.common.handler.ConfigHandler;
 import com.brandon3055.draconicevolution.common.items.tools.baseclasses.ToolBase;
 import com.brandon3055.draconicevolution.common.items.weapons.BowHandler;
 import com.brandon3055.draconicevolution.common.items.weapons.IEnergyContainerWeaponItem;
-import com.brandon3055.draconicevolution.common.lib.References;
 import com.brandon3055.draconicevolution.common.utills.IHudDisplayItem;
 import com.brandon3055.draconicevolution.common.utills.IInventoryTool;
 import com.brandon3055.draconicevolution.common.utills.IUpgradableItem;
@@ -52,7 +50,7 @@ public class ChaosBow extends ItemBow implements IInventoryTool, IUpgradableItem
   public ChaosBow() {
     this.maxStackSize = 1;
     setMaxDamage(-1);
-    setCreativeTab((CreativeTabs)SuperSolarPanels.tabssp2);
+    setCreativeTab((CreativeTabs) IUCore.tabssp2);
     setUnlocalizedName("ChaosBow");
       GameRegistry.registerItem((Item)this, "ChaosBow"); 
   }
