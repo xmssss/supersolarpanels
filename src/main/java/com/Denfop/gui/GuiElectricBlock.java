@@ -40,7 +40,7 @@ public class GuiElectricBlock extends GuiContainer {
   
   public void initGui() {
     super.initGui();
-    this.buttonList.add(new GuiButton(0, (this.width - this.xSize) / 2 + 110, (this.height - this.ySize) / 2 + 34, 22, 17, I18n.format("button.rg")));
+    this.buttonList.add(new GuiButton(0, (this.width - this.xSize) / 2 + 110 + 3, (this.height - this.ySize) / 2 + 34 + 2, 17, 13, I18n.format("button.rg")));
   }
   
   protected void drawGuiContainerForegroundLayer(int par1, int par2) {
@@ -48,10 +48,10 @@ public class GuiElectricBlock extends GuiContainer {
     this.fontRendererObj.drawString(this.armorInv, 8, this.ySize - 126 + 3, 4210752);
 
    
-    this.fontRendererObj.drawString(  GuiNumberUtils.getString((float) this.container.base.energy), 90, 55, 4210752);
-    this.fontRendererObj.drawString(  GuiNumberUtils.getString((float) this.container.base.energy2), 138, 55, 4210752);
-    String output = StatCollector.translateToLocalFormatted("ic2.EUStorage.gui.info.output", new Object[] { Integer.valueOf(this.container.base.getOutput()) });
-    this.fontRendererObj.drawString(output, 85, 70, 4210752);
+    this.fontRendererObj.drawString(GuiNumberUtils.getString((float) this.container.base.energy), 90, 55, 4210752);
+    this.fontRendererObj.drawString(GuiNumberUtils.getString((float) this.container.base.energy2), 138, 55, 4210752);
+    String output = StatCollector.translateToLocalFormatted("ic2.EUStorage.gui.info.output", this.container.base.getOutput());
+    this.fontRendererObj.drawString(output, 72, 72, 4210752);
     }
   
   protected void drawGuiContainerBackgroundLayer(float f, int x, int y) {

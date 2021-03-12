@@ -97,8 +97,7 @@ public class BlockElectric extends BlockContainer {
   }
   
   @Override
-  public IIcon getIcon(IBlockAccess world, int x, int y, int z, int blockSide)
-  {
+  public IIcon getIcon(IBlockAccess world, int x, int y, int z, int blockSide) {
       int blockMeta = world.getBlockMetadata(x, y, z);
       TileEntity te = world.getTileEntity(x, y, z);
       int facing = (te instanceof TileEntityBlock) ? ((int) (((TileEntityBlock) te).getFacing())) : 0;
@@ -303,8 +302,7 @@ public class BlockElectric extends BlockContainer {
 				 
 		  }}
 	  }}
-      if (!entityPlayer.isSneaking())
-      {
+      if (!entityPlayer.isSneaking()) {
     	  final TileEntity tileentity = world.getTileEntity(x, y, z);
           if (tileentity != null) {
           	
@@ -323,8 +321,6 @@ public class BlockElectric extends BlockContainer {
                        entityPlayer.addChatMessage(new ChatComponentTranslation(String.format("ssp.error", new Object[0]), new Object[0]));
                    }
               }}
-          		
-          		
           		}
           
           	}

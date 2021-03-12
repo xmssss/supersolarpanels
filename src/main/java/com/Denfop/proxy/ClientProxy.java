@@ -79,120 +79,120 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy  implements IGuiHandler {
 	
-   Map<String, RenderBlock> renders;
-public static int adminpanel;
+ Map<String, RenderBlock> renders;
+ public static int adminpanel;
 
-public boolean isClient() {
-	
-    return true;
-  }
-  
-  public void registerTabs(CreativeTabs tab, final ItemStack icon) {
+ public boolean isClient() {
    
-        }
-  public RenderBlock getRender(String name) {
-	    return this.renders.get(name);
-	  }
-  public static Logger logger = LogManager.getLogger("supersolarpanel");
-  public static int[][] sideAndFacingToSpriteOffset;
-  
-  @Override
-  public void load() {
-	
-	  try
-      {
-          sideAndFacingToSpriteOffset = (int[][])Class.forName("ic2.core.block.BlockMultiID").getField("sideAndFacingToSpriteOffset").get(null);
-      }
-      catch (Exception e)
-      {
-          sideAndFacingToSpriteOffset = new int[][]{
-                  {
-                      3, 2, 0, 0, 0, 0
-                  }, {
-                      2, 3, 1, 1, 1, 1
-                  }, {
-                      1, 1, 3, 2, 5, 4
-                  }, {
-                      0, 0, 2, 3, 4, 5
-                  }, {
-                      4, 5, 4, 5, 3, 2
-                  }, {
-                      5, 4, 5, 4, 2, 3
-                  }
-          };
-      }
-  }     
-  private void addBlockRenderer(String name, RenderBlock renderer) {
-	    RenderingRegistry.registerBlockHandler((ISimpleBlockRenderingHandler)renderer);
-	    this.renders.put(name, renderer);
-	  }  
+  return true;
+}
+
+public void registerTabs(CreativeTabs tab, final ItemStack icon) {
  
-  public void initCore() {
-	    
-	       TileEntityAlloySmelter.init();
-	       TileEntityMolecularTransformer.init();
-	       TileEntityGenerationMicrochip.init();
-	       TileEntityGenerationStone.init();
-	       
-	  }
-  public void registerRenderers() {
-    RenderingRegistry.registerEntityRenderingHandler(EntityStreak.class, (Render)new EntityRendererStreak());
-    //
-   
+}
+public RenderBlock getRender(String name) {
+ return this.renders.get(name);
+}
+public static Logger logger = LogManager.getLogger("supersolarpanel");
+public static int[][] sideAndFacingToSpriteOffset;
+
+@Override
+public void load() {
+	
+ try
+ {
+  sideAndFacingToSpriteOffset = (int[][])Class.forName("ic2.core.block.BlockMultiID").getField("sideAndFacingToSpriteOffset").get(null);
+}
+catch (Exception e)
+{
+  sideAndFacingToSpriteOffset = new int[][]{
+    {
+      3, 2, 0, 0, 0, 0
+    }, {
+      2, 3, 1, 1, 1, 1
+    }, {
+      1, 1, 3, 2, 5, 4
+    }, {
+      0, 0, 2, 3, 4, 5
+    }, {
+      4, 5, 4, 5, 3, 2
+    }, {
+      5, 4, 5, 4, 2, 3
+    }
+  };
+}
+}     
+private void addBlockRenderer(String name, RenderBlock renderer) {
+ RenderingRegistry.registerBlockHandler((ISimpleBlockRenderingHandler)renderer);
+ this.renders.put(name, renderer);
+}  
+
+public void initCore() {
+ 
+  TileEntityAlloySmelter.init();
+  TileEntityMolecularTransformer.init();
+  TileEntityGenerationMicrochip.init();
+  TileEntityGenerationStone.init();
+  
+}
+public void registerRenderers() {
+  RenderingRegistry.registerEntityRenderingHandler(EntityStreak.class, (Render)new EntityRendererStreak());
     //
   
-    this.renders = new HashMap<String, RenderBlock>();
-	  addBlockRenderer("cable", (RenderBlock)new RenderBlockCable());
-	  addBlockRenderer("wall", (RenderBlock)new RenderBlockWall());
-	  if(Config.DraconicLoaded) {
-		  MinecraftForgeClient.registerItemRenderer(DraconicIntegration.ChaosBow, (IItemRenderer)new RenderBowModel(true));
-		  MinecraftForgeClient.registerItemRenderer(DraconicIntegration.ChaosSword, (IItemRenderer)new RenderTool("models/tools/DraconicSword.obj", "textures/models/tools/DraconicSword.png", (IRenderTweak)DraconicIntegration.ChaosSword));
-		  MinecraftForgeClient.registerItemRenderer(DraconicIntegration.ChaosPickaxe, (IItemRenderer)new RenderTool("models/tools/DraconicPickaxe.obj", "textures/models/tools/DraconicPickaxe.png", (IRenderTweak)DraconicIntegration.ChaosPickaxe));
-	      MinecraftForgeClient.registerItemRenderer(DraconicIntegration.ChaosAxe, (IItemRenderer)new RenderTool("models/tools/DraconicLumberAxe.obj", "textures/models/tools/DraconicLumberAxe.png", (IRenderTweak)DraconicIntegration.ChaosAxe));
-	      MinecraftForgeClient.registerItemRenderer(DraconicIntegration.ChaosShovel, (IItemRenderer)new RenderTool("models/tools/DraconicShovel.obj", "textures/models/tools/DraconicShovel.png", (IRenderTweak)DraconicIntegration.ChaosShovel));
-	      MinecraftForgeClient.registerItemRenderer(DraconicIntegration.ChaosDestructionStaff, (IItemRenderer)new RenderTool("models/tools/DraconicStaffOfPower.obj", "textures/models/tools/DraconicStaffOfPower.png", (IRenderTweak)DraconicIntegration.ChaosDestructionStaff));
-	       MinecraftForgeClient.registerItemRenderer((Item)DraconicIntegration.ChaosHelm, (IItemRenderer)new RenderArmor(DraconicIntegration.ChaosHelm));
-	      MinecraftForgeClient.registerItemRenderer((Item)DraconicIntegration.ChaosChest, (IItemRenderer)new RenderArmor(DraconicIntegration.ChaosChest));
-	      MinecraftForgeClient.registerItemRenderer((Item)DraconicIntegration.ChaosLeggs, (IItemRenderer)new RenderArmor(DraconicIntegration.ChaosLeggs));
-	      MinecraftForgeClient.registerItemRenderer((Item)DraconicIntegration.ChaosBoots, (IItemRenderer)new RenderArmor(DraconicIntegration.ChaosBoots));
-	    } 
-	  ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAdminSolarPanel.class, new TileEntityPanelRender());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(SSPItem.blockadmin),
-				new TileEntityPanelItemRender());
+    //
+  
+  this.renders = new HashMap<String, RenderBlock>();
+  addBlockRenderer("cable", (RenderBlock)new RenderBlockCable());
+  addBlockRenderer("wall", (RenderBlock)new RenderBlockWall());
+  if(Config.DraconicLoaded) {
+    MinecraftForgeClient.registerItemRenderer(DraconicIntegration.ChaosBow, (IItemRenderer)new RenderBowModel(true));
+    MinecraftForgeClient.registerItemRenderer(DraconicIntegration.ChaosSword, (IItemRenderer)new RenderTool("models/tools/DraconicSword.obj", "textures/models/tools/DraconicSword.png", (IRenderTweak)DraconicIntegration.ChaosSword));
+    MinecraftForgeClient.registerItemRenderer(DraconicIntegration.ChaosPickaxe, (IItemRenderer)new RenderTool("models/tools/DraconicPickaxe.obj", "textures/models/tools/DraconicPickaxe.png", (IRenderTweak)DraconicIntegration.ChaosPickaxe));
+    MinecraftForgeClient.registerItemRenderer(DraconicIntegration.ChaosAxe, (IItemRenderer)new RenderTool("models/tools/DraconicLumberAxe.obj", "textures/models/tools/DraconicLumberAxe.png", (IRenderTweak)DraconicIntegration.ChaosAxe));
+    MinecraftForgeClient.registerItemRenderer(DraconicIntegration.ChaosShovel, (IItemRenderer)new RenderTool("models/tools/DraconicShovel.obj", "textures/models/tools/DraconicShovel.png", (IRenderTweak)DraconicIntegration.ChaosShovel));
+    MinecraftForgeClient.registerItemRenderer(DraconicIntegration.ChaosDestructionStaff, (IItemRenderer)new RenderTool("models/tools/DraconicStaffOfPower.obj", "textures/models/tools/DraconicStaffOfPower.png", (IRenderTweak)DraconicIntegration.ChaosDestructionStaff));
+    MinecraftForgeClient.registerItemRenderer((Item)DraconicIntegration.ChaosHelm, (IItemRenderer)new RenderArmor(DraconicIntegration.ChaosHelm));
+    MinecraftForgeClient.registerItemRenderer((Item)DraconicIntegration.ChaosChest, (IItemRenderer)new RenderArmor(DraconicIntegration.ChaosChest));
+    MinecraftForgeClient.registerItemRenderer((Item)DraconicIntegration.ChaosLeggs, (IItemRenderer)new RenderArmor(DraconicIntegration.ChaosLeggs));
+    MinecraftForgeClient.registerItemRenderer((Item)DraconicIntegration.ChaosBoots, (IItemRenderer)new RenderArmor(DraconicIntegration.ChaosBoots));
+  } 
+  ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAdminSolarPanel.class, new TileEntityPanelRender());
+  MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(SSPItem.blockadmin),
+    new TileEntityPanelItemRender());
 		//
-		  ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySintezator.class, new TileEntitySintezatorRender());
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(SSPItem.blocksintezator),
-					new TileEntitySintezatorItemRender());
-  }
-  public void integration() {
-		
-	  Config.DraconicLoaded = Loader.isModLoaded("DraconicEvolution");
-      Config.AvaritiaLoaded = Loader.isModLoaded("Avaritia");
-      Config.BotaniaLoaded = Loader.isModLoaded("Botania");
-      Config.EnchantingPlus = Loader.isModLoaded("eplus");
-      Config.MineFactory = Loader.isModLoaded("MineFactoryReloaded");
-      if(Loader.isModLoaded("modtweaker2")) {
-    	  TweakerPlugin.register("supersolarpanel", CTCore.class);
-    	  logger.info("Starting Initialization for SuperSolarPanels");
-    	  }
-if(Config.DraconicLoaded && Config.Draconic == true) {
-	DraconicIntegration.init();
+  ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySintezator.class, new TileEntitySintezatorRender());
+  MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(SSPItem.blocksintezator),
+   new TileEntitySintezatorItemRender());
 }
-if(Config.AvaritiaLoaded && Config.Avaritia == true) {
-	AvaritiaIntegration.init();
-}
+public void integration() {
+  
+ Config.DraconicLoaded = Loader.isModLoaded("DraconicEvolution");
+ Config.AvaritiaLoaded = Loader.isModLoaded("Avaritia");
+ Config.BotaniaLoaded = Loader.isModLoaded("Botania");
+ Config.EnchantingPlus = Loader.isModLoaded("eplus");
+ Config.MineFactory = Loader.isModLoaded("MineFactoryReloaded");
+ if(Loader.isModLoaded("modtweaker2")) {
+   TweakerPlugin.register("industrialupgrade", CTCore.class);
+   logger.info("Starting Initialization for SuperSolarPanels");
+ }
+ if(Config.DraconicLoaded && Config.Draconic == true) {
+   DraconicIntegration.init();
+ }
+ if(Config.AvaritiaLoaded && Config.Avaritia == true) {
+   AvaritiaIntegration.init();
+ }
 
-if(Config.BotaniaLoaded && Config.Botania == true) {
-	BotaniaIntegration.init();
+ if(Config.BotaniaLoaded && Config.Botania == true) {
+   BotaniaIntegration.init();
+ }
 }
-  }
-  public void registerRecipe() {
-		
-	  if(Config.BotaniaLoaded && Config.Botania == true)
-      	BotaniaIntegration.recipe();
-	  BasicRecipe.recipe();
-if(Config.DraconicLoaded && Config.Draconic == true)
-      DraconicIntegration.Recipes();
+public void registerRecipe() {
+  
+ if(Config.BotaniaLoaded && Config.Botania == true)
+   BotaniaIntegration.recipe();
+ BasicRecipe.recipe();
+ if(Config.DraconicLoaded && Config.Draconic == true)
+  DraconicIntegration.Recipes();
 if(Config.AvaritiaLoaded && Config.Avaritia == true)
 	AvaritiaIntegration.recipe();
 AlloySmelterRecipe.recipe();
@@ -202,115 +202,115 @@ FurnaceRecipes.recipe();
 CentrifugeRecipe.init();
 MaceratorRecipe.recipe();
 
-  }
-  public void registerEvents() {
-    MinecraftForge.EVENT_BUS.register(new EventDarkQuantumSuitEffect());
-    if(Config.Streak == true) {
+}
+public void registerEvents() {
+  MinecraftForge.EVENT_BUS.register(new EventDarkQuantumSuitEffect());
+  if(Config.Streak == true) {
     FMLCommonHandler.instance().bus().register(new EventDarkQuantumSuitEffect());}
     if(Config.newsystem)
     	IUCore.initENet();
     
-	if(Config.DraconicLoaded && Config.EnchantingPlus &&Config.MineFactory) {
-		 MinecraftForge.EVENT_BUS.register(new SSPMFDEEventHandler());
-		
-	}else if(Config.DraconicLoaded &&Config.EnchantingPlus) {
-		MinecraftForge.EVENT_BUS.register(new SSPDEEPEventHandler());
-	}else if(Config.DraconicLoaded && Config.MineFactory) {
-		MinecraftForge.EVENT_BUS.register(new SSPDEMFEventHandler());
-	}else if(Config.EnchantingPlus && Config.MineFactory) {
-		MinecraftForge.EVENT_BUS.register(new SSPMPMFEventHandler());
-	}
-	else {
-		 if(Config.DraconicLoaded) {
-			 MinecraftForge.EVENT_BUS.register(new SSPDEEventHandler());
-	        }
-		
-		if(Config.EnchantingPlus) {
-			 MinecraftForge.EVENT_BUS.register(new SSPEPEventHandler());
-	        }
-		if(Config.MineFactory) {
-			 MinecraftForge.EVENT_BUS.register(new SSPMFEventHandler());
-	        }}
-	MinecraftForge.EVENT_BUS.register(new SSPEventHandler());
-  }
-  @Override
-  public Object getClientGuiElement(final int ID, final EntityPlayer player, final World world, final int X, final int Y, final int Z) {
-      final TileEntity te = world.getTileEntity(X, Y, Z);
+    if(Config.DraconicLoaded && Config.EnchantingPlus &&Config.MineFactory) {
+     MinecraftForge.EVENT_BUS.register(new SSPMFDEEventHandler());
      
-      if (te == null) {
-          return null;
-      }
-	
-      if (te instanceof TileEntitySolarPanel) {
-          return new GuiAdvSolarPanel(player.inventory, (TileEntitySolarPanel)te);
-      }
-      if (te instanceof TileSintezator) {
-          return new GUISintezator(player.inventory, (TileSintezator)te);
-      }
-      
+   }else if(Config.DraconicLoaded &&Config.EnchantingPlus) {
+    MinecraftForge.EVENT_BUS.register(new SSPDEEPEventHandler());
+  }else if(Config.DraconicLoaded && Config.MineFactory) {
+    MinecraftForge.EVENT_BUS.register(new SSPDEMFEventHandler());
+  }else if(Config.EnchantingPlus && Config.MineFactory) {
+    MinecraftForge.EVENT_BUS.register(new SSPMPMFEventHandler());
+  }
+  else {
+   if(Config.DraconicLoaded) {
+    MinecraftForge.EVENT_BUS.register(new SSPDEEventHandler());
+  }
+  
+  if(Config.EnchantingPlus) {
+    MinecraftForge.EVENT_BUS.register(new SSPEPEventHandler());
+  }
+  if(Config.MineFactory) {
+    MinecraftForge.EVENT_BUS.register(new SSPMFEventHandler());
+  }}
+  MinecraftForge.EVENT_BUS.register(new SSPEventHandler());
+}
+@Override
+public Object getClientGuiElement(final int ID, final EntityPlayer player, final World world, final int X, final int Y, final int Z) {
+  final TileEntity te = world.getTileEntity(X, Y, Z);
+  
+  if (te == null) {
+    return null;
+  }
+  
+  if (te instanceof TileEntitySolarPanel) {
+    return new GuiAdvSolarPanel(player.inventory, (TileEntitySolarPanel)te);
+  }
+  if (te instanceof TileSintezator) {
+    return new GUISintezator(player.inventory, (TileSintezator)te);
+  }
+  
+  
+  if (te instanceof TileEntityMolecularTransformer) {
+    return new GuiMolecularTransformer(new ContainerBaseMolecular(player, (TileEntityMolecularTransformer) te));
+  }
+  if (player.getHeldItem() != Ic2Items.electricWrench) {
+   if (te instanceof TileEntityMultiMachine) {
+    return ((TileEntityMultiMachine) te).getGui(player, false);
+  }
+  
+  if (player.getHeldItem() != Ic2Items.electricWrench) {
+    if (te instanceof TileEntityMultiMachine1) {
+     return ((TileEntityMultiMachine1) te).getGui(player, false);
+   }
+ }
+ if (player.getHeldItem() != Ic2Items.electricWrench) {
+  if (te instanceof TileEntityMultiMatter) {
+   return ((TileEntityMultiMatter) te).getGui(player, false);
+ }
+}
+if (te instanceof TileEntityAlloySmelter)
+{
+  return new GuiAlloySmelter(new ContainerStandardMachine(player, (TileEntityAlloySmelter) te));
+}
+if (te instanceof TileEntityElectricMFE)
+{
  
-      if (te instanceof TileEntityMolecularTransformer) {
-          return new GuiMolecularTransformer(new ContainerBaseMolecular(player, (TileEntityMolecularTransformer) te));
-      }
-      if (player.getHeldItem() != Ic2Items.electricWrench) {
-			if (te instanceof TileEntityMultiMachine) {
-				return ((TileEntityMultiMachine) te).getGui(player, false);
-			}
-      
-			if (player.getHeldItem() != Ic2Items.electricWrench) {
-				if (te instanceof TileEntityMultiMachine1) {
-					return ((TileEntityMultiMachine1) te).getGui(player, false);
-				}
-			}
-			if (player.getHeldItem() != Ic2Items.electricWrench) {
-				if (te instanceof TileEntityMultiMatter) {
-					return ((TileEntityMultiMatter) te).getGui(player, false);
-				}
-			}
-      if (te instanceof TileEntityAlloySmelter)
-      {
-          return new GuiAlloySmelter(new ContainerStandardMachine(player, (TileEntityAlloySmelter) te));
-      }
-      if (te instanceof TileEntityElectricMFE)
-      {
-    	  
-          return new GuiElectricBlock(new ContainerElectricBlock(player, (TileEntityElectricMFE) te));
-      }
-      
-      if (te instanceof TileEntityElectricBlock)
-      {
-    	  
-          return new GuiElectricBlock(new ContainerElectricBlock(player, (TileEntityElectricBlock) te));
-      }
-      if (te instanceof TileBitGen2)
-      {
-    	  
-          return new GuiMatter(new ContainerNeutrniumGenerator (player, (TileBitGen2) te));
-      }
-      if (te instanceof TileEntityGenerationMicrochip)
-      {
-          return new GuiGenerationMicrochip(new ContainerBaseGenerationChipMachine(player, (TileEntityGenerationMicrochip) te));
-      }
-      if (te instanceof TileEntityChargepadBlock)
-      {
-    	  
-          return new GuiChargepadBlock(new ContainerChargepadBlock(player, (TileEntityChargepadBlock) te));
-      }
-      if (te instanceof TileEntityGenerationStone)
-      return new GuiGenStone(new ContainerGenStone(player, (TileEntityGenerationStone) te));
-      if (te instanceof TileEntityQuantumQuarry)
-          return new GuiQuantumQuarry(new ContainerQuantumQuarry(player, (TileEntityQuantumQuarry) te));
-      }
-      return null;
-  }
-  
+  return new GuiElectricBlock(new ContainerElectricBlock(player, (TileEntityElectricMFE) te));
+}
 
-  
-  @Override
-  public int addArmor(final String armorName) {
-      return RenderingRegistry.addNewArmourRendererPrefix(armorName);
-  }
-  public int getRenderId(String name) {
-	    return ((RenderBlock)this.renders.get(name)).getRenderId();
-	  }
+if (te instanceof TileEntityElectricBlock)
+{
+ 
+  return new GuiElectricBlock(new ContainerElectricBlock(player, (TileEntityElectricBlock) te));
+}
+if (te instanceof TileBitGen2)
+{
+ 
+  return new GuiMatter(new ContainerNeutrniumGenerator (player, (TileBitGen2) te));
+}
+if (te instanceof TileEntityGenerationMicrochip)
+{
+  return new GuiGenerationMicrochip(new ContainerBaseGenerationChipMachine(player, (TileEntityGenerationMicrochip) te));
+}
+if (te instanceof TileEntityChargepadBlock)
+{
+ 
+  return new GuiChargepadBlock(new ContainerChargepadBlock(player, (TileEntityChargepadBlock) te));
+}
+if (te instanceof TileEntityGenerationStone)
+  return new GuiGenStone(new ContainerGenStone(player, (TileEntityGenerationStone) te));
+if (te instanceof TileEntityQuantumQuarry)
+  return new GuiQuantumQuarry(new ContainerQuantumQuarry(player, (TileEntityQuantumQuarry) te));
+}
+return null;
+}
+
+
+
+@Override
+public int addArmor(final String armorName) {
+  return RenderingRegistry.addNewArmourRendererPrefix(armorName);
+}
+public int getRenderId(String name) {
+ return ((RenderBlock)this.renders.get(name)).getRenderId();
+}
 }

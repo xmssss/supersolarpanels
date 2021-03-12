@@ -1,12 +1,10 @@
 package com.Denfop.integration.crafttweaker;
 
 import com.Denfop.api.Recipes;
-
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeOutput;
 import minetweaker.IUndoableAction;
 import minetweaker.MineTweakerAPI;
-import minetweaker.annotations.ModOnly;
 import minetweaker.api.item.IIngredient;
 import minetweaker.api.item.IItemStack;
 import minetweaker.api.minecraft.MineTweakerMC;
@@ -15,17 +13,15 @@ import minetweaker.mods.ic2.MachineAddRecipeAction;
 import modtweaker2.helpers.InputHelper;
 import modtweaker2.utils.BaseMapRemoval;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
 @ZenClass("mods.IndustrialUpgrade.MolecularTransformer")
-public class CTMoleculatTransformer {
+public class CTMolecularTransformer {
   @ZenMethod
   public static void addRecipe(IItemStack[] output, IIngredient ingredient, int minHeat) {
     if (ingredient.getAmount() < 0) {
@@ -47,7 +43,6 @@ public class CTMoleculatTransformer {
   @ZenMethod
   public static void removeRecipe(IItemStack output) {
     LinkedHashMap<IRecipeInput, RecipeOutput> recipes = new LinkedHashMap<IRecipeInput, RecipeOutput>();
-
     for (Map.Entry<IRecipeInput, RecipeOutput> set : Recipes.molecular.getRecipes().entrySet()) {
       for (ItemStack stack : set.getValue().items) {
         if (stack.isItemEqual(InputHelper.toStack(output))) {

@@ -288,8 +288,6 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
 
                     if (this.convertState == 0 && this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord + 1, this.zCoord) || this.noSunWorld ) {
                         if (this.storage >= 0 && this.storage2 < this.maxStorage2 ) {
-
-
                             this.storage2 += this.storage * Config.convertratio;
                             this.storage -= this.storage;
                             if (this.storage2 > this.maxStorage2) {
