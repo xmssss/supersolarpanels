@@ -45,16 +45,14 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 public class SSPEventHandler {
 	@SubscribeEvent
-	public void onBucketFill(FillBucketEvent event)
-	{
+	public void onBucketFill(FillBucketEvent event) {
 		World world = event.world;
 		MovingObjectPosition pos = event.target;
 		Block block = world.getBlock(pos.blockX, pos.blockY, pos.blockZ);
 		int meta = world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ);
 		  String fluidName = "ic3" + "fluidUuMatter".substring("fluid".length()).toLowerCase(Locale.ENGLISH);
 		  Fluid  fluid = FluidRegistry.getFluid(fluidName);
-		if (block == fluid.getBlock())
-		{
+		if (block == fluid.getBlock()) {
 			world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
 			
 			event.result = SSPItem.uuMatterCell;

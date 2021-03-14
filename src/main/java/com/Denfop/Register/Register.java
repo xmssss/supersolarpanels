@@ -46,6 +46,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -302,6 +303,15 @@ public class Register {
         GameRegistry.registerItem(SSPItem.nickelplate = new SSPItemBase().setMaxStackSize(64).setUnlocalizedName("nickelplate").setTextureName("supersolarpanel:nickelplate"), "nickelplate");
         GameRegistry.registerItem(SSPItem.michalovcrushedore = new SSPItemBase().setMaxStackSize(64).setUnlocalizedName("michalovcrushedore").setTextureName("supersolarpanel:michalovcrushedore"), "michalovcrushedore");
 
+        GameRegistry.registerItem(SSPItem.nanopickaxe = new EnergyPickaxe(Item.ToolMaterial.EMERALD, "nanopickaxe", 1, 1, 1000, 1000000, 2, 20, 15, 400, 1600).setUnlocalizedName("nanopickaxe"),"nanopickaxe");
+        GameRegistry.registerItem(SSPItem.nanoshovel = new EnergyShovel(Item.ToolMaterial.EMERALD, "nanoshovel", 1, 1, 1000, 1000000, 2, 20, 10, 400, 1600).setUnlocalizedName("nanoshovel"),"nanoshovel");
+        GameRegistry.registerItem(SSPItem.nanoaxe = new EnergyAxe(Item.ToolMaterial.EMERALD, "nanoaxe", 1, 1, 1000, 1000000, 2, 20, 15, 400, 1600).setUnlocalizedName("nanoaxe"),"nanoaxe");
+        GameRegistry.registerItem(SSPItem.quantumpickaxe = new EnergyPickaxe(Item.ToolMaterial.EMERALD, "quantumpickaxe", 3, 2, 2500, 10000000, 3, 25, 20, 400, 1600).setUnlocalizedName("quantumpickaxe"),"quantumpickaxe");
+        GameRegistry.registerItem(SSPItem.quantumshovel = new EnergyShovel(Item.ToolMaterial.EMERALD, "quantumshovel", 3, 2, 2500, 10000000, 3, 25, 10, 400, 1600).setUnlocalizedName("quantumshovel"),"quantumshovel");
+        GameRegistry.registerItem(SSPItem.quantumaxe = new EnergyAxe(Item.ToolMaterial.EMERALD, "quantumaxe", 3, 2, 2500, 10000000, 3, 25, 20, 400, 1600).setUnlocalizedName("quantumaxe"),"quantumaxe");
+        GameRegistry.registerItem(SSPItem.spectralpickaxe = new EnergyPickaxe(Item.ToolMaterial.EMERALD, "spectralpickaxe", 5, 3, 5000, 50000000, 4, 30, 25, 400, 1600).setUnlocalizedName("spectralpickaxe"),"spectralpickaxe");
+        GameRegistry.registerItem(SSPItem.spectralshovel = new EnergyShovel(Item.ToolMaterial.EMERALD, "spectralshovel", 5, 3, 5000, 50000000, 4, 30, 10, 400, 1600).setUnlocalizedName("spectralshovel"),"spectralshovel");
+        GameRegistry.registerItem(SSPItem.spectralaxe = new EnergyAxe(Item.ToolMaterial.EMERALD, "spectralaxe", 5, 3, 5000, 50000000, 4, 30, 25, 400, 1600).setUnlocalizedName("spectralaxe"),"spectralaxe");
 
     }
     public static void registertiles() {
