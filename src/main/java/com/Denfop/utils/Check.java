@@ -11,6 +11,5 @@ public class Check {
   
 
   public static void check() {
-    return
   }
 }

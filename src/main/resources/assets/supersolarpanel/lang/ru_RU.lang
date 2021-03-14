@@ -577,7 +577,7 @@ ssp.World=Мир
 ssp.Xcoord=X
 ssp.Ycoord=Y
 ssp.Zcoord=Z
-button.rg=<->
+button.rg=⇄
 
 matter.name=Материя
 sun_matter.name=Солнечная Материя

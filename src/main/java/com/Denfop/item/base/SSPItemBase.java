@@ -17,6 +17,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.List;
+
 public class SSPItemBase extends Item {
 
 	public SSPItemBase() {

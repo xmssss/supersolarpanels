@@ -1,44 +1,9 @@
 package com.Denfop.tiles.base;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-
-import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.inventory.Container;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTUtil;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.nbt.NBTTagCompound;
-import ic2.api.item.ElectricItem;
-import ic2.api.item.IElectricItem;
-import ic2.api.energy.event.EnergyTileUnloadEvent;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.eventhandler.Event;
-import ic2.api.energy.event.EnergyTileLoadEvent;
-import net.minecraftforge.common.MinecraftForge;
-import java.util.List;
-import java.util.Map;
-
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import java.util.Random;
-import java.util.Vector;
-
-import com.Denfop.SuperSolarPanels;
-import com.Denfop.api.IPanel;
-import com.Denfop.api.module.IModulGenDay;
-import com.Denfop.api.module.IModulGenNight;
-import com.Denfop.api.module.IModulOutput;
-import com.Denfop.api.module.IModulPanel;
-import com.Denfop.api.module.IModulStorage;
-import com.Denfop.block.Base.BlockSSPSolarPanel;
+import cofh.api.energy.IEnergyContainerItem;
+import cofh.api.energy.IEnergyHandler;
+import com.Denfop.Config;
+import com.Denfop.api.module.*;
 import com.Denfop.container.ContainerAdvSolarPanel;
 import com.Denfop.integration.GC.ExtraPlanetsIntegration;
 import com.Denfop.integration.GC.GalacticraftIntegration;
