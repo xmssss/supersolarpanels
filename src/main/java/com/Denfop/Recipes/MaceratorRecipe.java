@@ -1,6 +1,7 @@
 package com.Denfop.Recipes;
 
 import com.Denfop.SSPItem;
+import com.Denfop.IUCore;
 
 import cpw.mods.fml.common.Loader;
 import ic2.api.item.IC2Items;

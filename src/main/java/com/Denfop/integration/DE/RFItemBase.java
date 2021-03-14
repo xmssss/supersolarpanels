@@ -29,7 +29,7 @@ public class RFItemBase extends ItemDC implements IEnergyContainerItem, IConfigu
   
   public RFItemBase() {
     setMaxStackSize(1);
-    setCreativeTab((CreativeTabs) IUCore.tabssp);
+    setCreativeTab((CreativeTabs)IUCore.tabssp);
   }
   
   public boolean hasCustomEntity(ItemStack stack) {

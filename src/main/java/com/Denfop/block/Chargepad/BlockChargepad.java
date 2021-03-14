@@ -8,6 +8,7 @@ import ic2.api.item.IElectricItem;
 import ic2.api.tile.IWrenchable;
 import ic2.core.IC2;
 import ic2.core.block.TileEntityBlock;
+import ic2.core.block.wiring.*;
 import ic2.core.util.Util;
 
 import java.util.ArrayList;
@@ -35,12 +36,21 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import org.apache.commons.lang3.mutable.MutableObject;
 import com.Denfop.IUCore;
+import com.Denfop.item.Modules.module7;
+import com.Denfop.item.base.ItemElectricBlock;
 import com.Denfop.proxy.ClientProxy;
+import com.Denfop.tiles.base.*;
 import com.Denfop.tiles.base.TileEntityChargepadBlock;
 import com.Denfop.tiles.base.TileEntityElectricBlock;
-import com.Denfop.tiles.wiring.Chargepad.TileEntityChargepadMFES;
-import com.Denfop.tiles.wiring.Chargepad.TileEntityChargepadMFSUS;
+import com.Denfop.tiles.wiring.Chargepad.*;
+import com.Denfop.tiles.wiring.Chargepad.TileEntityChargepadBatBox;
+import com.Denfop.tiles.wiring.Chargepad.TileEntityChargepadCESU;
+import com.Denfop.tiles.wiring.Chargepad.TileEntityChargepadMFE;
+import com.Denfop.tiles.wiring.Chargepad.TileEntityChargepadMFSU;
+import com.Denfop.tiles.wiring.Storage.*;
+import com.Denfop.tiles.wiring.Storage.*;
 import com.Denfop.utils.NBTData;
 
 import cofh.api.energy.IEnergyContainerItem;;
@@ -63,6 +73,14 @@ public class BlockChargepad extends BlockContainer {
  	   return new TileEntityChargepadMFES();
        case 1:
     	   return new TileEntityChargepadMFSUS();
+       case 2:
+           return new TileEntityChargepadBatBox();
+         case 3:
+           return new TileEntityChargepadCESU();
+         case 4:
+           return new TileEntityChargepadMFE();
+         case 5:
+           return new TileEntityChargepadMFSU();
         	
     } 
     return null;
@@ -70,7 +88,7 @@ public class BlockChargepad extends BlockContainer {
   private IIcon[][] iconBuffer;
   @Override
   public void registerBlockIcons(final IIconRegister par1IconRegister) {
-	  this.iconBuffer = new IIcon[2][12];
+	  this.iconBuffer = new IIcon[6][12];
       this.iconBuffer[1][0] = par1IconRegister.registerIcon("supersolarpanel:blockmfsu2");
       this.iconBuffer[1][1] = par1IconRegister.registerIcon("supersolarpanel:blockChargepadMFSUS2");
       this.iconBuffer[1][2] = par1IconRegister.registerIcon("supersolarpanel:blockmfsu2");
@@ -95,6 +113,58 @@ public class BlockChargepad extends BlockContainer {
       this.iconBuffer[0][9] = par1IconRegister.registerIcon("supersolarpanel:blockChargepadMFSUtop");
       this.iconBuffer[0][10] = par1IconRegister.registerIcon("supersolarpanel:blockMFSU");
       this.iconBuffer[0][11] = par1IconRegister.registerIcon("supersolarpanel:blockMFSU");
+      //
+      this.iconBuffer[2][0] = par1IconRegister.registerIcon("supersolarpanel:blockBatBox_bottom");
+      this.iconBuffer[2][1] = par1IconRegister.registerIcon("supersolarpanel:blockChargepadBatBox");
+      this.iconBuffer[2][2] = par1IconRegister.registerIcon("supersolarpanel:blockBatBox_side");
+      this.iconBuffer[2][3] = par1IconRegister.registerIcon("supersolarpanel:blockBatBox_main");
+      this.iconBuffer[2][4] = par1IconRegister.registerIcon("supersolarpanel:blockBatBox_side");
+      this.iconBuffer[2][5] = par1IconRegister.registerIcon("supersolarpanel:blockBatBox_side_1");
+      this.iconBuffer[2][6] = par1IconRegister.registerIcon("supersolarpanel:blockBatBox_bottom");
+      this.iconBuffer[2][7] = par1IconRegister.registerIcon("supersolarpanel:blockChargepadBatBox1");
+      this.iconBuffer[2][8] = par1IconRegister.registerIcon("supersolarpanel:blockBatBox_side");
+      this.iconBuffer[2][9] = par1IconRegister.registerIcon("supersolarpanel:blockBatBox_main");
+      this.iconBuffer[2][10] = par1IconRegister.registerIcon("supersolarpanel:blockBatBox_side");
+      this.iconBuffer[2][11] = par1IconRegister.registerIcon("supersolarpanel:blockBatBox_side_1");
+      
+      this.iconBuffer[4][0] = par1IconRegister.registerIcon("supersolarpanel:blockMFE");
+      this.iconBuffer[4][1] = par1IconRegister.registerIcon("supersolarpanel:blockChargepadMFE");
+      this.iconBuffer[4][2] = par1IconRegister.registerIcon("supersolarpanel:blockMFE2");
+      this.iconBuffer[4][3] = par1IconRegister.registerIcon("supersolarpanel:blockMFE3");
+      this.iconBuffer[4][4] = par1IconRegister.registerIcon("supersolarpanel:blockMFE2");
+      this.iconBuffer[4][5] = par1IconRegister.registerIcon("supersolarpanel:blockMFE4");
+      this.iconBuffer[4][6] = par1IconRegister.registerIcon("supersolarpanel:blockMFE");
+      this.iconBuffer[4][7] = par1IconRegister.registerIcon("supersolarpanel:blockChargepadMFE1");
+      this.iconBuffer[4][8] = par1IconRegister.registerIcon("supersolarpanel:blockMFE2");
+      this.iconBuffer[4][9] = par1IconRegister.registerIcon("supersolarpanel:blockMFE3");
+      this.iconBuffer[4][10] = par1IconRegister.registerIcon("supersolarpanel:blockMFE2");
+      this.iconBuffer[4][11] = par1IconRegister.registerIcon("supersolarpanel:blockMFE4");
+      
+      this.iconBuffer[5][0] = par1IconRegister.registerIcon("supersolarpanel:MFSU");
+      this.iconBuffer[5][1] = par1IconRegister.registerIcon("supersolarpanel:blockChargepadMFSU");
+      this.iconBuffer[5][2] = par1IconRegister.registerIcon("supersolarpanel:MFSU2");
+      this.iconBuffer[5][3] = par1IconRegister.registerIcon("supersolarpanel:MFSU3");
+      this.iconBuffer[5][4] = par1IconRegister.registerIcon("supersolarpanel:MFSU2");
+      this.iconBuffer[5][5] = par1IconRegister.registerIcon("supersolarpanel:MFSU2");
+      this.iconBuffer[5][6] = par1IconRegister.registerIcon("supersolarpanel:MFSU");
+      this.iconBuffer[5][7] = par1IconRegister.registerIcon("supersolarpanel:blockChargepadMFSU1");
+      this.iconBuffer[5][8] = par1IconRegister.registerIcon("supersolarpanel:MFSU2");
+      this.iconBuffer[5][9] = par1IconRegister.registerIcon("supersolarpanel:MFSU3");
+      this.iconBuffer[5][10] = par1IconRegister.registerIcon("supersolarpanel:MFSU2");
+      this.iconBuffer[5][11] = par1IconRegister.registerIcon("supersolarpanel:MFSU2");
+      
+      this.iconBuffer[3][0] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_side");
+      this.iconBuffer[3][1] = par1IconRegister.registerIcon("supersolarpanel:blockChargepadCESU");
+      this.iconBuffer[3][2] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_side_1");
+      this.iconBuffer[3][3] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_main");
+      this.iconBuffer[3][4] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_side_1");
+      this.iconBuffer[3][5] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_side_2");
+      this.iconBuffer[3][6] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_side");
+      this.iconBuffer[3][7] = par1IconRegister.registerIcon("supersolarpanel:blockChargepadCESU1");
+      this.iconBuffer[3][8] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_side_1");
+      this.iconBuffer[3][9] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_main");
+      this.iconBuffer[3][10] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_side_1");
+      this.iconBuffer[3][11] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_side_2");
   }
   
   @Override
@@ -315,7 +385,7 @@ public class BlockChargepad extends BlockContainer {
           		TileEntityElectricBlock	tile = (TileEntityElectricBlock) world.getTileEntity(x, y, z);
           		
           		if(tile.personality && tile.UUID == entityPlayer.getDisplayName()) {
-          			entityPlayer.openGui((Object) IUCore.instance, 1, world, x, y, z);
+          			entityPlayer.openGui((Object)IUCore.instance, 1, world, x, y, z);
           				 
           			
           				
@@ -323,7 +393,7 @@ public class BlockChargepad extends BlockContainer {
              }else {
           	   if(!tile.personality) {
             
-          		 entityPlayer.openGui((Object) IUCore.instance, 1, world, x, y, z);}else {
+          		 entityPlayer.openGui((Object)IUCore.instance, 1, world, x, y, z);}else {
               	
           			entityPlayer.addChatMessage(new ChatComponentTranslation(String.format("ssp.error", new Object[0]), new Object[0]));
 

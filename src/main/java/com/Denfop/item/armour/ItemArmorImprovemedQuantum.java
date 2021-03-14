@@ -25,6 +25,8 @@ import com.Denfop.Config;
 import com.Denfop.Constants;
 import com.Denfop.SSPItem;
 import com.Denfop.IUCore;
+import com.Denfop.proxy.CommonProxy;
+import com.Denfop.utils.Helpers;
 import com.Denfop.utils.NBTData;
 import com.brandon3055.draconicevolution.common.utills.IConfigurableItem;
 
@@ -90,7 +92,7 @@ public ItemArmorImprovemedQuantum(String name, int armorType1, double maxCharge1
     this.armorName = name;
     setMaxDamage(ItemArmor.ArmorMaterial.DIAMOND.getDurability(armorType1));
     setUnlocalizedName(name);
-    setCreativeTab((CreativeTabs) IUCore.tabssp2);
+    setCreativeTab((CreativeTabs)IUCore.tabssp2);
     GameRegistry.registerItem((Item)this, name);
   }
 public List<String> getHudInfo(ItemStack itemStack) {

@@ -2,6 +2,7 @@
 package com.Denfop.tiles.overtimepanel;
 
 import com.Denfop.Config;
+import com.Denfop.IUCore;
 import com.Denfop.tiles.base.TileEntitySolarPanel;
 
 

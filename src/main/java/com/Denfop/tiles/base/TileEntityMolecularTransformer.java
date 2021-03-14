@@ -17,6 +17,7 @@ import java.util.Vector;
 
 import com.Denfop.Config;
 import com.Denfop.SSPItem;
+import com.Denfop.IUCore;
 import com.Denfop.api.Recipes;
 import com.Denfop.container.ContainerBaseMolecular;
 import com.Denfop.gui.GuiMolecularTransformer;

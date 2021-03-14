@@ -50,7 +50,7 @@ public class ChaosBow extends ItemBow implements IInventoryTool, IUpgradableItem
   public ChaosBow() {
     this.maxStackSize = 1;
     setMaxDamage(-1);
-    setCreativeTab((CreativeTabs) IUCore.tabssp2);
+    setCreativeTab((CreativeTabs)IUCore.tabssp2);
     setUnlocalizedName("ChaosBow");
       GameRegistry.registerItem((Item)this, "ChaosBow"); 
   }

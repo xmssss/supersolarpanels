@@ -3,6 +3,7 @@ package com.Denfop.block.Sintezator;
 import java.util.Random;
 
 import com.Denfop.IUCore;
+import com.Denfop.proxy.ClientProxy;
 import com.Denfop.tiles.Sintezator.TileEntitySintezator;
 import com.Denfop.tiles.base.TileEntityBase;
 import com.Denfop.tiles.base.TileSintezator;
@@ -80,7 +81,7 @@ private IIcon icon;
       return true; 
     TileEntity tileentity = world.getTileEntity(i, j, k);
     if (tileentity != null)
-      player.openGui(IUCore.instance, 1, world, i, j, k);
+      player.openGui(IUCore.instance, 1, world, i, j, k); 
     return true;
   }
   

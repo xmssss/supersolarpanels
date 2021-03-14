@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import com.Denfop.SSPItem;
+import com.Denfop.IUCore;
 import com.Denfop.InvSlot.InvSlotProcessableAlloy;
 import com.Denfop.RecipeManager.AlloyRecipeManager;
 import com.Denfop.api.Recipes;

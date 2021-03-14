@@ -1,9 +1,44 @@
 package com.Denfop.tiles.base;
 
-import cofh.api.energy.IEnergyContainerItem;
-import cofh.api.energy.IEnergyHandler;
-import com.Denfop.Config;
-import com.Denfop.api.module.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+
+import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.inventory.Container;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTUtil;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.nbt.NBTTagCompound;
+import ic2.api.item.ElectricItem;
+import ic2.api.item.IElectricItem;
+import ic2.api.energy.event.EnergyTileUnloadEvent;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.eventhandler.Event;
+import ic2.api.energy.event.EnergyTileLoadEvent;
+import net.minecraftforge.common.MinecraftForge;
+import java.util.List;
+import java.util.Map;
+
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import java.util.Random;
+import java.util.Vector;
+
+import com.Denfop.SuperSolarPanels;
+import com.Denfop.api.IPanel;
+import com.Denfop.api.module.IModulGenDay;
+import com.Denfop.api.module.IModulGenNight;
+import com.Denfop.api.module.IModulOutput;
+import com.Denfop.api.module.IModulPanel;
+import com.Denfop.api.module.IModulStorage;
+import com.Denfop.block.Base.BlockSSPSolarPanel;
 import com.Denfop.container.ContainerAdvSolarPanel;
 import com.Denfop.integration.GC.ExtraPlanetsIntegration;
 import com.Denfop.integration.GC.GalacticraftIntegration;
@@ -305,25 +340,23 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
 
                     }
                 }
-        	}
+          }
         }
-        for (int m =0; m < 9;m++) {
-            if (this.chargeSlots[m] != null && this.chargeSlots[m].getItem() instanceof module7) {
-                int kk = chargeSlots[m].getItemDamage();
-                if (kk == 0) {
-                    personality = true;
-                    break;
-                } else {
-                    this.personality = false;
-                }
-            } else {
-                this.personality = false;
-            }
+        if(this.chargeSlots[7] != null && this.chargeSlots[7].getItem() instanceof module7) {
+        int kk = chargeSlots[7].getItemDamage();
+        if(kk == 0) {
+          personality = true;
+          
+        }else {
+          this.personality  = false;
         }
-      if (this.storage2 >= this.maxStorage2) {
-    	  this.storage2 = this.maxStorage2;
+      }else {
+        this.personality  = false;
+      }
+      if(this.storage2 >= this.maxStorage2) {
+        this.storage2 = this.maxStorage2;
       }else if(this.storage2 < 0) {
-    	  this.storage2 = 0;
+        this.storage2 = 0;
       }
         if (this.tier + tierplus -  minus > 0) {
         this.o = this.tier + tierplus -  minus;
@@ -693,88 +726,101 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
         }
 
     }
-
-
-
-
-    public void readFromNBT(NBTTagCompound nbttagcompound) {
-        super.readFromNBT(nbttagcompound);
-        this.storage = nbttagcompound.getInteger("storage");
-        this.storage2 = nbttagcompound.getInteger("storage2");
-        this.lastX = nbttagcompound.getInteger("lastX");
-        this.lastY = nbttagcompound.getInteger("lastY");
-        this.lastZ = nbttagcompound.getInteger("lastZ");
-
-        //TODO
-
-
-        this.solarType=nbttagcompound.getInteger("solarType");
-
-        this.panelx=nbttagcompound.getInteger("panelx");
-        this.panely=nbttagcompound.getInteger("panely");
-        this.panelz=nbttagcompound.getInteger("panelz");
-        this.nameblock=nbttagcompound.getString("nameblock");
-        this.world1=nbttagcompound.getInteger("worldid");
-        this.player = nbttagcompound.getString("player");
-        blocktier=  nbttagcompound.getInteger("blocktier");
-
-        NBTTagList nbttaglist = nbttagcompound.getTagList("Items", 10);
-
-        this.chargeSlots = new ItemStack[getSizeInventory()];
-        for (int i = 0; i < nbttaglist.tagCount(); i++) {
+    
+      public void readFromNBT(NBTTagCompound nbttagcompound) {
+          super.readFromNBT(nbttagcompound);
+          this.storage = nbttagcompound.getInteger("storage");
+          this.storage2 = nbttagcompound.getInteger("storage2");
+          this.lastX = nbttagcompound.getInteger("lastX");
+          this.lastY = nbttagcompound.getInteger("lastY");
+          this.lastZ = nbttagcompound.getInteger("lastZ");
+          //
+          this.production = nbttagcompound.getInteger("production");
+          this.generating = nbttagcompound.getInteger("generating");
+          this.tier = nbttagcompound.getInteger("tier");
+          this.maxStorage = nbttagcompound.getInteger("maxStorage");
+       //TODO
+         
+          
+         this.solarType=nbttagcompound.getInteger("solarType");
+          
+         this.panelx=nbttagcompound.getInteger("panelx");
+            this.panely=nbttagcompound.getInteger("panely");
+            this.panelz=nbttagcompound.getInteger("panelz");
+            this.nameblock=nbttagcompound.getString("nameblock");
+            this.world1=nbttagcompound.getInteger("worldid");
+            this.player = nbttagcompound.getString("player");
+            blocktier=  nbttagcompound.getInteger("blocktier");
+            
+          NBTTagList nbttaglist = nbttagcompound.getTagList("Items", 10);
+         
+          this.chargeSlots = new ItemStack[getSizeInventory()];
+          for (int i = 0; i < nbttaglist.tagCount(); i++) {
             NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
             int j = nbttagcompound1.getByte("Slot") & 0xFF;
             if (j >= 0 && j < this.chargeSlots.length)
-                this.chargeSlots[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-
+              this.chargeSlots[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+           
+          } 
+         
+      }
+ 
+        public  NBTTagCompound nbt() {
+         
+        
+          NBTTagCompound  nbttagcompound = NBTData.getOrCreateNbtData(new ItemStack(this.worldObj.getBlock(this.xCoord, this.yCoord, this.zCoord)));
+      
+            nbttagcompound.setInteger("solarType", this.solarType);
+          
+      return nbttagcompound;
+          
         }
-
-    }
-
-
-
-    public void writeToNBT(NBTTagCompound nbttagcompound) {
-        super.writeToNBT(nbttagcompound);
-
-
-        NBTTagList nbttaglist = new NBTTagList();
-
-        nbttagcompound.setInteger("panelx",this.panelx);
-        nbttagcompound.setInteger("panely",this.panely);
-        nbttagcompound.setInteger("panelz",this.panelz);
-        if (nameblock != null)
+      
+        public void writeToNBT(NBTTagCompound nbttagcompound) {
+          super.writeToNBT(nbttagcompound);
+    
+           NBTTagList nbttaglist = new NBTTagList();
+              nbttagcompound.setInteger("panelx",this.panelx);
+            nbttagcompound.setInteger("panely",this.panely);
+            nbttagcompound.setInteger("panelz",this.panelz);
+            if(nameblock != null)
             nbttagcompound.setString("nameblock",nameblock);
-
-        nbttagcompound.setInteger("worldid",world1);
-        nbttagcompound.setInteger("blocktier",this.blocktier);
-
-
-
-
-        if (player != null) {
+            
+        
+            nbttagcompound.setInteger("worldid",world1);
+            nbttagcompound.setInteger("blocktier",this.blocktier);
+             
+            
+        
+             
+          if(player != null) {
             nbttagcompound.setString("player",player);
-        }
-        nbttagcompound.setInteger("solarType", this.solarType);
-        nbttagcompound.setInteger("storage", this.storage);
-        nbttagcompound.setInteger("storage2", this.storage2);
-        nbttagcompound.setInteger("lastX", this.lastX);
-        nbttagcompound.setInteger("lastY", this.lastY);
-        nbttagcompound.setInteger("lastZ", this.lastZ);
-        for (int i = 0; i < this.chargeSlots.length; i++) {
+          }
+          nbttagcompound.setInteger("maxStorage", this.maxStorage);
+          nbttagcompound.setInteger("tier", this.tier);
+          nbttagcompound.setInteger("generating", this.generating);
+          nbttagcompound.setInteger("production", this.production);
+          nbttagcompound.setInteger("solarType", this.solarType);
+          nbttagcompound.setInteger("storage", this.storage);
+          nbttagcompound.setInteger("storage2", this.storage2);
+          nbttagcompound.setInteger("lastX", this.lastX);
+          nbttagcompound.setInteger("lastY", this.lastY);
+          nbttagcompound.setInteger("lastZ", this.lastZ);
+          for (int i = 0; i < this.chargeSlots.length; i++) {
             if (this.chargeSlots[i] != null) {
-                NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-
-                nbttagcompound1.setByte("Slot", (byte)i);
-
-                this.chargeSlots[i].writeToNBT(nbttagcompound1);
-                nbttaglist.appendTag((NBTBase)nbttagcompound1);
-            }
+              NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+             
+              nbttagcompound1.setByte("Slot", (byte)i);
+              
+              this.chargeSlots[i].writeToNBT(nbttagcompound1);
+              nbttaglist.appendTag((NBTBase)nbttagcompound1);
+            } 
+          } 
+          nbttagcompound.setTag("Items", (NBTBase)nbttaglist);
+        
+          nbttagcompound.setDouble("energy", this.storage);
         }
-        nbttagcompound.setTag("Items", (NBTBase)nbttaglist);
-
-        nbttagcompound.setDouble("energy", this.storage);
-    }
-
+    
     public boolean isAddedToEnergyNet() {
         return this.addedToEnergyNet;
     }
@@ -1043,4 +1089,4 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
 
     }
 
-}
+  }

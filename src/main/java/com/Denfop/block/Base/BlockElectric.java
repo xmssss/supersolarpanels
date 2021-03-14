@@ -33,7 +33,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import com.Denfop.IUCore;
+import org.apache.commons.lang3.mutable.MutableObject;
+import com.Denfop.SuperSolarPanels;
+import com.Denfop.item.Modules.module7;
+import com.Denfop.item.base.ItemElectricBlock;
 import com.Denfop.proxy.ClientProxy;
 import com.Denfop.tiles.base.TileEntityElectricBlock;
 import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFE;
@@ -94,6 +97,27 @@ public class BlockElectric extends BlockContainer {
       this.iconBuffer[2][3] = par1IconRegister.registerIcon("supersolarpanel:blockBatBox_main");
       this.iconBuffer[2][4] = par1IconRegister.registerIcon("supersolarpanel:blockBatBox_side");
       this.iconBuffer[2][5] = par1IconRegister.registerIcon("supersolarpanel:blockBatBox_side_1");
+      
+      this.iconBuffer[3][0] = par1IconRegister.registerIcon("supersolarpanel:blockMFE");
+      this.iconBuffer[3][1] = par1IconRegister.registerIcon("supersolarpanel:blockMFE");
+      this.iconBuffer[3][2] = par1IconRegister.registerIcon("supersolarpanel:blockMFE2");
+      this.iconBuffer[3][3] = par1IconRegister.registerIcon("supersolarpanel:blockMFE3");
+      this.iconBuffer[3][4] = par1IconRegister.registerIcon("supersolarpanel:blockMFE2");
+      this.iconBuffer[3][5] = par1IconRegister.registerIcon("supersolarpanel:blockMFE4");
+      
+      this.iconBuffer[4][0] = par1IconRegister.registerIcon("supersolarpanel:MFSU");
+      this.iconBuffer[4][1] = par1IconRegister.registerIcon("supersolarpanel:MFSU");
+      this.iconBuffer[4][2] = par1IconRegister.registerIcon("supersolarpanel:MFSU2");
+      this.iconBuffer[4][3] = par1IconRegister.registerIcon("supersolarpanel:MFSU3");
+      this.iconBuffer[4][4] = par1IconRegister.registerIcon("supersolarpanel:MFSU2");
+      this.iconBuffer[4][5] = par1IconRegister.registerIcon("supersolarpanel:MFSU2");
+      
+      this.iconBuffer[5][0] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_side");
+      this.iconBuffer[5][1] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_side");
+      this.iconBuffer[5][2] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_side_1");
+      this.iconBuffer[5][3] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_main");
+      this.iconBuffer[5][4] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_side_1");
+      this.iconBuffer[5][5] = par1IconRegister.registerIcon("supersolarpanel:blockCESU_side_2");
   }
   
   @Override
@@ -309,8 +333,14 @@ public class BlockElectric extends BlockContainer {
           	if(world.getTileEntity(x, y, z) instanceof TileEntityElectricBlock) {
           		TileEntityElectricBlock	tile = (TileEntityElectricBlock) world.getTileEntity(x, y, z);
           		
-          		if (tile.personality && tile.UUID == entityPlayer.getDisplayName()) {
-          			entityPlayer.openGui((Object) IUCore.instance, 1, world, x, y, z);
+          		if(tile.personality && tile.UUID == entityPlayer.getDisplayName()) {
+          			entityPlayer.openGui((Object)SuperSolarPanels.instance, 1, world, x, y, z);
+             } else {
+          	   if(tile.personality == false) {
+            
+          		 entityPlayer.openGui((Object)SuperSolarPanels.instance, 1, world, x, y, z);}else {
+              	
+          			entityPlayer.addChatMessage(new ChatComponentTranslation(String.format("ssp.error", new Object[0]), new Object[0]));
 
              } else {
           	   if(!tile.personality) {

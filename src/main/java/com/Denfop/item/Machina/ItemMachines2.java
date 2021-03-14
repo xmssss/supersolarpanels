@@ -3,6 +3,8 @@ package com.Denfop.item.Machina;
 import java.util.List;
 
 import com.Denfop.IUCore;
+import com.Denfop.block.mechanism.BlockMachine;
+import com.Denfop.block.mechanism.BlockMachines;
 import com.Denfop.block.mechanism.BlockMachines1;
 import com.Denfop.tiles.Mechanism.EnumMultiMachine;
 

@@ -1,6 +1,13 @@
 package com.Denfop.integration.Botania;
 
 import com.Denfop.SSPItem;
+import com.Denfop.IUCore;
+import com.Denfop.integration.DE.ItemDESolarPanel;
+import com.Denfop.integration.DE.SSPDEItem;
+import com.Denfop.integration.DE.TileEntityAwakenedSolarPanel;
+import com.Denfop.integration.DE.TileEntityChaosSolarPanel;
+import com.Denfop.integration.DE.TileEntityDraconSolarPanel;
+import com.Denfop.integration.DE.blockDESolarPanel;
 import com.Denfop.item.base.SSPItemBase;
 
 import cpw.mods.fml.common.registry.GameRegistry;

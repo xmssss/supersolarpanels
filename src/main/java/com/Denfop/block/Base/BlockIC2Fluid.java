@@ -34,7 +34,7 @@ public class BlockIC2Fluid extends BlockFluidClassic {
     super(fluid, material);
     if (!fluid.getName().startsWith("ic3"))
       throw new RuntimeException("Invalid fluid name: " + fluid.getName()); 
-    setCreativeTab((CreativeTabs) IUCore.tabssp);
+    setCreativeTab((CreativeTabs)IUCore.tabssp);
     setBlockName(internalName);
     GameRegistry.registerBlock((Block)this, ItemBlockIC2.class, internalName);
     this.fluid = fluid;

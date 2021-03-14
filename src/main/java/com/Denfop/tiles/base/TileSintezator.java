@@ -21,6 +21,7 @@ import java.util.List;
 import net.minecraft.item.ItemStack;
 import java.util.Random;
 
+import com.Denfop.IUCore;
 import com.Denfop.api.IPanel;
 import com.Denfop.container.ContainerSinSolarPanel;
 import com.Denfop.item.Modules.module6;

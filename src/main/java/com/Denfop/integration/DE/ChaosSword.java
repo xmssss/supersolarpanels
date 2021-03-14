@@ -52,7 +52,7 @@ public class ChaosSword extends ItemSword implements IEnergyContainerWeaponItem,
 	  super(DraconicIntegration.CHAOS);
     setUnlocalizedName("ChaosSword");
 
-    setCreativeTab((CreativeTabs) IUCore.tabssp2);
+    setCreativeTab((CreativeTabs)IUCore.tabssp2);
       GameRegistry.registerItem((Item)this, "ChaosSword"); 
   }
   

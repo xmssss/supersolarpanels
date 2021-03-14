@@ -14,7 +14,7 @@ import net.minecraft.util.StatCollector;
 
 public class module4 extends Item implements IModulOutput {
 	public module4() {
-		this.setCreativeTab((CreativeTabs) IUCore.tabssp1);
+		this.setCreativeTab((CreativeTabs)IUCore.tabssp1);
 		
 	}
 	

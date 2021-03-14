@@ -31,7 +31,7 @@ public class ChaosAxe extends MiningTool implements IInventoryTool, IRenderTweak
     setMaxReceive(BalanceConfigHandler.draconicToolsMaxTransfer);
     this.energyPerOperation = BalanceConfigHandler.draconicToolsEnergyPerAction;
     DraconicIntegration.register((ItemDC)this);
-    setCreativeTab((CreativeTabs) IUCore.tabssp2);
+    setCreativeTab((CreativeTabs)IUCore.tabssp2);
   }
   
   public List<ItemConfigField> getFields(ItemStack stack, int slot) {

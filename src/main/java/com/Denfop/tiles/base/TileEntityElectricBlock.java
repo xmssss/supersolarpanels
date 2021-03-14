@@ -1,6 +1,7 @@
 package com.Denfop.tiles.base;
 
 import com.Denfop.Config;
+import com.Denfop.IUCore;
 import com.Denfop.api.module.IModulOutput;
 import com.Denfop.container.ContainerElectricBlock;
 import com.Denfop.gui.GuiElectricBlock;
@@ -161,9 +162,22 @@ public abstract class TileEntityElectricBlock extends TileEntityInventory implem
     public ItemStack getStackInSlot(final int i) {
         return this.chargeSlots[i];
     }
-
-    public int getInventoryStackLimit() {
-        return 1;
+   
+  protected void updateEntityServer() {
+    super.updateEntityServer();
+    
+    if (this.chargeSlots[0] != null && this.chargeSlots[0].getItem() instanceof module7) {
+		int kk = chargeSlots[0].getItemDamage();
+		if (kk == 0) {
+			personality = true;
+		}
+    } else if(this.chargeSlots[3] != null && this.chargeSlots[3].getItem() instanceof module7) {
+		int kk = chargeSlots[3].getItemDamage();
+		if (kk == 0) {
+			personality = true;
+		}
+    } else {
+    	personality = false;
     }
 
     public ItemStack decrStackSize(final int i, final int j) {

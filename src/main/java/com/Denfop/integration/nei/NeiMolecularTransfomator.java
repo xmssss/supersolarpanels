@@ -10,6 +10,7 @@ import java.util.Map;
 import org.lwjgl.opengl.GL11;
 
 import com.Denfop.Constants;
+import com.Denfop.IUCore;
 import com.Denfop.api.Recipes;
 
 import codechicken.lib.gui.GuiDraw;

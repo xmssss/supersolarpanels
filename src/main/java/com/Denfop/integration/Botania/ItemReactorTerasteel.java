@@ -2,6 +2,7 @@ package com.Denfop.integration.Botania;
 
 import com.Denfop.Config;
 import com.Denfop.SSPItem;
+import com.Denfop.IUCore;
 import com.Denfop.item.reactor.ItemReactorUranium;
 
 import ic2.api.reactor.IReactor;

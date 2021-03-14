@@ -37,7 +37,7 @@ public class ChaosDistructionStaff extends MiningTool implements IInventoryTool,
     setMaxReceive(BalanceConfigHandler.draconicToolsMaxTransfer * 2 + BalanceConfigHandler.draconicWeaponsMaxTransfer* 2);
     this.energyPerOperation = BalanceConfigHandler.draconicToolsEnergyPerAction * 2;
     DraconicIntegration.register((ItemDC)this);
-    setCreativeTab((CreativeTabs) IUCore.tabssp2);
+    setCreativeTab((CreativeTabs)IUCore.tabssp2);
   }
   
   public float func_150893_a(ItemStack stack, Block block) {

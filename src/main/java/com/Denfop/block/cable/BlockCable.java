@@ -56,6 +56,10 @@ import org.apache.commons.lang3.mutable.MutableObject;
 import com.Denfop.Constants;
 import com.Denfop.SSPItem;
 import com.Denfop.IUCore;
+import com.Denfop.item.armour.ItemArmorImprovemedQuantum;
+import com.Denfop.item.base.ItemBlockIC2;
+import com.Denfop.proxy.ClientProxy;
+import com.Denfop.tiles.base.TileEntityBase;
 import com.Denfop.tiles.base.TileEntityCable;
 
 public class BlockCable extends Block {
@@ -77,7 +81,7 @@ public class BlockCable extends Block {
 
     MinecraftForge.EVENT_BUS.register(this);
     setBlockName("blockCable");
-    setCreativeTab((CreativeTabs) IUCore.tabssp);
+    setCreativeTab((CreativeTabs)IUCore.tabssp);
     
   
     

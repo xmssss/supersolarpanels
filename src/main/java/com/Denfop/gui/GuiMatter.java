@@ -1,6 +1,7 @@
 package com.Denfop.gui;
 
 import com.Denfop.Constants;
+import com.Denfop.IUCore;
 import com.Denfop.container.ContainerNeutrniumGenerator;
 import com.Denfop.tiles.NeutroniumGenerator.TileBitGen2;
 

@@ -3,6 +3,7 @@ package com.Denfop.item.Machina;
 import java.util.List;
 
 import com.Denfop.IUCore;
+import com.Denfop.item.base.ItemBlockIC2;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;

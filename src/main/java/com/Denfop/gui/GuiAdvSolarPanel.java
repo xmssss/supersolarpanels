@@ -1,6 +1,14 @@
 package com.Denfop.gui;
 
-import com.Denfop.api.module.*;
+import com.Denfop.Config;
+import com.Denfop.IUCore;
+import com.Denfop.api.module.IModulGenDay;
+import com.Denfop.api.module.IModulGenNight;
+import com.Denfop.api.module.IModulOutput;
+import com.Denfop.api.module.IModulPanel;
+import com.Denfop.api.module.IModulStorage;
+import com.Denfop.api.module.IModuleType;
+import com.Denfop.block.Base.BlockSSPSolarPanel;
 import com.Denfop.container.ContainerAdvSolarPanel;
 import com.Denfop.item.Modules.ItemWirelessModule;
 import com.Denfop.item.Modules.module7;

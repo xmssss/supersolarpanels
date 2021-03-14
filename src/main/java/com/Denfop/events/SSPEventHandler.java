@@ -9,6 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.Denfop.Config;
 import com.Denfop.SSPItem;
+import com.Denfop.IUCore;
 import com.Denfop.DamageSource.SSPDamageSource;
 import com.Denfop.block.Base.BlockIC2Fluid;
 import com.Denfop.block.cable.BlockCable;
@@ -277,6 +278,12 @@ public class SSPEventHandler {
 				if(meta ==2) {
 					player.inventory.mainInventory[i] = new ItemStack(SSPItem.electricblock,1,4);
 				}
+			}
+			if(player.inventory.mainInventory[i] != null && player.inventory.mainInventory[i].getItem() instanceof ic2.core.item.block.ItemChargepadBlock) {
+				int meta = player.inventory.mainInventory[i].getItemDamage();
+				
+					player.inventory.mainInventory[i] = new ItemStack(SSPItem.Chargepadelectricblock,1,meta+2);
+				
 			}
 		}
 	}

@@ -1,6 +1,10 @@
 package com.Denfop.integration.Avaritia;
 
 import com.Denfop.SSPItem;
+import com.Denfop.IUCore;
+import com.Denfop.integration.Botania.TileEntityElementumSolarPanel;
+import com.Denfop.integration.Botania.TileEntityManasteelSolarPanel;
+import com.Denfop.integration.DE.ItemDESolarPanel;
 import com.Denfop.integration.DE.SSPDEItem;
 
 import cpw.mods.fml.common.registry.GameRegistry;

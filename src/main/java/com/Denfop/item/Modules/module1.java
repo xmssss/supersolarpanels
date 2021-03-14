@@ -14,7 +14,7 @@ import net.minecraft.util.StatCollector;
 
 public class module1 extends Item implements IModulGenDay  {
 	public module1() {
-		this.setCreativeTab((CreativeTabs) IUCore.tabssp1);
+		this.setCreativeTab((CreativeTabs)IUCore.tabssp1);
 	}
 
 	public int getItemStackLimit() {

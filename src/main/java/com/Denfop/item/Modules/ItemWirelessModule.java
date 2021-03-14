@@ -14,7 +14,7 @@ import net.minecraft.util.StatCollector;
 public class ItemWirelessModule extends Item {
 	
 	public ItemWirelessModule() {
-		this.setCreativeTab(IUCore.tabssp);
+		 setCreativeTab(IUCore.tabssp);
 		this.setUnlocalizedName("WirelessModule");
 		this.setTextureName("supersolarpanel:wirelessmodule");
 		this.setMaxStackSize(64);

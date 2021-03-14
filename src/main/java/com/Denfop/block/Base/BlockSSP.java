@@ -4,6 +4,8 @@ package com.Denfop.block.Base;
 
 import com.Denfop.IUCore;
 
+import com.Denfop.IUCore;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 

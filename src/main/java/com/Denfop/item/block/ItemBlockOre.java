@@ -2,6 +2,8 @@ package com.Denfop.item.block;
 
 import java.util.List;
 
+import com.Denfop.IUCore;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

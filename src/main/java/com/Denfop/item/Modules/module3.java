@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.Denfop.Config;
 import com.Denfop.IUCore;
+import com.Denfop.api.module.IModulOutput;
 import com.Denfop.api.module.IModulStorage;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,7 +15,7 @@ import net.minecraft.util.StatCollector;
 
 public class module3 extends Item implements IModulStorage{
 	public module3() {
-		this.setCreativeTab((CreativeTabs) IUCore.tabssp1);
+		this.setCreativeTab((CreativeTabs)IUCore.tabssp1);
 	}
 
 	public int getItemStackLimit() {

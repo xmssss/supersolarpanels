@@ -3,6 +3,8 @@ package com.Denfop.integration.DE;
 
 import com.Denfop.IUCore;
 
+import com.Denfop.IUCore;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,7 +12,7 @@ import net.minecraft.item.ItemStack;
 public class SSPDEItem extends Item {
 
 	public SSPDEItem() {
-		this.setCreativeTab((CreativeTabs) IUCore.tabssp3);
+		this.setCreativeTab((CreativeTabs)IUCore.tabssp3);
 	}
 
 	public int getItemStackLimit() {

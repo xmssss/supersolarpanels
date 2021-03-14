@@ -1,8 +1,8 @@
 package com.Denfop.tiles.base;
 
+import com.Denfop.IUCore;
 
-public class TileEntityAdminSolarPanel extends TileEntitySolarPanel 
-{
+public class TileEntityAdminSolarPanel extends TileEntitySolarPanel {
     public TileEntityAdminSolarPanel() {
         super("blockAdministatorSolarPanel.name",11, 0, 999999999,999999999, 999999999,999999999);
     }

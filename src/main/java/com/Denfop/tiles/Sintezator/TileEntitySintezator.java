@@ -1,5 +1,6 @@
 package com.Denfop.tiles.Sintezator;
 
+import com.Denfop.IUCore;
 import com.Denfop.tiles.base.TileSintezator;
 
 

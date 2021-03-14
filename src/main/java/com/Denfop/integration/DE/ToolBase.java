@@ -31,6 +31,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
+import com.Denfop.IUCore;
 
 public class ToolBase extends RFItemBase {
   private static final Set SHOVEL_OVERRIDES = Sets.newHashSet(new Object[] { 

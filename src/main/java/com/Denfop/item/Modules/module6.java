@@ -17,6 +17,7 @@ import net.minecraft.util.StatCollector;
 import java.util.List;
 
 import com.Denfop.IUCore;
+import com.Denfop.api.IPanel;
 import com.Denfop.api.module.IModulPanel;
 import com.Denfop.block.Base.BlockSSPSolarPanel;
 import com.Denfop.tiles.base.TileEntitySolarPanel;

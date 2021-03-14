@@ -74,7 +74,7 @@ public ItemNanoSaber(String internalName,int maxCharge,int transferLimit,int tie
     setMaxStackSize(1);
     setNoRepair();
     setUnlocalizedName(name);
-    setCreativeTab((CreativeTabs) IUCore.tabssp2);
+    setCreativeTab((CreativeTabs)IUCore.tabssp2);
     for (ToolClass toolClass : toolClasses) {
         if (toolClass.name != null)
           setHarvestLevel(toolClass.name, harvestLevel.level); 

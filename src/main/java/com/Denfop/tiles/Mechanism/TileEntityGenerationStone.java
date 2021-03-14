@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import com.Denfop.SSPItem;
+import com.Denfop.IUCore;
 import com.Denfop.InvSlot.InvSlotProcessableStone;
 
 import com.Denfop.RecipeManager.GenStoneRecipeManager;

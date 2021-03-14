@@ -77,7 +77,7 @@ public class ChaosArmor extends ItemArmor implements ISpecialArmor, IConfigurabl
   public ChaosArmor(ItemArmor.ArmorMaterial material, int armorType, String name) {
     super(material, 0, armorType);
     setUnlocalizedName(name);
-    setCreativeTab((CreativeTabs) IUCore.tabssp2);
+    setCreativeTab((CreativeTabs)IUCore.tabssp2);
     if (ModItems.isEnabled((Item)this))
       GameRegistry.registerItem((Item)this, name); 
   }
