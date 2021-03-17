@@ -50,11 +50,11 @@ public class BlockChargepad extends BlockContainer {
     super(Material.iron);
     setHardness(1.5F);
     setStepSound(soundTypeMetal);
-   this.setCreativeTab(IUCore.tabssp);
-   setBlockUnbreakable();
-   setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.95F, 1.0F);
-    
+    this.setCreativeTab(IUCore.tabssp);
+    setBlockUnbreakable();
+    setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.95F, 1.0F);
   }
+
   @Override
   public TileEntity createTileEntity(World world, int meta) {
     switch (meta) {
@@ -74,6 +74,7 @@ public class BlockChargepad extends BlockContainer {
     } 
     return null;
   }
+
   private IIcon[][] iconBuffer;
   @Override
   public void registerBlockIcons(final IIconRegister par1IconRegister) {

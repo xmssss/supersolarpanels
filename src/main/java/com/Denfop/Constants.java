@@ -8,6 +8,6 @@ public class Constants {
     public static final String TEXTURES_ITEMS = "supersolarpanel:textures/items/";
     public static final String TEXTURES = "supersolarpanel";
     public static final String TEXTURES_MAIN = "supersolarpanel:";
-    public static final String DEPENDENCES = "required-after:IC2;after:wirelessvajra;after:Thaumcraft;after:AppliedEnergistics;";
+    public static final String DEPENDENCIES = "required-after:IC2;after:wirelessvajra;after:Thaumcraft;after:AppliedEnergistics;";
     public static final String acceptedMinecraftVersions = "[1.7.10]";
 }

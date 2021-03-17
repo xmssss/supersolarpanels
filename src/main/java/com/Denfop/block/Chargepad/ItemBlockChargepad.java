@@ -33,23 +33,23 @@ public ItemBlockChargepad(Block block) {
   public int getMetadata(int i) {
     return i;
   }
+
   @Override
   public String getUnlocalizedName(ItemStack itemstack) {
     int meta = itemstack.getItemDamage();
     switch (meta) {
       case 0:
-        return "ssp.blockChargepadMFE";
       case 1:
         return "ssp.blockChargepadMFES";
       case 2:
-          return "ssp.blockChargepadBatBox";
-        case 3:
-          return "ssp.blockChargepadCESU";
-        case 4:
-          return "ssp.blockChargepadMFE";
-        case 5:
-          return "ssp.blockChargepadMFSU";
-    } 
+        return "ssp.blockChargepadBatBox";
+      case 3:
+        return "ssp.blockChargepadCESU";
+      case 4:
+        return "ssp.blockChargepadMFE";
+      case 5:
+        return "ssp.blockChargepadMFSU";
+    }
     return null;
   }
   
@@ -59,6 +59,7 @@ public ItemBlockChargepad(Block block) {
       return ((BlockElectric)this.Block).getRarity(stack); 
     return super.getRarity(stack);
   }
+
   @Override
   public void addInformation(ItemStack itemStack, EntityPlayer player, List info, boolean b) {
     NBTTagCompound nbttagcompound;
@@ -101,7 +102,7 @@ public ItemBlockChargepad(Block block) {
         break;
     } 
   }
-  
+
   @Override
   public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List itemList) {
     itemList.add(new ItemStack(item, 1, 0));
@@ -123,11 +124,11 @@ public ItemBlockChargepad(Block block) {
     nbttagcompound.setDouble("energy",  Config.storage2);
     nbttagcompound.setDouble("energy2",  Config.storage2);
     itemList.add(itemStack);
-    
+
     //
-     itemStack = new ItemStack(item, 1,2);
+    itemStack = new ItemStack(item, 1,2);
     itemStack.setItemDamage(2);
-     nbttagcompound = NBTData.getOrCreateNbtData(itemStack);
+    nbttagcompound = NBTData.getOrCreateNbtData(itemStack);
     nbttagcompound.setDouble("energy", 40000.0D);
     nbttagcompound.setDouble("energy2",  40000);
     itemList.add(itemStack);

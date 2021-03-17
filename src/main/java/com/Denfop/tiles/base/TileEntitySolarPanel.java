@@ -43,8 +43,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Vector;
 
-public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,INetworkDataProvider, INetworkUpdateListener, IWrenchable, IEnergySource, IInventory, IEnergyHandler, INetworkClientTileEntityEventListener
-{private TileEntitySolarPanel tileentity;
+public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,INetworkDataProvider, INetworkUpdateListener, IWrenchable, IEnergySource, IInventory, IEnergyHandler, INetworkClientTileEntityEventListener {
+    private TileEntitySolarPanel tileentity;
     public static Random randomizer;
     public int ticker;
     public int generating;
@@ -305,26 +305,26 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
 
                     }
                 }
-          }
+            }
         }
         if(this.chargeSlots[7] != null && this.chargeSlots[7].getItem() instanceof module7) {
-        int kk = chargeSlots[7].getItemDamage();
-        if(kk == 0) {
-          personality = true;
-          
+            int kk = chargeSlots[7].getItemDamage();
+            if(kk == 0) {
+                personality = true;
+
+            }else {
+                this.personality  = false;
+            }
         }else {
-          this.personality  = false;
+            this.personality  = false;
         }
-      }else {
-        this.personality  = false;
-      }
-      if(this.storage2 >= this.maxStorage2) {
-        this.storage2 = this.maxStorage2;
-      }else if(this.storage2 < 0) {
-        this.storage2 = 0;
-      }
+        if(this.storage2 >= this.maxStorage2) {
+            this.storage2 = this.maxStorage2;
+        }else if(this.storage2 < 0) {
+            this.storage2 = 0;
+        }
         if (this.tier + tierplus -  minus > 0) {
-        this.o = this.tier + tierplus -  minus;
+            this.o = this.tier + tierplus -  minus;
         } else {
             this.o = 0;
         }
@@ -533,7 +533,7 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
 
 
 
-             }else {
+            }else {
                 if (this.ticker++ % this.tickRate() == 0) {
                     this.updateVisibility();
                 }
@@ -691,101 +691,101 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
         }
 
     }
-    
-      public void readFromNBT(NBTTagCompound nbttagcompound) {
-          super.readFromNBT(nbttagcompound);
-          this.storage = nbttagcompound.getInteger("storage");
-          this.storage2 = nbttagcompound.getInteger("storage2");
-          this.lastX = nbttagcompound.getInteger("lastX");
-          this.lastY = nbttagcompound.getInteger("lastY");
-          this.lastZ = nbttagcompound.getInteger("lastZ");
-          //
-          this.production = nbttagcompound.getInteger("production");
-          this.generating = nbttagcompound.getInteger("generating");
-          this.tier = nbttagcompound.getInteger("tier");
-          this.maxStorage = nbttagcompound.getInteger("maxStorage");
-       //TODO
-         
-          
-         this.solarType=nbttagcompound.getInteger("solarType");
-          
-         this.panelx=nbttagcompound.getInteger("panelx");
-            this.panely=nbttagcompound.getInteger("panely");
-            this.panelz=nbttagcompound.getInteger("panelz");
-            this.nameblock=nbttagcompound.getString("nameblock");
-            this.world1=nbttagcompound.getInteger("worldid");
-            this.player = nbttagcompound.getString("player");
-            blocktier=  nbttagcompound.getInteger("blocktier");
-            
-          NBTTagList nbttaglist = nbttagcompound.getTagList("Items", 10);
-         
-          this.chargeSlots = new ItemStack[getSizeInventory()];
-          for (int i = 0; i < nbttaglist.tagCount(); i++) {
+
+    public void readFromNBT(NBTTagCompound nbttagcompound) {
+        super.readFromNBT(nbttagcompound);
+        this.storage = nbttagcompound.getInteger("storage");
+        this.storage2 = nbttagcompound.getInteger("storage2");
+        this.lastX = nbttagcompound.getInteger("lastX");
+        this.lastY = nbttagcompound.getInteger("lastY");
+        this.lastZ = nbttagcompound.getInteger("lastZ");
+        //
+        this.production = nbttagcompound.getInteger("production");
+        this.generating = nbttagcompound.getInteger("generating");
+        this.tier = nbttagcompound.getInteger("tier");
+        this.maxStorage = nbttagcompound.getInteger("maxStorage");
+        //TODO
+
+
+        this.solarType=nbttagcompound.getInteger("solarType");
+
+        this.panelx=nbttagcompound.getInteger("panelx");
+        this.panely=nbttagcompound.getInteger("panely");
+        this.panelz=nbttagcompound.getInteger("panelz");
+        this.nameblock=nbttagcompound.getString("nameblock");
+        this.world1=nbttagcompound.getInteger("worldid");
+        this.player = nbttagcompound.getString("player");
+        blocktier=  nbttagcompound.getInteger("blocktier");
+
+        NBTTagList nbttaglist = nbttagcompound.getTagList("Items", 10);
+
+        this.chargeSlots = new ItemStack[getSizeInventory()];
+        for (int i = 0; i < nbttaglist.tagCount(); i++) {
             NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
             int j = nbttagcompound1.getByte("Slot") & 0xFF;
             if (j >= 0 && j < this.chargeSlots.length)
-              this.chargeSlots[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-           
-          } 
-         
-      }
- 
-        public  NBTTagCompound nbt() {
-         
-        
-          NBTTagCompound  nbttagcompound = NBTData.getOrCreateNbtData(new ItemStack(this.worldObj.getBlock(this.xCoord, this.yCoord, this.zCoord)));
-      
-            nbttagcompound.setInteger("solarType", this.solarType);
-          
-      return nbttagcompound;
-          
+                this.chargeSlots[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+
         }
-      
-        public void writeToNBT(NBTTagCompound nbttagcompound) {
-          super.writeToNBT(nbttagcompound);
-    
-           NBTTagList nbttaglist = new NBTTagList();
-              nbttagcompound.setInteger("panelx",this.panelx);
-            nbttagcompound.setInteger("panely",this.panely);
-            nbttagcompound.setInteger("panelz",this.panelz);
-            if(nameblock != null)
+
+    }
+
+    public  NBTTagCompound nbt() {
+
+
+        NBTTagCompound  nbttagcompound = NBTData.getOrCreateNbtData(new ItemStack(this.worldObj.getBlock(this.xCoord, this.yCoord, this.zCoord)));
+
+        nbttagcompound.setInteger("solarType", this.solarType);
+
+        return nbttagcompound;
+
+    }
+
+    public void writeToNBT(NBTTagCompound nbttagcompound) {
+        super.writeToNBT(nbttagcompound);
+
+        NBTTagList nbttaglist = new NBTTagList();
+        nbttagcompound.setInteger("panelx",this.panelx);
+        nbttagcompound.setInteger("panely",this.panely);
+        nbttagcompound.setInteger("panelz",this.panelz);
+        if(nameblock != null)
             nbttagcompound.setString("nameblock",nameblock);
-            
-        
-            nbttagcompound.setInteger("worldid",world1);
-            nbttagcompound.setInteger("blocktier",this.blocktier);
-             
-            
-        
-             
-          if(player != null) {
+
+
+        nbttagcompound.setInteger("worldid",world1);
+        nbttagcompound.setInteger("blocktier",this.blocktier);
+
+
+
+
+        if(player != null) {
             nbttagcompound.setString("player",player);
-          }
-          nbttagcompound.setInteger("maxStorage", this.maxStorage);
-          nbttagcompound.setInteger("tier", this.tier);
-          nbttagcompound.setInteger("generating", this.generating);
-          nbttagcompound.setInteger("production", this.production);
-          nbttagcompound.setInteger("solarType", this.solarType);
-          nbttagcompound.setInteger("storage", this.storage);
-          nbttagcompound.setInteger("storage2", this.storage2);
-          nbttagcompound.setInteger("lastX", this.lastX);
-          nbttagcompound.setInteger("lastY", this.lastY);
-          nbttagcompound.setInteger("lastZ", this.lastZ);
-          for (int i = 0; i < this.chargeSlots.length; i++) {
-            if (this.chargeSlots[i] != null) {
-              NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-             
-              nbttagcompound1.setByte("Slot", (byte)i);
-              
-              this.chargeSlots[i].writeToNBT(nbttagcompound1);
-              nbttaglist.appendTag((NBTBase)nbttagcompound1);
-            } 
-          } 
-          nbttagcompound.setTag("Items", (NBTBase)nbttaglist);
-        
-          nbttagcompound.setDouble("energy", this.storage);
         }
-    
+        nbttagcompound.setInteger("maxStorage", this.maxStorage);
+        nbttagcompound.setInteger("tier", this.tier);
+        nbttagcompound.setInteger("generating", this.generating);
+        nbttagcompound.setInteger("production", this.production);
+        nbttagcompound.setInteger("solarType", this.solarType);
+        nbttagcompound.setInteger("storage", this.storage);
+        nbttagcompound.setInteger("storage2", this.storage2);
+        nbttagcompound.setInteger("lastX", this.lastX);
+        nbttagcompound.setInteger("lastY", this.lastY);
+        nbttagcompound.setInteger("lastZ", this.lastZ);
+        for (int i = 0; i < this.chargeSlots.length; i++) {
+            if (this.chargeSlots[i] != null) {
+                NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+
+                nbttagcompound1.setByte("Slot", (byte)i);
+
+                this.chargeSlots[i].writeToNBT(nbttagcompound1);
+                nbttaglist.appendTag((NBTBase)nbttagcompound1);
+            }
+        }
+        nbttagcompound.setTag("Items", (NBTBase)nbttaglist);
+
+        nbttagcompound.setDouble("energy", this.storage);
+    }
+
     public boolean isAddedToEnergyNet() {
         return this.addedToEnergyNet;
     }
@@ -1054,4 +1054,4 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
 
     }
 
-  }
+}

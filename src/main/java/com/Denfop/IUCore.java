@@ -15,7 +15,7 @@ import ic2.core.energy.EnergyNetGlobal;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-@Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.MOD_VERSION, dependencies = Constants.DEPENDENCES,acceptedMinecraftVersions = Constants.acceptedMinecraftVersions,certificateFingerprint = "Denfop-certificate")
+@Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.MOD_VERSION, dependencies = Constants.DEPENDENCIES,acceptedMinecraftVersions = Constants.acceptedMinecraftVersions,certificateFingerprint = "Denfop-certificate")
 public class IUCore {
     public static final CreativeTabSSP tabssp;
     @Mod.Instance("industrialupgrade")
@@ -27,6 +27,7 @@ public class IUCore {
     public static CreativeTabSSP3 tabssp3;
     public static CreativeTabSSP4 tabssp4;
     public static Random random;
+
     @Mod.EventHandler
     public void preInit(final FMLPreInitializationEvent event) {
         Config.config(event);

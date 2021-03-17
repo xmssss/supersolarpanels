@@ -345,7 +345,6 @@ public class Config {
       configFile = event.getSuggestedConfigurationFile();
       //
       convertratio = config.get("EU to RF convert ratio", "RF for 1EU", 4).getInt();
-      expstorage=config.get("Basic Mechanisms", "exp storage", 500).getInt(500);
       enerycost=config.get("Quantum Querry", "energy consume", 35000).getInt(35000);
       molecular=config.get("Crafts Molecular Transformer", "Wither Skeleton skull", 1000000).getInt(1000000);
       molecular1=config.get("Crafts Molecular Transformer", "Nether Star", 150000000).getInt(150000000);
@@ -430,7 +429,7 @@ public class Config {
       EnableToriyOre=config.get("Generation", "Spawn Toriy Ore", true).getBoolean(true);
       EnableNickelOre=config.get("Generation", "Spawn Nickel Ore", true).getBoolean(true);
       EnableMagnesiumOre=config.get("Generation", "Spawn Magnesium Ore", true).getBoolean(true);
-      EnableIridiumOre=config.get("Generation", "Spawn Iridium Ore", true).getBoolean(true);
+      EnableIridiumOre=config.get("Generation", "Spawn Iridium Ore", true).getBoolean(false);
       EnableChromiumOre=config.get("Generation", "Spawn Chromium Ore", true).getBoolean(true);
       EnableWolframOre=config.get("Generation", "Spawn Wolfram Ore", true).getBoolean(true);
       EnablePlatiumOre=config.get("Generation", "Spawn Platium Ore", true).getBoolean(true);

@@ -1,9 +1,7 @@
 package com.Denfop.Register;
 
-import com.Denfop.SSPItem;
 import com.Denfop.IUCore;
 import com.Denfop.SSPItem;
-import com.Denfop.IUCore;
 import com.Denfop.block.AdminPanel.Adminsolarpanel;
 import com.Denfop.block.AdminPanel.ItemAdminSolarPanel;
 import com.Denfop.block.Base.BlockElectric;
@@ -26,7 +24,10 @@ import com.Denfop.item.Machina.ItemMachines2;
 import com.Denfop.item.Modules.module8;
 import com.Denfop.item.RadionBlock.ItemToriyOre;
 import com.Denfop.item.armour.ItemSolarPanelHelmet;
-import com.Denfop.item.base.*;
+import com.Denfop.item.base.ItemBlockIC2;
+import com.Denfop.item.base.ItemElectricBlock;
+import com.Denfop.item.base.ItemSSPSolarPanel;
+import com.Denfop.item.base.SSPItemBase;
 import com.Denfop.item.block.ItemBlockOre;
 import com.Denfop.item.energy.EnergyAxe;
 import com.Denfop.item.energy.EnergyPickaxe;
@@ -35,28 +36,25 @@ import com.Denfop.item.matter.matter;
 import com.Denfop.tiles.Mechanism.*;
 import com.Denfop.tiles.NeutroniumGenerator.TileBitGen2;
 import com.Denfop.tiles.Sintezator.TileEntitySintezator;
-import com.Denfop.tiles.base.*;
+import com.Denfop.tiles.base.TileEntityAdminSolarPanel;
+import com.Denfop.tiles.base.TileEntityCable;
+import com.Denfop.tiles.base.TileEntityMolecularTransformer;
+import com.Denfop.tiles.base.TileRadioation;
 import com.Denfop.tiles.overtimepanel.*;
 import com.Denfop.tiles.wiring.Chargepad.*;
 import com.Denfop.tiles.wiring.Storage.*;
-import com.Denfop.utils.NBTData;
-import com.Denfop.tiles.wiring.Storage.*;
-
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 
 public class Register {
     public static void register() {
 
         GameRegistry.registerBlock(SSPItem.toriyore = new RadiationBlock()
                 .setBlockTextureName("supersolarpanel:toriyore" ).setHardness(0.6f)
-                .setStepSound(Block.soundTypeStone).setBlockName("toriyore"), (Class)ItemToriyOre.class, "toriyore");
+                .setStepSound(Block.soundTypeStone).setBlockName("toriyore"), ItemToriyOre.class, "toriyore");
 
         GameRegistry.registerItem(SSPItem.magnesium_ingot = new SSPItemBase().setMaxStackSize(64).setUnlocalizedName("magnesium_ingot").setTextureName("supersolarpanel:magnesium_ingot"), "magnesium_ingot");
         GameRegistry.registerItem(SSPItem.magnesium_plate = new SSPItemBase().setMaxStackSize(64).setUnlocalizedName("magnesium_plate").setTextureName("supersolarpanel:magnesium_plate"), "magnesium_plate");
@@ -69,15 +67,15 @@ public class Register {
         GameRegistry.registerItem(SSPItem.ultimate_core = new SSPItemBase().setMaxStackSize(64).setUnlocalizedName("ultimate_core").setTextureName("supersolarpanel:ultimate_core"), "ultimate_core");
         GameRegistry.registerItem(SSPItem.spectralSolarHelmet = new ItemSolarPanelHelmet(ItemArmor.ArmorMaterial.DIAMOND, IUCore.proxy.addArmor("spectralSolarHelmet"), 0, 4).setUnlocalizedName("spectralSolarHelmet"), "spectral_solar_helmet");
         GameRegistry.registerItem(SSPItem.singularSolarHelmet = new ItemSolarPanelHelmet(ItemArmor.ArmorMaterial.DIAMOND, IUCore.proxy.addArmor("singularSolarHelmet"), 0, 5).setUnlocalizedName("singularSolarHelmet"), "singular_solar_helmet");
-        GameRegistry.registerBlock(SSPItem.blockSSPSolarPanel = (Block)new BlockSSPSolarPanel(), (Class)ItemSSPSolarPanel.class, "BlockSSPSolarPanel");
+        GameRegistry.registerBlock(SSPItem.blockSSPSolarPanel = new BlockSSPSolarPanel(), ItemSSPSolarPanel.class, "BlockSSPSolarPanel");
 
         GameRegistry.registerItem(SSPItem.enderquantumcomponent = new SSPItemBase().setMaxStackSize(64).setUnlocalizedName("Ender-QuantumComponent").setTextureName("supersolarpanel:enderquantumcomponent"), "enderquantumcomponent");
 
 
-        GameRegistry.registerBlock(SSPItem.blockadmin = (Block)new Adminsolarpanel(), (Class)ItemAdminSolarPanel.class, "Aminpanel");
-        GameRegistry.registerBlock(SSPItem.machines = (Block)new BlockMachine(), (Class)ItemMachine1.class, "machines");
-        GameRegistry.registerBlock(SSPItem.electricblock = (Block)new BlockElectric(), (Class)ItemElectricBlock.class, "electricblock");
-        GameRegistry.registerBlock(SSPItem.Chargepadelectricblock = (Block)new BlockChargepad(), (Class)ItemBlockChargepad.class, "BlockChargepad");
+        GameRegistry.registerBlock(SSPItem.blockadmin = new Adminsolarpanel(), ItemAdminSolarPanel.class, "Aminpanel");
+        GameRegistry.registerBlock(SSPItem.machines = new BlockMachine(), ItemMachine1.class, "machines");
+        GameRegistry.registerBlock(SSPItem.electricblock = new BlockElectric(), ItemElectricBlock.class, "electricblock");
+        GameRegistry.registerBlock(SSPItem.Chargepadelectricblock = new BlockChargepad(), ItemBlockChargepad.class, "BlockChargepad");
 
 
         GameRegistry.registerItem( SSPItem.singularcore = new SSPItemBase().setMaxStackSize(64).setUnlocalizedName("singularcore").setTextureName("supersolarpanel:singularcore"),"singularcore");
@@ -238,7 +236,7 @@ public class Register {
         GameRegistry.registerItem( SSPItem.neutronium = new SSPItemBase().setMaxStackSize(64).setUnlocalizedName("neutronium").setTextureName("supersolarpanel:neutronium"),"neutronium");
         GameRegistry.registerItem( SSPItem.neutroniumingot = new SSPItemBase().setMaxStackSize(64).setUnlocalizedName("neutroniumingot").setTextureName("supersolarpanel:neutroniumingot"),"neutroniumingot");
         GameRegistry.registerItem( SSPItem.neutroniumcore = new SSPItemBase().setMaxStackSize(64).setUnlocalizedName("neutroniumcore").setTextureName("supersolarpanel:neutroniumcore"),"neutroniumcore");
-        GameRegistry.registerBlock(SSPItem.blocksintezator = (Block)new Sintezator(), (Class)ItemSintezator.class, "BlockSintezator");
+        GameRegistry.registerBlock(SSPItem.blocksintezator = new Sintezator(), ItemSintezator.class, "BlockSintezator");
 
         GameRegistry.registerItem(SSPItem.advancedSolarHelmet = new ItemSolarPanelHelmet(ItemArmor.ArmorMaterial.DIAMOND, IUCore.proxy.addArmor("advancedSolarHelmet"), 0, 1).setUnlocalizedName("advancedSolarHelmet"), "advanced_solar_helmet");
         GameRegistry.registerItem(SSPItem.hybridSolarHelmet = new ItemSolarPanelHelmet(ItemArmor.ArmorMaterial.DIAMOND, IUCore.proxy.addArmor("hybridSolarHelmet"), 0, 2).setUnlocalizedName("hybridSolarHelmet"), "hybrid_solar_helmet");
@@ -317,6 +315,13 @@ public class Register {
     public static void registertiles() {
         GameRegistry.registerTileEntity(TileBitGen2.class, "Mass Fabricator1");
 
+        GameRegistry.registerTileEntity(TileEntityChargepadBatBox.class, "Chargepad BatBox1");
+        GameRegistry.registerTileEntity(TileEntityChargepadCESU.class, "Chargepad CESU1");
+        GameRegistry.registerTileEntity(TileEntityChargepadMFE.class, "Chargepad MFE1");
+        GameRegistry.registerTileEntity(TileEntityChargepadMFSU.class, "Chargepad MFSU1");
+        GameRegistry.registerTileEntity(TileEntityChargepadMFES.class, "CMFE");
+        GameRegistry.registerTileEntity(TileEntityChargepadMFSUS.class, "CMFSU");
+
         GameRegistry.registerTileEntity(TileEntityMolecularTransformer.class, "MolecularTransformer");
         GameRegistry.registerTileEntity(TileEntityQuantumQuarry.class, "QuantumQuarry");
         GameRegistry.registerTileEntity(TileEntityGenerationStone.class, "Generation Stone");
@@ -326,25 +331,28 @@ public class Register {
         GameRegistry.registerTileEntity(TileEntityAlloySmelter.class, "AlloySmelter");
         GameRegistry.registerTileEntity(TileEntityGenerationMicrochip.class, "GenerationMicrochip");
         GameRegistry.registerTileEntity(TileRadioation.class, "RadiationOre");
-        GameRegistry.registerTileEntity((Class)TileEntityAdminSolarPanel.class, "TileEntityAdminSolarPanel");
-        GameRegistry.registerTileEntity((Class)TileEntitySintezator.class, "TileEntitySintezator");
-        GameRegistry.registerTileEntity(TileEntityElectricMFE.class, "MFES");
-        GameRegistry.registerTileEntity(TileEntityElectricMFSU.class, "MFSUS");
-        GameRegistry.registerTileEntity(TileEntityElectricBatBox.class, "MFSUS1");
+        GameRegistry.registerTileEntity(TileEntityAdminSolarPanel.class, "TileEntityAdminSolarPanel");
+        GameRegistry.registerTileEntity(TileEntitySintezator.class, "TileEntitySintezator");
+
+        GameRegistry.registerTileEntity(TileEntityElectricBatBox.class, "BatBox1");
+        GameRegistry.registerTileEntity(TileEntityElectricCESU.class, "CESU1");
+        GameRegistry.registerTileEntity(TileEntityElectricMFE.class, "MFE1");
+        GameRegistry.registerTileEntity(TileEntityElectricMFSU.class, "MFSU1");
+        GameRegistry.registerTileEntity(TileEntityElectricMFEMin.class, "MFEMin");
+        GameRegistry.registerTileEntity(TileEntityElectricMFSUMin.class, "MFSUMin");
+
         EnumMultiMachine.registerTile();
-        GameRegistry.registerTileEntity((Class)TileAdminSolarPanel.class, "Admin Solar Panel");
-        GameRegistry.registerTileEntity((Class)TilePhotonicSolarPanel.class, "Photonic Solar Panel");
-        GameRegistry.registerTileEntity((Class)TileSingularSolarPanel.class, "Singular Solar Panel");
-        GameRegistry.registerTileEntity((Class)TileSpectralSolarPanel.class, "Spectral Solar Panel");
-        GameRegistry.registerTileEntity((Class)TileNeutronSolarPanel.class, "Neutron Solar Panel");
-        GameRegistry.registerTileEntity((Class)TileProtonSolarPanel.class, "Proton Solar Panel");
-        GameRegistry.registerTileEntity(TileEntityChargepadMFES.class, "CMFE");
-        GameRegistry.registerTileEntity(TileEntityChargepadMFSUS.class, "CMFSU");
-        GameRegistry.registerTileEntity((Class)TileEntityAdvancedSolarPanel.class, "Advanced Solar Panel1");
-        GameRegistry.registerTileEntity((Class)TileEntityHybridSolarPanel.class, "Hybrid Solar Panel1");
-        GameRegistry.registerTileEntity((Class)TileEntityUltimateSolarPanel.class, "Ultimate Hybrid Solar Panel1");
-        GameRegistry.registerTileEntity((Class)TileEntityQuantumSolarPanel.class, "Quantum Solar Panel1");
-        GameRegistry.registerTileEntity((Class)TileEntityMolecularTransformer.class, "Molecular Transformer1");
+        GameRegistry.registerTileEntity(TileAdminSolarPanel.class, "Admin Solar Panel");
+        GameRegistry.registerTileEntity(TilePhotonicSolarPanel.class, "Photonic Solar Panel");
+        GameRegistry.registerTileEntity(TileSingularSolarPanel.class, "Singular Solar Panel");
+        GameRegistry.registerTileEntity(TileSpectralSolarPanel.class, "Spectral Solar Panel");
+        GameRegistry.registerTileEntity(TileNeutronSolarPanel.class, "Neutron Solar Panel");
+        GameRegistry.registerTileEntity(TileProtonSolarPanel.class, "Proton Solar Panel");
+        GameRegistry.registerTileEntity(TileEntityAdvancedSolarPanel.class, "Advanced Solar Panel1");
+        GameRegistry.registerTileEntity(TileEntityHybridSolarPanel.class, "Hybrid Solar Panel1");
+        GameRegistry.registerTileEntity(TileEntityUltimateSolarPanel.class, "Ultimate Hybrid Solar Panel1");
+        GameRegistry.registerTileEntity(TileEntityQuantumSolarPanel.class, "Quantum Solar Panel1");
+        GameRegistry.registerTileEntity(TileEntityMolecularTransformer.class, "Molecular Transformer1");
         GameRegistry.registerTileEntity(TileEntityCable.class, "Cable1");
 
     }

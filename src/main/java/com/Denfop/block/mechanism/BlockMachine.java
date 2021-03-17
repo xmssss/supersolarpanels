@@ -205,8 +205,7 @@ public class BlockMachine extends BlockContainer {
   }
   
   @Override
-  public IIcon getIcon(IBlockAccess world, int x, int y, int z, int blockSide)
-  {
+  public IIcon getIcon(IBlockAccess world, int x, int y, int z, int blockSide) {
       int blockMeta = world.getBlockMetadata(x, y, z);
       TileEntity te = world.getTileEntity(x, y, z);
       int facing = (te instanceof TileEntityBlock) ? ((int) (((TileEntityBlock) te).getFacing())) : 0;

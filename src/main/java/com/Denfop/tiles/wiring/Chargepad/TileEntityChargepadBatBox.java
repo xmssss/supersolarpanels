@@ -1,4 +1,5 @@
 package com.Denfop.tiles.wiring.Chargepad;
+
 import com.Denfop.tiles.base.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
