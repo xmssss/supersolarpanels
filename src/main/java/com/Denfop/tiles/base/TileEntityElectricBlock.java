@@ -5,7 +5,7 @@ import com.Denfop.api.module.IModulOutput;
 import com.Denfop.container.ContainerElectricBlock;
 import com.Denfop.gui.GuiElectricBlock;
 import com.Denfop.item.Modules.ItemWirelessModule;
-import com.Denfop.item.Modules.module7;
+import com.Denfop.item.Modules.AdditionModule;
 import com.Denfop.utils.NBTData;
 
 import cofh.api.energy.IEnergyContainerItem;
@@ -270,12 +270,12 @@ public abstract class TileEntityElectricBlock extends TileEntityInventory implem
     protected void updateEntityServer() {
         super.updateEntityServer();
 
-        if (this.chargeSlots[0] != null && this.chargeSlots[0].getItem() instanceof module7) {
+        if (this.chargeSlots[0] != null && this.chargeSlots[0].getItem() instanceof AdditionModule) {
             int kk = chargeSlots[0].getItemDamage();
             if (kk == 0) {
                 personality = true;
             }
-        } else if(this.chargeSlots[3] != null && this.chargeSlots[3].getItem() instanceof module7) {
+        } else if(this.chargeSlots[3] != null && this.chargeSlots[3].getItem() instanceof AdditionModule) {
             int kk = chargeSlots[3].getItemDamage();
             if (kk == 0) {
                 personality = true;
@@ -319,7 +319,7 @@ public abstract class TileEntityElectricBlock extends TileEntityInventory implem
 
         }
 
-        if(this.chargeSlots[0] != null && this.chargeSlots[0].getItem() instanceof module7) {
+        if(this.chargeSlots[0] != null && this.chargeSlots[0].getItem() instanceof AdditionModule) {
             if(chargeSlots[0].getItemDamage() == 5) {
                 this.movementcharge  = true;
             }
@@ -372,7 +372,7 @@ public abstract class TileEntityElectricBlock extends TileEntityInventory implem
                         this.energy=this.maxStorage2;
                     }}
             }
-        }else if(this.chargeSlots[3] != null && this.chargeSlots[3].getItem() instanceof module7) {
+        }else if(this.chargeSlots[3] != null && this.chargeSlots[3].getItem() instanceof AdditionModule) {
             if(chargeSlots[3].getItemDamage() == 5) {
                 this.movementcharge  = true;
             }
@@ -573,6 +573,7 @@ public abstract class TileEntityElectricBlock extends TileEntityInventory implem
         }
         return ret;
     }
+
 
     public int getStored() {
         return (int)this.energy;

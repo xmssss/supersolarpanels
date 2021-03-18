@@ -17,11 +17,44 @@ import net.minecraft.util.StatCollector;
 
 @SideOnly(Side.CLIENT)
 public class GuiMolecularTransformer extends GuiSSP {
-    public ContainerBaseMolecular<? extends TileEntityMolecularTransformer> container;
-
-    public GuiMolecularTransformer(ContainerBaseMolecular<? extends TileEntityMolecularTransformer> container1) {
-        super((ContainerBase)container1);
-        this.container = container1;
+  public ContainerBaseMolecular<? extends TileEntityMolecularTransformer> container;
+  
+  public GuiMolecularTransformer(ContainerBaseMolecular<? extends TileEntityMolecularTransformer> container1) {
+    super((ContainerBase)container1);
+    this.container = container1;
+  }
+  public void initGui() {
+	    super.initGui();
+	    this.buttonList.add(new GuiButton(0, (this.width - this.xSize) / 2 + 194, (this.height - this.ySize) / 2 + 3, 15, 12, I18n.format("button.rg")));
+	  }
+  protected void drawGuiContainerBackgroundLayer(float f, int x, int y) {
+    super.drawGuiContainerBackgroundLayer(f, x, y);
+    String input = I18n.format("gui.MolecularTransformer.input", new Object[0]) + ": ";
+    String output = I18n.format("gui.MolecularTransformer.output", new Object[0]) + ": ";
+    String energyPerOperation = I18n.format("gui.MolecularTransformer.energyPerOperation", new Object[0]) + ": ";
+   
+    //
+    String energyPerTick = I18n.format("gui.SuperSolarPanel.energyPerTick", new Object[0]) + ": ";
+    String progress = I18n.format("gui.MolecularTransformer.progress", new Object[0]) + ": ";
+    float chargeLevel = (15.0F * ((TileEntityMolecularTransformer)this.container.base).getChargeLevel());
+   
+   RecipeOutput output1 = this.container.base.getOutput();
+    if (chargeLevel > 0 && !this.container.base.inputSlot.isEmpty()&&output1 != null ) {
+      drawTexturedModalRect(this.xoffset + 23, this.yoffset + 48, 221, 7, 10, (int) chargeLevel); 
+      this.fontRendererObj.drawString(input + this.container.base.inputSlot.get().getDisplayName(), this.xoffset+ 60+10, this.yoffset+25, 13487565);
+     
+    
+      this.fontRendererObj.drawString(output + output1.items.get(0).getDisplayName(), this.xoffset+ 60+10, this.yoffset+25+11, 13487565);
+   
+      this.fontRendererObj.drawString(energyPerOperation +  output1.metadata.getInteger("energy") + " EU", this.xoffset+ 60+10, this.yoffset+25+22, 13487565);
+      if(this.container.base.getProgress()*100 <=100)
+      this.fontRendererObj.drawString(progress +  String.valueOf(MathHelper.floor_double(this.container.base.getProgress()*100) + "%"), this.xoffset+ 60+10, this.yoffset+25+33, 13487565);
+      if(this.container.base.getProgress()*100 >100)
+    	  this.fontRendererObj.drawString(progress +  String.valueOf(MathHelper.floor_double(this.container.base.getProgress()*100) + "%"), this.xoffset+ 60+10, this.yoffset+25+33, 13487565);
+       
+      this.fontRendererObj.drawString(energyPerTick +  String.valueOf((int)this.container.base.getPower()) , this.xoffset+ 60+10, this.yoffset+25+44, 13487565);
+      
+      
     }
     public void initGui() {
         super.initGui();

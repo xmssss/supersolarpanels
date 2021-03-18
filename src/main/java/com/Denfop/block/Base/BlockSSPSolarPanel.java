@@ -19,8 +19,8 @@ import java.util.Random;
 
 import com.Denfop.SSPItem;
 import com.Denfop.IUCore;
-import com.Denfop.item.Modules.module5;
-import com.Denfop.item.Modules.module7;
+import com.Denfop.item.Modules.ModuleType;
+import com.Denfop.item.Modules.AdditionModule;
 import com.Denfop.proxy.ClientProxy;
 import com.Denfop.tiles.base.TileEntityBase;
 import com.Denfop.tiles.base.TileEntitySolarPanel;
@@ -130,7 +130,7 @@ public class BlockSSPSolarPanel extends BlockContainer  {
     this.iconBuffer1[0][8] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer1[0][9] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer1[0][10] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
-    this.iconBuffer1[0][11] = par1IconRegister.registerIcon("superolarpanel:asp_side");
+    this.iconBuffer1[0][11] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer1[1][0] = par1IconRegister.registerIcon("supersolarpanel:hsp_bottom");
     this.iconBuffer1[1][1] = par1IconRegister.registerIcon("supersolarpanel:hsp_topaer");
     this.iconBuffer1[1][2] = par1IconRegister.registerIcon("supersolarpanel:hsp_side");
@@ -178,7 +178,7 @@ public class BlockSSPSolarPanel extends BlockContainer  {
     this.iconBuffer2[0][8] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer2[0][9] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer2[0][10] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
-    this.iconBuffer2[0][11] = par1IconRegister.registerIcon("superolarpanel:asp_side");
+    this.iconBuffer2[0][11] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer2[1][0] = par1IconRegister.registerIcon("supersolarpanel:hsp_bottom");
     this.iconBuffer2[1][1] = par1IconRegister.registerIcon("supersolarpanel:hsp_topearth");
     this.iconBuffer2[1][2] = par1IconRegister.registerIcon("supersolarpanel:hsp_side");
@@ -226,7 +226,7 @@ public class BlockSSPSolarPanel extends BlockContainer  {
     this.iconBuffer3[0][8] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer3[0][9] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer3[0][10] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
-    this.iconBuffer3[0][11] = par1IconRegister.registerIcon("superolarpanel:asp_side");
+    this.iconBuffer3[0][11] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer3[1][0] = par1IconRegister.registerIcon("supersolarpanel:hsp_bottom");
     this.iconBuffer3[1][1] = par1IconRegister.registerIcon("supersolarpanel:hsp_topnether");
     this.iconBuffer3[1][2] = par1IconRegister.registerIcon("supersolarpanel:hsp_side");
@@ -274,7 +274,7 @@ public class BlockSSPSolarPanel extends BlockContainer  {
     this.iconBuffer4[0][8] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer4[0][9] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer4[0][10] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
-    this.iconBuffer4[0][11] = par1IconRegister.registerIcon("superolarpanel:asp_side");
+    this.iconBuffer4[0][11] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer4[1][0] = par1IconRegister.registerIcon("supersolarpanel:hsp_bottom");
     this.iconBuffer4[1][1] = par1IconRegister.registerIcon("supersolarpanel:hsp_topend");
     this.iconBuffer4[1][2] = par1IconRegister.registerIcon("supersolarpanel:hsp_side");
@@ -322,7 +322,7 @@ public class BlockSSPSolarPanel extends BlockContainer  {
     this.iconBuffer5[0][8] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer5[0][9] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer5[0][10] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
-    this.iconBuffer5[0][11] = par1IconRegister.registerIcon("superolarpanel:asp_side");
+    this.iconBuffer5[0][11] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer5[1][0] = par1IconRegister.registerIcon("supersolarpanel:hsp_bottom");
     this.iconBuffer5[1][1] = par1IconRegister.registerIcon("supersolarpanel:hsp_topmoon");
     this.iconBuffer5[1][2] = par1IconRegister.registerIcon("supersolarpanel:hsp_side");
@@ -370,7 +370,7 @@ public class BlockSSPSolarPanel extends BlockContainer  {
     this.iconBuffer6[0][8] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer6[0][9] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer6[0][10] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
-    this.iconBuffer6[0][11] = par1IconRegister.registerIcon("superolarpanel:asp_side");
+    this.iconBuffer6[0][11] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer6[1][0] = par1IconRegister.registerIcon("supersolarpanel:hsp_bottom");
     this.iconBuffer6[1][1] = par1IconRegister.registerIcon("supersolarpanel:hsp_topsun");
     this.iconBuffer6[1][2] = par1IconRegister.registerIcon("supersolarpanel:hsp_side");
@@ -418,7 +418,7 @@ public class BlockSSPSolarPanel extends BlockContainer  {
     this.iconBuffer7[0][8] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer7[0][9] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer7[0][10] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
-    this.iconBuffer7[0][11] = par1IconRegister.registerIcon("superolarpanel:asp_side");
+    this.iconBuffer7[0][11] = par1IconRegister.registerIcon("supersolarpanel:asp_side");
     this.iconBuffer7[1][0] = par1IconRegister.registerIcon("supersolarpanel:hsp_bottom");
     this.iconBuffer7[1][1] = par1IconRegister.registerIcon("supersolarpanel:hsp_toprain");
     this.iconBuffer7[1][2] = par1IconRegister.registerIcon("supersolarpanel:hsp_side");
@@ -796,7 +796,6 @@ public class BlockSSPSolarPanel extends BlockContainer  {
     int facing = (te instanceof TileEntityBase) ? ((TileEntityBase)te).getFacing() : 0;
     ItemStack item = new ItemStack(tile.getWorldObj().getBlock(x, y, z));
     NBTTagCompound nbttagcompound  = tile.nbt();
-    System.out.println( nbttagcompound.getInteger("solarType") + " " + item);
 
     int g = nbttagcompound.getInteger("solarType");
     
@@ -925,7 +924,7 @@ public class BlockSSPSolarPanel extends BlockContainer  {
       if(world.getTileEntity(i, j, k) instanceof TileEntitySolarPanel) {
         TileEntitySolarPanel  tile = (TileEntitySolarPanel) world.getTileEntity(i, j, k);
         for(int m =0; m < 9;m++) {
-          if(tile.chargeSlots[m] != null&& tile.chargeSlots[m].getItem() instanceof module7&& tile.chargeSlots[m].getItemDamage() == 0 && tile.player == player.getDisplayName()) {
+          if(tile.chargeSlots[m] != null && tile.chargeSlots[m].getItem() instanceof AdditionModule && tile.chargeSlots[m].getItemDamage() == 0 && tile.player == player.getDisplayName()) {
             player.openGui((Object)IUCore.instance, 1, world, i, j, k);
             
             

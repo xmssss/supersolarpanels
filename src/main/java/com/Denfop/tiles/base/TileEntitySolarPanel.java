@@ -12,7 +12,7 @@ import com.Denfop.integration.GC.MorePlanetsIntegration;
 import com.Denfop.item.Modules.ItemWirelessModule;
 import com.Denfop.item.Modules.module5;
 import com.Denfop.item.Modules.module6;
-import com.Denfop.item.Modules.module7;
+import com.Denfop.item.Modules.AdditionModule;
 import com.Denfop.utils.NBTData;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.Event;
@@ -246,7 +246,7 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
 
             }
 
-            if (this.chargeSlots[i] != null && this.chargeSlots[i].getItem() instanceof module7) {
+            if (this.chargeSlots[i] != null && this.chargeSlots[i].getItem() instanceof AdditionModule) {
                 int kk = chargeSlots[i].getItemDamage();
                 if (kk == 0) {
                     personality = true;
@@ -267,7 +267,7 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
                         }
                     }
                     for (int j = 0; j < 9;j++) {
-                        if (this.chargeSlots[j] != null && this.chargeSlots[j].getItem() instanceof module7) {
+                        if (this.chargeSlots[j] != null && this.chargeSlots[j].getItem() instanceof AdditionModule) {
                             int meta = chargeSlots[j].getItemDamage();
                             if (meta == 4) {
                                 for (int jj =0; jj <9;jj++) {
@@ -307,7 +307,7 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
                 }
             }
         }
-        if(this.chargeSlots[7] != null && this.chargeSlots[7].getItem() instanceof module7) {
+        if(this.chargeSlots[7] != null && this.chargeSlots[7].getItem() instanceof AdditionModule) {
             int kk = chargeSlots[7].getItemDamage();
             if(kk == 0) {
                 personality = true;
@@ -799,7 +799,7 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
         int minus = 0;
         int gg = 0;
         for (int j = 0; j < 9;j++) {
-            if (this.chargeSlots[j] != null && this.chargeSlots[j].getItem() instanceof module7) {
+            if (this.chargeSlots[j] != null && this.chargeSlots[j].getItem() instanceof AdditionModule) {
                 int kk = chargeSlots[j].getItemDamage();
 
                 if (kk == 1) {

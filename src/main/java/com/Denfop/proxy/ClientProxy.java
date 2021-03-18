@@ -32,10 +32,8 @@ import com.Denfop.render.Sintezaor.TileEntitySintezatorItemRender;
 import com.Denfop.render.Sintezaor.TileEntitySintezatorRender;
 import com.Denfop.render.tile.TileEntityPanelItemRender;
 import com.Denfop.render.tile.TileEntityPanelRender;
-import com.Denfop.tiles.Mechanism.TileEntityAlloySmelter;
-import com.Denfop.tiles.Mechanism.TileEntityGenerationMicrochip;
-import com.Denfop.tiles.Mechanism.TileEntityGenerationStone;
-import com.Denfop.tiles.Mechanism.TileEntityQuantumQuarry;
+import com.Denfop.tiles.ExpGen.TileExpGen2;
+import com.Denfop.tiles.Mechanism.*;
 import com.Denfop.tiles.NeutroniumGenerator.TileBitGen2;
 import com.Denfop.tiles.Sintezator.TileEntitySintezator;
 import com.Denfop.tiles.base.*;
@@ -275,7 +273,7 @@ public class ClientProxy extends CommonProxy  implements IGuiHandler {
 
         return new GuiElectricBlock(new ContainerElectricBlock(player, (TileEntityElectricBlock) te));
       }
-      if (te instanceof TileBitGen2)
+      if (te instanceof TileneutronGenerator)
       {
 
         return new GuiMatter(new ContainerNeutrniumGenerator (player, (TileBitGen2) te));

@@ -4,7 +4,7 @@ package com.Denfop.tiles.base;
 import net.minecraft.item.ItemStack;
 import java.util.List;
 
-import com.Denfop.item.Modules.module7;
+import com.Denfop.item.Modules.AdditionModule;
 
 import ic2.api.network.NetworkHelper;
 import net.minecraft.entity.player.EntityPlayer;

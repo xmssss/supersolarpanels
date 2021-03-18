@@ -2,15 +2,28 @@ package com.Denfop.proxy;
 
 import com.Denfop.Config;
 import com.Denfop.IUCore;
-import com.Denfop.Recipes.*;
+import com.Denfop.Recipes.BasicRecipe;
+import com.Denfop.Recipes.CannerRecipe;
+import com.Denfop.Recipes.CentrifugeRecipe;
+import com.Denfop.Recipes.CompressorRecipe;
+import com.Denfop.Recipes.FurnaceRecipes;
+import com.Denfop.Recipes.MaceratorRecipe;
 import com.Denfop.integration.Avaritia.AvaritiaIntegration;
 import com.Denfop.integration.Botania.BotaniaIntegration;
 import com.Denfop.integration.DE.DraconicIntegration;
 import com.Denfop.integration.crafttweaker.CTCore;
 import com.Denfop.render.Cable.RenderBlock;
+import com.Denfop.tiles.ExpGen.TileExpGen2;
 import com.Denfop.tiles.Mechanism.*;
 import com.Denfop.tiles.NeutroniumGenerator.TileBitGen2;
-import com.Denfop.tiles.base.*;
+import com.Denfop.tiles.base.TileEntityChargepadBlock;
+import com.Denfop.tiles.base.TileEntityElectricBlock;
+import com.Denfop.tiles.base.TileEntityMolecularTransformer;
+import com.Denfop.tiles.base.TileEntityMultiMachine;
+import com.Denfop.tiles.base.TileEntityMultiMachine1;
+import com.Denfop.tiles.base.TileEntityMultiMatter;
+import com.Denfop.tiles.base.TileEntitySolarPanel;
+import com.Denfop.tiles.base.TileSintezator;
 import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFE;
 import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFSU;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -26,6 +39,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 
 public class CommonProxy implements IGuiHandler{
   public boolean isClient() {
@@ -49,17 +63,131 @@ public class CommonProxy implements IGuiHandler{
   public void registerRenderers() {}
 
   public void registerEvents() {
-
-  }
-
+	    MinecraftForge.EVENT_BUS.register(new EventDarkQuantumSuitEffect());
+	    if(Config.Streak == true) {
+	    FMLCommonHandler.instance().bus().register(new EventDarkQuantumSuitEffect());}
+	    if(Config.newsystem)
+	    	IUCore.initENet();
+	    
+		if(Config.DraconicLoaded && Config.EnchantingPlus &&Config.MineFactory) {
+			 MinecraftForge.EVENT_BUS.register(new SSPMFDEEventHandler());
+			
+		}else if(Config.DraconicLoaded &&Config.EnchantingPlus) {
+			MinecraftForge.EVENT_BUS.register(new SSPDEEPEventHandler());
+		}else if(Config.DraconicLoaded && Config.MineFactory) {
+			MinecraftForge.EVENT_BUS.register(new SSPDEMFEventHandler());
+		}else if(Config.EnchantingPlus && Config.MineFactory) {
+			MinecraftForge.EVENT_BUS.register(new SSPMPMFEventHandler());
+		}
+		else {
+			 if(Config.DraconicLoaded) {
+				 MinecraftForge.EVENT_BUS.register(new SSPDEEventHandler());
+		        }
+			
+			if(Config.EnchantingPlus) {
+				 MinecraftForge.EVENT_BUS.register(new SSPEPEventHandler());
+		        }
+			if(Config.MineFactory) {
+				 MinecraftForge.EVENT_BUS.register(new SSPMFEventHandler());
+		        }}
+		MinecraftForge.EVENT_BUS.register(new SSPEventHandler());
+	  }
+  
   public void registerPackets(SimpleNetworkWrapper netInstance) {}
 
   public void load() {
   }
 
   public Object getServerGuiElement(final int ID, final EntityPlayer player, final World world, final int X, final int Y, final int Z) {
-    final TileEntity te = world.getTileEntity(X, Y, Z);
-    if (te == null) {
+      final TileEntity te = world.getTileEntity(X, Y, Z);
+      if (te == null) {
+          return null;
+      }
+      if (te instanceof TileEntitySolarPanel) {
+          return ((TileEntitySolarPanel)te).getGuiContainer(player.inventory);
+      }
+      if(te instanceof TileExpGen) {
+			
+			return ((TileExpGen) te).getGuiContainer(player.inventory);			
+		}
+      if (te instanceof TileSintezator) {
+          return ((TileSintezator)te).getGuiContainer(player.inventory);
+      }
+      if (te instanceof TileEntityMolecularTransformer) {
+          return ((TileEntityMolecularTransformer)te).getGuiContainer(player);
+      }
+      if (te instanceof TileEntityDoubleMacerator) {
+          return ((TileEntityDoubleMacerator)te).getGuiContainer(player);
+      }
+      if (te instanceof TileEntityDoubleExtractor) {
+          return ((TileEntityDoubleExtractor)te).getGuiContainer(player);
+      }
+      if (te instanceof TileEntityDoubleElectricFurnace) {
+          return ((TileEntityDoubleElectricFurnace)te).getGuiContainer(player);
+      }
+      if (te instanceof TileEntityDoubleCompressor) {
+          return ((TileEntityDoubleCompressor)te).getGuiContainer(player);
+      }
+      if (te instanceof TileEntityDoubleMetalFormer) {
+          return ((TileEntityDoubleMetalFormer)te).getGuiContainer(player);
+      }
+      //
+      if (te instanceof TileEntityTripleMacerator) {
+          return ((TileEntityTripleMacerator)te).getGuiContainer(player);
+      }
+      
+      if (te instanceof TileEntityTripleElectricFurnace) {
+          return ((TileEntityTripleElectricFurnace)te).getGuiContainer(player);
+      }
+      if (te instanceof TileEntityTripleCompressor) {
+          return ((TileEntityTripleCompressor)te).getGuiContainer(player);
+      }
+      if (te instanceof TileEntityTripleMetalFormer) {
+          return ((TileEntityTripleMetalFormer)te).getGuiContainer(player);
+      }
+      //
+      if (te instanceof TileEntityMultiMatter) {
+			return ((TileEntityMultiMatter) te).getGuiContainer(player);
+		}
+      
+     
+      if (te instanceof TileEntityAlloySmelter) {
+          return ((TileEntityAlloySmelter)te).getGuiContainer(player);
+      }
+      if (te instanceof TileEntityElectricMFE)
+      {
+    	  return ((TileEntityElectricMFE)te).getGuiContainer(player);
+      }
+      if (te instanceof TileEntityElectricMFSU)
+      {
+    	  return ((TileEntityElectricMFSU)te).getGuiContainer(player);
+      }
+      if (te instanceof TileEntityElectricBlock)
+      {
+    	  return ((TileEntityElectricBlock )te).getGuiContainer(player);
+      }
+      if (te instanceof TileneutronGenerator)
+      {
+    	  return ((TileneutronGenerator)te).getGuiContainer(player);
+      }
+      if (te instanceof TileEntityGenerationMicrochip)
+      {
+    	  return ((TileEntityGenerationMicrochip)te).getGuiContainer(player);
+      }
+      if (te instanceof TileEntityMultiMachine) {
+			return ((TileEntityMultiMachine) te).getGuiContainer(player);
+		}
+      if (te instanceof TileEntityMultiMachine1) {
+			return ((TileEntityMultiMachine1) te).getGuiContainer(player);
+		}
+      if (te instanceof TileEntityChargepadBlock) {
+			return ((TileEntityChargepadBlock) te).getGuiContainer(player);
+		}
+      if (te instanceof TileEntityGenerationStone)
+			return ((TileEntityGenerationStone) te).getGuiContainer(player);
+      if (te instanceof TileEntityQuantumQuarry)
+			return ((TileEntityQuantumQuarry) te).getGuiContainer(player);
+		
       return null;
     }
     if (te instanceof TileEntitySolarPanel) {

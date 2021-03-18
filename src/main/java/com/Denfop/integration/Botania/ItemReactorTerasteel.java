@@ -3,12 +3,12 @@ package com.Denfop.integration.Botania;
 import com.Denfop.Config;
 import com.Denfop.SSPItem;
 import com.Denfop.IUCore;
-import com.Denfop.item.reactor.ItemReactorUranium;
+import com.Denfop.item.reactor.ItemReactorBase;
 
 import ic2.api.reactor.IReactor;
 import net.minecraft.item.ItemStack;
 
-public class ItemReactorTerasteel extends ItemReactorUranium {
+public class ItemReactorTerasteel extends ItemReactorBase {
   public ItemReactorTerasteel(String internalName, int cells) {
     super(internalName, cells, Config.TerrasteelRodCells);
   }

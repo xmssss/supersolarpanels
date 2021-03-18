@@ -6,7 +6,7 @@ import com.Denfop.IUCore;
 import ic2.api.reactor.IReactor;
 import net.minecraft.item.ItemStack;
 
-public class ItemRadiationToriyRod extends ItemReactorUranium {
+public class ItemRadiationToriyRod extends ItemReactorBase {
   private int time;
 private int heat;
 private float power;

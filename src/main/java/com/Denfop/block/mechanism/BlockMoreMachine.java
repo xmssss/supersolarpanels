@@ -31,9 +31,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class BlockMachines1 extends BlockContainer {
+public class BlockMoreMachine extends BlockContainer {
 	public static final String[] names = new String[] {
-			"Recycler","Recycler1","Recycler2"
+			"Macerator", "Macerator2", "Macerator3", "Compressor", "Compressor2", "Compressor3", 
+			"ElecFurnace", "ElecFurnace2", "ElecFurnace3", "Extractor", "Extractor2", "Extractor3", 
+			"MetalFormer", "MetalFormer2", "MetalFormer3"
 	};
 	
 	private static int[][] sideAndFacingToSpriteOffset = new int[][] { 
@@ -44,7 +46,7 @@ public class BlockMachines1 extends BlockContainer {
 		{ 4, 5, 4, 2, 3, 5 }, 
 		{ 5, 4, 2, 4, 5, 3 } };
 	
-	public BlockMachines1() {
+	public BlockMoreMachine() {
 		super(Material.iron);
 		setHardness(2.0F);
 		setStepSound(soundTypeMetal);
@@ -55,12 +57,35 @@ public class BlockMachines1 extends BlockContainer {
 	public TileEntity createTileEntity(World world, int meta) {
 		switch (meta) {
 		case 0:
-			return new TileEntityDoubleRecycler();
+			return new TileEntityDoubleMacerator();
 		case 1:
-			return new TileEntityTripleRecycler();
+			return new TileEntityTripleMacerator();
 		case 2:
-			return new TileEntityQuadRecycler();
-		
+			return new TileEntityQuadMacerator();
+		case 3:
+			return new TileEntityDoubleCompressor();
+		case 4:
+			return new TileEntityTripleCompressor();
+		case 5:
+			return new TileEntityQuadCompressor();
+		case 6:
+			return new TileEntityDoubleElectricFurnace();
+		case 7:
+			return new TileEntityTripleElectricFurnace();
+		case 8:
+			return new TileEntityQuadElectricFurnace();
+		case 9:
+			return new TileEntityDoubleExtractor();
+		case 10:
+			return new TileEntityTripleExtractor();
+		case 11:
+			return new TileEntityQuadExtractor();
+		case 12:
+			return new TileEntityDoubleMetalFormer();
+		case 13:
+			return new TileEntityTripleMetalFormer();
+		case 14:
+			return new TileEntityQuadMetalFormer();
 			
 		}
 		return null;
@@ -70,7 +95,7 @@ public class BlockMachines1 extends BlockContainer {
 
 	@Override
 	public void registerBlockIcons(final IIconRegister par1IconRegister) {
-		this.iconBuffer = new IIcon[16][12];
+		this.iconBuffer = new IIcon[15][12];
 		
         for (int i = 0; i < names.length; i++) {
             IIcon[] icons = TextureAtlasSheet.unstitchIcons(par1IconRegister, "supersolarpanel:block" + names[i], 12, 1);
@@ -238,7 +263,23 @@ public class BlockMachines1 extends BlockContainer {
 			float f3 = 0.52F;
 			float f4 = random.nextFloat() * 0.6F - 0.3F;
 
-		
+			switch (facing) {
+			case 4:
+				world.spawnParticle("smoke", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("flame", f - f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
+				break;
+			case 5:
+				world.spawnParticle("smoke", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("flame", f + f3, f1, f2 + f4, 0.0D, 0.0D, 0.0D);
+				break;
+			case 2:
+				world.spawnParticle("smoke", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("flame", f + f4, f1, f2 - f3, 0.0D, 0.0D, 0.0D);
+				break;
+			case 3:
+				world.spawnParticle("smoke", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("flame", f + f4, f1, f2 + f3, 0.0D, 0.0D, 0.0D);
+			}
 
 		}
 		if ((meta == 3) && (isActive(world, i, j, k))) {

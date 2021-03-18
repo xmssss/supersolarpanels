@@ -46,7 +46,7 @@ import com.Denfop.container.ContainerNeutrniumGenerator;
 import com.Denfop.gui.GuiMatter;
 
 
-public class TileBitGen2 extends TileEntityLiquidTankElectricMachine implements IHasGui, IUpgradableBlock {
+public class TileneutronGenerator extends TileEntityLiquidTankElectricMachine implements IHasGui, IUpgradableBlock {
   public final int defaultTier;
   
   public int soundTicker;
@@ -78,7 +78,7 @@ public class TileBitGen2 extends TileEntityLiquidTankElectricMachine implements 
   
   protected final Redstone redstone;
   
-  public TileBitGen2() {
+  public TileneutronGenerator() {
     super(Config.energy , 3, -1, 8);
     this.scrap = 0;
     this.StateIdle = 0;
@@ -188,8 +188,8 @@ public class TileBitGen2 extends TileEntityLiquidTankElectricMachine implements 
 	    return "" + p + "%";
 	  }
   
-  public ContainerBase<TileBitGen2> getGuiContainer(EntityPlayer entityPlayer) {
-    return (ContainerBase<TileBitGen2>)new ContainerNeutrniumGenerator(entityPlayer, this);
+  public ContainerBase<TileneutronGenerator> getGuiContainer(EntityPlayer entityPlayer) {
+    return (ContainerBase<TileneutronGenerator>)new ContainerNeutrniumGenerator(entityPlayer, this);
   }
   
   @SideOnly(Side.CLIENT)
