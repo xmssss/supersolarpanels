@@ -277,9 +277,12 @@ public class BasicRecipe {
     GameRegistry.addRecipe(new ItemStack(SSPItem.itemSSP, 6,3), "RRR", "ASA", "RRR", Character.valueOf('R'), IC2Items.getItem("reinforcedGlass"), Character.valueOf('A'), new ItemStack(SSPItem.itemSSP, 1,0), Character.valueOf('S'), Items.glowstone_dust);
     //TODO recipe neutron core
 
+
     GameRegistry.addRecipe(new ItemStack(SSPItem.neutroniumcore,1), " A ", "ACA", " A ", 'C', SSPItem.photoniccore, 'A',SSPItem.neutroniumingot);
     //TODO Recipe Advanced and Improvemed MFSU
-    GameRegistry.addRecipe(new ItemStack(SSPItem.electricblock,1,0), "ACA", 'C', Ic2Items.mfsUnit, 'A', SSPItem.photoniy_ingot);
+    GameRegistry.addRecipe(new ItemStack(SSPItem.electricblock,1,4), new Object[] {  "ABA","ACA","ADA", 'C',new ItemStack(SSPItem.electricblock,1,3),  'A' , new ItemStack(IC2Items.getItem("lapotronCrystal").getItem(), 1, OreDictionary.WILDCARD_VALUE), 'B' ,Ic2Items.advancedCircuit,'D', Ic2Items.advancedMachine });
+    GameRegistry.addRecipe(new ItemStack(SSPItem.electricblock,1,3), new Object[] {  "ABA","BCB","ABA", 'C',Ic2Items.machine,  'A' , new ItemStack(Ic2Items.energyCrystal.getItem(), 1, OreDictionary.WILDCARD_VALUE), 'B' ,Ic2Items.insulatedGoldCableItem });
+    GameRegistry.addRecipe(new ItemStack(SSPItem.electricblock,1,0), new Object[] {  "ACA", 'C',new ItemStack(SSPItem.electricblock,1,4),  'A' , SSPItem.photoniy_ingot });
     GameRegistry.addRecipe(new ItemStack(SSPItem.electricblock,1,1), "ACA", 'C', new ItemStack(SSPItem.electricblock,1,0), 'A', SSPItem.QuantumItems5);
     //TODO Recipe dust
     GameRegistry.addRecipe(new ItemStack(SSPItem.dust,1) , "AAA","AAA","AAA", 'A', IC2Items.getItem("energiumDust"));
@@ -345,6 +348,10 @@ public class BasicRecipe {
     // TODO Recipes Chargepad MFSU
     GameRegistry.addRecipe(new ItemStack(SSPItem.Chargepadelectricblock,1,0), "ABA","CDC", 'B',Blocks.stone_pressure_plate,'A',SSPItem.QuantumItems9,'D',new ItemStack(SSPItem.electricblock,1,0),'C',Ic2Items.rubber);
     GameRegistry.addRecipe(new ItemStack(SSPItem.Chargepadelectricblock,1,1), "ABA","CDC", 'B',Blocks.stone_pressure_plate,'A',SSPItem.QuantumItems8,'D',new ItemStack(SSPItem.electricblock,1,1),'C',Ic2Items.rubber);
+    GameRegistry.addRecipe(new ItemStack(SSPItem.Chargepadelectricblock,1,2), new Object[] { "ABA","CDC", 'B',Blocks.stone_pressure_plate ,'A',Ic2Items.electronicCircuit,'D',new ItemStack(SSPItem.electricblock,1,2),'C',Ic2Items.rubber});
+    GameRegistry.addRecipe(new ItemStack(SSPItem.Chargepadelectricblock,1,3), new Object[] { "ABA","CDC", 'B',Blocks.stone_pressure_plate ,'A',Ic2Items.electronicCircuit,'D',new ItemStack(SSPItem.electricblock,1,5),'C',Ic2Items.rubber});
+    GameRegistry.addRecipe(new ItemStack(SSPItem.Chargepadelectricblock,1,4), new Object[] { "ABA","CDC", 'B',Blocks.stone_pressure_plate ,'A',Ic2Items.advancedCircuit,'D',new ItemStack(SSPItem.electricblock,1,3),'C',Ic2Items.rubber});
+    GameRegistry.addRecipe(new ItemStack(SSPItem.Chargepadelectricblock,1,5), new Object[] { "ABA","CDC", 'B',Blocks.stone_pressure_plate ,'A',Ic2Items.advancedCircuit,'D',new ItemStack(SSPItem.electricblock,1,4),'C',Ic2Items.rubber});
 
     //
     // TODO Panels --> modules
