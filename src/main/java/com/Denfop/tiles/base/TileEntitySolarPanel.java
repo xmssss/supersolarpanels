@@ -2,6 +2,7 @@ package com.Denfop.tiles.base;
 
 import cofh.api.energy.IEnergyContainerItem;
 import cofh.api.energy.IEnergyHandler;
+import cofh.api.energy.IEnergyReceiver;
 import com.Denfop.Config;
 import com.Denfop.api.module.*;
 import com.Denfop.container.ContainerAdvSolarPanel;
@@ -10,8 +11,7 @@ import com.Denfop.integration.GC.GalacticraftIntegration;
 import com.Denfop.integration.GC.GalaxySpaceIntegration;
 import com.Denfop.integration.GC.MorePlanetsIntegration;
 import com.Denfop.item.Modules.ItemWirelessModule;
-import com.Denfop.item.Modules.module5;
-import com.Denfop.item.Modules.module6;
+import com.Denfop.item.Modules.ModuleType;
 import com.Denfop.item.Modules.AdditionModule;
 import com.Denfop.utils.NBTData;
 import cpw.mods.fml.common.Loader;
@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Vector;
 
-public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,INetworkDataProvider, INetworkUpdateListener, IWrenchable, IEnergySource, IInventory, IEnergyHandler, INetworkClientTileEntityEventListener {
+public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,INetworkDataProvider, INetworkUpdateListener, IWrenchable, IEnergySource, IInventory, IEnergyHandler, INetworkClientTileEntityEventListener , IEnergyReceiver {
     private TileEntitySolarPanel tileentity;
     public static Random randomizer;
     public int ticker;
@@ -75,7 +75,6 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
     public int k;
     public int m;
     public int u;
-    private module6 panel;
     public int tier;
 
     public int convertState = 0;
@@ -299,8 +298,10 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
 
                         for (ForgeDirection side : ForgeDirection.VALID_DIRECTIONS) {
                             TileEntity tile = this.worldObj.getTileEntity(this.xCoord + side.offsetX, this.yCoord + side.offsetY, this.zCoord + side.offsetZ);
-                            if (tile instanceof IEnergyHandler)
-                                extractEnergy(side.getOpposite(), ((IEnergyHandler)tile).receiveEnergy(side.getOpposite(), extractEnergy(side.getOpposite(), (this.production * Config.convertratio), true), false), false);
+                            if (tile instanceof IEnergyReceiver) {
+                                extractEnergy(side.getOpposite(), ((IEnergyHandler) tile).receiveEnergy(side.getOpposite(), extractEnergy(side.getOpposite(), (this.production * Config.convertratio), true), false), false);
+                            } else if (tile instanceof IEnergyHandler)
+                                extractEnergy(side.getOpposite(), ((IEnergyHandler)tile).receiveEnergy(side.getOpposite(), extractEnergy(side.getOpposite(), 8182, true), false), false);
                         }
 
                     }
@@ -339,7 +340,7 @@ public class TileEntitySolarPanel extends TileEntityBase implements IEnergyTile,
         Block block = this.worldObj.getBlock(this.xCoord, this.yCoord, this.zCoord);
         NBTTagCompound nbttagcompound1 = NBTData.getOrCreateNbtData(new ItemStack(block));
         nbttagcompound1.setInteger("type", -1);
-        if (this.chargeSlots[8] != null && this.chargeSlots[8].getItem() instanceof module5) {
+        if (this.chargeSlots[8] != null && this.chargeSlots[8].getItem() instanceof ModuleType) {
             int g = chargeSlots[8].getItemDamage();
 
 

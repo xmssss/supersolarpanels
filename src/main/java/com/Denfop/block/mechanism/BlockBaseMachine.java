@@ -1,5 +1,6 @@
 package com.Denfop.block.mechanism;
 
+import com.Denfop.tiles.NeutroniumGenerator.TileneutronGenerator;
 import ic2.api.item.IC2Items;
 import ic2.api.tile.IWrenchable;
 import ic2.core.IC2;
@@ -27,7 +28,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import com.Denfop.proxy.ClientProxy;
 import com.Denfop.tiles.Mechanism.*;
-import com.Denfop.tiles.NeutroniumGenerator.TileBitGen2;
 import com.Denfop.tiles.base.TileEntityMolecularTransformer;
 import com.Denfop.IUCore;
 

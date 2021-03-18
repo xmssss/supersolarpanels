@@ -32,9 +32,11 @@ import com.Denfop.render.Sintezaor.TileEntitySintezatorItemRender;
 import com.Denfop.render.Sintezaor.TileEntitySintezatorRender;
 import com.Denfop.render.tile.TileEntityPanelItemRender;
 import com.Denfop.render.tile.TileEntityPanelRender;
-import com.Denfop.tiles.ExpGen.TileExpGen2;
-import com.Denfop.tiles.Mechanism.*;
-import com.Denfop.tiles.NeutroniumGenerator.TileBitGen2;
+import com.Denfop.tiles.Mechanism.TileEntityAlloySmelter;
+import com.Denfop.tiles.Mechanism.TileEntityGenerationMicrochip;
+import com.Denfop.tiles.Mechanism.TileEntityGenerationStone;
+import com.Denfop.tiles.Mechanism.TileEntityQuantumQuarry;
+import com.Denfop.tiles.NeutroniumGenerator.TileneutronGenerator;
 import com.Denfop.tiles.Sintezator.TileEntitySintezator;
 import com.Denfop.tiles.base.*;
 import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFE;
@@ -60,7 +62,6 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.wirelesstools.fluidmachines.TextureHooks;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -173,7 +174,6 @@ public class ClientProxy extends CommonProxy  implements IGuiHandler {
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySintezator.class, new TileEntitySintezatorRender());
     MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(SSPItem.blocksintezator),
             new TileEntitySintezatorItemRender());
-    MinecraftForge.EVENT_BUS.register(new TextureHooks());
   }
 
   public void registerRecipe() {
@@ -276,7 +276,7 @@ public class ClientProxy extends CommonProxy  implements IGuiHandler {
       if (te instanceof TileneutronGenerator)
       {
 
-        return new GuiMatter(new ContainerNeutrniumGenerator (player, (TileBitGen2) te));
+        return new GuiMatter(new ContainerNeutrniumGenerator (player, (TileneutronGenerator) te));
       }
       if (te instanceof TileEntityGenerationMicrochip)
       {

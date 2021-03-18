@@ -58,7 +58,7 @@ public class TileEntityBase extends TileEntity implements IWrenchable, INetworkD
         if (this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) instanceof TileEntitySolarPanel) {
             TileEntitySolarPanel tile = 	(TileEntitySolarPanel) this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord);
             for(int i =0;i <9;i++) {
-                if(tile.chargeSlots[i] != null && tile.chargeSlots[i].getItem() instanceof module7) {
+                if(tile.chargeSlots[i] != null && tile.chargeSlots[i].getItem() instanceof AdditionModule) {
                  if(tile.chargeSlots[i].getItemDamage() ==  0) {
                      if(entityPlayer.getDisplayName() == tile.player) {
                       return true;

@@ -121,11 +121,13 @@ public class Config {
   public static boolean disable4;
   public static float lowPower;
   public static float ultraLowPower;
+  public static float ultraLowPower1;
   public static int ultdrillmaxCharge;
   public static int ultdrilltier;
   public static int energyPerOperation;
   public static int energyPerLowOperation;
   public static int energyPerultraLowPowerOperation;
+  public static int energyPerultraLowPowerOperation1;
   public static int energyPerbigHolePowerOperation;
   public static int ultdrilltransferLimit;
   public static boolean enableefficiency;
