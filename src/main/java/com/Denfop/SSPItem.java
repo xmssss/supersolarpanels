@@ -14,8 +14,9 @@ public class SSPItem {
 	public static Block blockfluidxp;
 	
 	public static Fluid fluidXpJuice;
-	
-	 public static Item dust;
+
+
+	public static Item dust;
 	public static Block blockSSPSolarPanel;
     public static Item enderquantumcomponent;
     public static Item singularcore;
@@ -45,6 +46,7 @@ public class SSPItem {
 	public static ItemStack copperCableBlock;
 	public static ItemStack copperCableItem;
 	public static ItemStack insulatedCopperCableItem;
+	public static Item QuantumItems;
 	public static Item QuantumItems2;
 	public static Item QuantumItems3;
 	public static Item QuantumItems4;
