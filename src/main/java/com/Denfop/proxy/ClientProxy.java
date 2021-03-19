@@ -167,7 +167,6 @@ public class ClientProxy extends CommonProxy  implements IGuiHandler {
 		  ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySintezator.class, new TileEntitySintezatorRender());
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(SSPItem.blocksintezator),
 					new TileEntitySintezatorItemRender());
-			MinecraftForge.EVENT_BUS.register(new TextureHooks());
   }
 
   public void registerRecipe() {
