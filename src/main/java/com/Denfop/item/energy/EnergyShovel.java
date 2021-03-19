@@ -84,10 +84,10 @@ public class EnergyShovel extends ItemTool implements IElectricItem {
 
   public String name;
 
-  private int efficienty;
+public int efficienty;
 
-  private int lucky;
-
+public int lucky;
+  
   public EnergyShovel(Item.ToolMaterial toolMaterial,String name,int efficienty, int lucky,int transferlimit,int maxCharge,int tier,int normalPower,int bigHolesPower,int energyPerOperation,int energyPerbigHolePowerOperation) {
     super(0.0F, toolMaterial, new HashSet());
     setMaxDamage(27);

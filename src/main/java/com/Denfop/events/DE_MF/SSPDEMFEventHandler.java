@@ -35,7 +35,7 @@ public class SSPDEMFEventHandler {
 				  ItemStack input = player.inventory.mainInventory[i];
 				   ItemStack input1 = new ItemStack(SSPItem.ultDDrill);
 				   NBTTagCompound nbtData = NBTData.getOrCreateNbtData(input); 
-				  if((input.getItem() == SSPItem.ultDDrill  ||input.getItem() == Ic2Items.iridiumDrill.getItem())) {
+				  
 					  Map<Integer, Integer> map = null;
 					  if(EnchantmentHelper.getEnchantments(input) != null) { 
 			  map = EnchantmentHelper.getEnchantments(input);
@@ -77,6 +77,6 @@ public class SSPDEMFEventHandler {
 			   }
 			  //TODO end for
 		  } 
-		  }
+		  
 	
 }
