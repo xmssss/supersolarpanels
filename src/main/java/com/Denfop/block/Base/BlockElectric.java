@@ -1,5 +1,6 @@
 package com.Denfop.block.Base;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.item.ElectricItem;
@@ -235,15 +236,13 @@ public class BlockElectric extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par6, float par7, float par8, float par9)
-    {
-        if (entityPlayer.isSneaking()) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par6, float par7, float par8, float par9) {
+        if (entityPlayer.isSneaking() && !(entityPlayer.getHeldItem().getItem() instanceof gravisuite.item.ItemGraviTool)) {
             TileEntityElectricBlock tile = (TileEntityElectricBlock) world.getTileEntity(x, y, z);
-            if(tile.movementcharge) {
-
-                for(ItemStack armorcharged : entityPlayer.inventory.armorInventory) {
-                    if(armorcharged != null) {
-                        if(armorcharged.getItem() instanceof IElectricItem && tile.energy > 0) {
+            if (tile.movementcharge) {
+                for (ItemStack armorcharged : entityPlayer.inventory.armorInventory) {
+                    if (armorcharged != null) {
+                        if (armorcharged.getItem() instanceof IElectricItem && tile.energy > 0) {
                             double  sent = ElectricItem.manager.charge(armorcharged, tile.energy, 2147483647, true, false);
                             entityPlayer.inventoryContainer.detectAndSendChanges();
                             tile.energy -= sent;
@@ -258,8 +257,9 @@ public class BlockElectric extends BlockContainer {
 
                     }
 
-                }}
-            if(tile.movementchargerf) {
+                }
+            }
+            if (tile.movementchargerf) {
 
                 for(ItemStack charged : entityPlayer.inventory.armorInventory) {
                     if(charged != null) {

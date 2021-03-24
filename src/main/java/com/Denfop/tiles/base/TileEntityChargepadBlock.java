@@ -35,7 +35,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public abstract class TileEntityChargepadBlock extends TileEntityElectricBlock implements IEnergySink, IEnergySource, IHasGui, INetworkClientTileEntityEventListener, IEnergyStorage,IEnergyHandler,IEnergyReceiver {
-  private int updateTicker;
+private int updateTicker;
 
   private EntityPlayer player;
 

@@ -7,6 +7,7 @@ import com.Denfop.tiles.base.TileEntityChargepadBlock;
 import com.Denfop.tiles.base.TileEntityElectricBlock;
 import com.Denfop.tiles.wiring.Chargepad.*;
 import com.Denfop.utils.NBTData;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.item.ElectricItem;
@@ -158,8 +159,7 @@ public class BlockChargepad extends BlockContainer {
   }
   
   @Override
-  public IIcon getIcon(IBlockAccess world, int x, int y, int z, int blockSide)
-  {
+  public IIcon getIcon(IBlockAccess world, int x, int y, int z, int blockSide) {
       int blockMeta = world.getBlockMetadata(x, y, z);
       TileEntity te = world.getTileEntity(x, y, z);
       int facing = (te instanceof TileEntityBlock) ? ((int) (((TileEntityBlock) te).getFacing())) : 0;
@@ -278,16 +278,15 @@ public class BlockChargepad extends BlockContainer {
   }
 
   @Override
-  public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par6, float par7, float par8, float par9)
-  {
-	  if (entityPlayer.isSneaking()) {
+  public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par6, float par7, float par8, float par9) {
+      if (entityPlayer.isSneaking() && !(entityPlayer.getHeldItem().getItem() instanceof gravisuite.item.ItemGraviTool)) {
 		  TileEntityChargepadBlock tile = (TileEntityChargepadBlock) world.getTileEntity(x, y, z);
 		  if(tile.movementcharge) {
 			 
 				 for(ItemStack armorcharged : entityPlayer.inventory.armorInventory) {
 					 if(armorcharged != null) {
 						 if(armorcharged.getItem() instanceof IElectricItem && tile.energy > 0) {
-							 double  sent = ElectricItem.manager.charge(armorcharged, tile.energy, 2147483647, true, false);
+							 double sent = ElectricItem.manager.charge(armorcharged, tile.energy, 2147483647, true, false);
 							 entityPlayer.inventoryContainer.detectAndSendChanges();
 							 tile.energy -= sent;
 							
@@ -302,7 +301,7 @@ public class BlockChargepad extends BlockContainer {
 					 }
 					 
 				 }}
-		  if(tile.movementchargerf) {
+		  if (tile.movementchargerf) {
 				 
 				 for(ItemStack charged : entityPlayer.inventory.armorInventory) {
 					 if(charged != null) {

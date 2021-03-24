@@ -42,7 +42,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 
 public abstract class TileEntityElectricBlock extends TileEntityInventory implements IEnergySink, IEnergySource, IHasGui, INetworkClientTileEntityEventListener, IEnergyStorage,IEnergyHandler,IEnergyReceiver {
-    public final int tier;
+public final int tier;
 
     public int output;
 
@@ -485,12 +485,9 @@ public abstract class TileEntityElectricBlock extends TileEntityInventory implem
     public void setTransfer(boolean t) {
         this.transfer = t;
     }
-    public boolean acceptsEnergyFrom(TileEntity emitter, ForgeDirection direction) {
 
-        if(this.energy < (this.maxStorage))
-            return !facingMatchesDirection(direction);
-        else
-            return false;
+    public boolean acceptsEnergyFrom(TileEntity emitter, ForgeDirection direction) {
+        return !facingMatchesDirection(direction);
     }
 
     public boolean emitsEnergyTo(TileEntity receiver, ForgeDirection direction) {

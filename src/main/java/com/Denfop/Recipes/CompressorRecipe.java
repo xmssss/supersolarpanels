@@ -12,13 +12,8 @@ import net.minecraft.item.ItemStack;
 
 public class CompressorRecipe {
 	public static void recipe() {
-		      
-	        
-	      
-		
-		
-		 addcompressor(Ic2Items.uuMatterCell, new ItemStack(SSPItem.matter,2,0));
-	      addcompressor(Ic2Items.carbonFiber,9, new ItemStack(SSPItem.coal_chunk1));
+		 	addcompressor(Ic2Items.uuMatterCell, new ItemStack(SSPItem.matter,2,0));
+	      	addcompressor(Ic2Items.carbonFiber,9, new ItemStack(SSPItem.coal_chunk1));
 	        addcompressor(Ic2Items.carbonPlate,9, new ItemStack(SSPItem.compresscarbon));
 	        addcompressor(Ic2Items.advancedAlloy,9, new ItemStack(SSPItem.compresscarbonultra));
 	        addcompressor(Ic2Items.iridiumPlate, 4, new ItemStack(SSPItem.QuantumItems2));
