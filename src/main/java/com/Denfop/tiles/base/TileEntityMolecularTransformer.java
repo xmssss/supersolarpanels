@@ -79,6 +79,7 @@ public class TileEntityMolecularTransformer extends TileEntityBaseMolecular impl
     NBTTagCompound   nbt34 = new NBTTagCompound();
     NBTTagCompound   nbt35 = new NBTTagCompound();
     NBTTagCompound   nbt36 = new NBTTagCompound();
+
     nbt.setInteger("energy", Config.molecular);
     nbt1.setInteger("energy",  Config.molecular1);
     nbt2.setInteger("energy",  Config.molecular2);
@@ -209,16 +210,18 @@ public class TileEntityMolecularTransformer extends TileEntityBaseMolecular impl
   }
 
   public void readFromNBT(NBTTagCompound nbttagcompound) {
-    super.readFromNBT(nbttagcompound);
-    this.maxEnergy = nbttagcompound.getInteger("energy");
-
+    this.energy = nbttagcompound.getInteger("energy");
+    this.maxEnergy = nbttagcompound.getInteger("maxEnergy");
     this.redstoneMode = nbttagcompound.getByte("redstoneMode");
+    super.readFromNBT(nbttagcompound);
   }
 
+
   public void writeToNBT(NBTTagCompound nbttagcompound) {
-    super.writeToNBT(nbttagcompound);
-    nbttagcompound.setInteger("energy", (int) this.maxEnergy);
+    nbttagcompound.setDouble("maxEnergy", this.maxEnergy);
+    nbttagcompound.setInteger("energy", (int) this.energy);
     nbttagcompound.setByte("redstoneMode", this.redstoneMode);
+    super.writeToNBT(nbttagcompound);
   }
 
   @SideOnly(Side.CLIENT)

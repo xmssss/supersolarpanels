@@ -24,7 +24,7 @@ public class BlockSSPDiamond extends Block{
 	  }
 	  
 	  public int quantityDroppedWithBonus(int fortune, Random random) {
-	    return (fortune == 0) ? quantityDropped(random) : (quantityDropped(random) + fortune + random.nextInt(fortune * 2));
+	    return (fortune == 0) ? quantityDropped(random) : (quantityDropped(random) + random.nextInt(fortune));
 	  }
 	  public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
 		    return Items.diamond;

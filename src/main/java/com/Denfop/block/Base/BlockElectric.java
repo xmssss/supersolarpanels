@@ -246,9 +246,8 @@ public class BlockElectric extends BlockContainer {
                             double  sent = ElectricItem.manager.charge(armorcharged, tile.energy, 2147483647, true, false);
                             entityPlayer.inventoryContainer.detectAndSendChanges();
                             tile.energy -= sent;
-
                             tile.needsInvUpdate = (sent > 0.0D);
-                            if(sent > 0) {
+                            if (sent > 0) {
 
                                 entityPlayer.addChatMessage(new ChatComponentTranslation(StatCollector.translateToLocal("successfully.charged") +String.valueOf(armorcharged.getDisplayName())+" "+ StatCollector.translateToLocal("ssp.sendenergy")+String.valueOf(MathHelper.floor_double(sent))+" EU", new Object[0]));
 
@@ -265,11 +264,11 @@ public class BlockElectric extends BlockContainer {
                     if(charged != null) {
 
                         ItemStack stack = charged;
-                        if (stack != null && stack.getItem() instanceof IEnergyContainerItem && tile.energy2 >0) {
+                        if (stack != null && stack.getItem() instanceof IEnergyContainerItem && tile.energy2 > 0) {
                             int sent =0;
 
                             IEnergyContainerItem item = (IEnergyContainerItem)stack.getItem();
-                            for(;item.getEnergyStored(charged) < item.getMaxEnergyStored(charged)&&  tile.energy2 >0;) {
+                            for(;item.getEnergyStored(charged) < item.getMaxEnergyStored(charged)&&  tile.energy2 > 0;) {
                                 sent = sent + tile.extractEnergy(null, item.receiveEnergy(stack, (int) tile.energy2, false), false);
 
                                 tile.setTransfer(tile.extractEnergy(null, item.receiveEnergy(stack, (int) tile.energy2, false), false) > 0);
@@ -281,7 +280,7 @@ public class BlockElectric extends BlockContainer {
 
 
                     }}}
-            if(tile.movementchargeitem) {
+            if (tile.movementchargeitem) {
                 for(ItemStack charged : entityPlayer.inventory.mainInventory) {
                     if(charged != null) {
                         if(charged.getItem() instanceof IElectricItem && tile.energy > 0) {
