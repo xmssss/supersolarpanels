@@ -6,12 +6,12 @@ import com.Denfop.IUCore;
 import ic2.api.reactor.IReactor;
 import net.minecraft.item.ItemStack;
 
-public class ItemReactorproton extends ItemReactorBase {
+public class ItemReactorprotonRod extends ItemReactorBase {
   private int time;
 private int heat;
 private float power;
 
-public ItemReactorproton(String internalName, int cells,int time,int heat,float power) {
+public ItemReactorprotonRod(String internalName, int cells, int time, int heat, float power) {
     super(internalName, cells, time);
     this.time = time;
     this.heat=heat;

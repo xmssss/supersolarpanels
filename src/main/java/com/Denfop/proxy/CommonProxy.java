@@ -73,37 +73,35 @@ public class CommonProxy implements IGuiHandler{
 
   public void registerEvents() {
 	   
-	    if(Config.newsystem)
+	    if (Config.newsystem)
 	    	IUCore.initENet();
 	    
-		if(Config.DraconicLoaded && Config.EnchantingPlus &&Config.MineFactory) {
+		if (Config.DraconicLoaded && Config.EnchantingPlus &&Config.MineFactory) {
 			 MinecraftForge.EVENT_BUS.register(new SSPMFDEEventHandler());
-			
-		}else if(Config.DraconicLoaded &&Config.EnchantingPlus) {
+		} else if(Config.DraconicLoaded &&Config.EnchantingPlus) {
 			MinecraftForge.EVENT_BUS.register(new SSPDEEPEventHandler());
-		}else if(Config.DraconicLoaded && Config.MineFactory) {
+		} else if(Config.DraconicLoaded && Config.MineFactory) {
 			MinecraftForge.EVENT_BUS.register(new SSPDEMFEventHandler());
-		}else if(Config.EnchantingPlus && Config.MineFactory) {
+		} else if(Config.EnchantingPlus && Config.MineFactory) {
 			MinecraftForge.EVENT_BUS.register(new SSPMPMFEventHandler());
-		}
-		else {
-			 if(Config.DraconicLoaded) {
+		} else {
+			 if (Config.DraconicLoaded) {
 				 MinecraftForge.EVENT_BUS.register(new SSPDEEventHandler());
 		        }
 			
-			if(Config.EnchantingPlus) {
+			if (Config.EnchantingPlus) {
 				 MinecraftForge.EVENT_BUS.register(new SSPEPEventHandler());
 		        }
-			if(Config.MineFactory) {
+			if( Config.MineFactory) {
 				 MinecraftForge.EVENT_BUS.register(new SSPMFEventHandler());
-		        }}
+		        }
+		}
 		MinecraftForge.EVENT_BUS.register(new SSPEventHandler());
 	  }
   
   public void registerPackets(SimpleNetworkWrapper netInstance) {}
 
-  public void load() {
-  }
+  public void load() {}
 
   public Object getServerGuiElement(final int ID, final EntityPlayer player, final World world, final int X, final int Y, final int Z) {
       final TileEntity te = world.getTileEntity(X, Y, Z);
