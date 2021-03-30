@@ -67,11 +67,9 @@ public class BlockCable extends Block {
   
   public int colorMultiplier;
   public int renderMask;
-
   @SideOnly(Side.CLIENT)
   private IIcon[][] coloredTextures;
   public String internalName;
-
   public BlockCable() {
     super(Material.iron);
     this.colorMultiplier = -1;
@@ -84,9 +82,10 @@ public class BlockCable extends Block {
     MinecraftForge.EVENT_BUS.register(this);
     setBlockName("blockCable");
     setCreativeTab((CreativeTabs)IUCore.tabssp);
-
+    
+  
+    
   }
-
   @SideOnly(Side.CLIENT)
   public void registerBlockIcons(IIconRegister iconRegister) {
     int metaCount = getMetaCount();
@@ -106,6 +105,7 @@ public class BlockCable extends Block {
       } 
     } 
   }
+  
 
 @SideOnly(Side.CLIENT)
 public IIcon getIcon(int side, int meta) {
@@ -680,7 +680,6 @@ public IIcon getIcon(int side, int meta) {
 	  private static final int tesBeforeBreakLimit = 8;
 	  
 	  private static ArrayDeque<TileEntity> tesBeforeBreak = new ArrayDeque<TileEntity>(8);
-
   @SubscribeEvent
   public void onRetexture(RetextureEvent event) {
     if (event.world.getBlock(event.x, event.y, event.z) != this)

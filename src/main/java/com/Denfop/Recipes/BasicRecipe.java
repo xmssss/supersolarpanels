@@ -403,11 +403,10 @@ public class BasicRecipe {
     GameRegistry.addRecipe(SSPItem.glassFiberCableItem, "BBB","AAA","BBB", 'B', SSPItem.trippleInsulatedIronCableItem,'A',SSPItem.photoniy_ingot);
     GameRegistry.addRecipe(new ItemStack(SSPItem.cable,1,10), "BBB","AAA","BBB", 'B', SSPItem.glassFiberCableItem,'A',SSPItem.photoniy_ingot);
 
-    // TODO recipes Molecular Core and Recipe Molecular Transformer
+    // TODO recipes Molecolar Core and Recipe Molecular Transformer
     GameRegistry.addRecipe(SSPItem.itemMTCore, "MXM", "M M", "MXM", 'M', SSPItem.itemIrradiantGlassPane, 'X', new ItemStack(Ic2Items.reactorReflector.getItem(),1 ,OreDictionary.WILDCARD_VALUE));
     GameRegistry.addRecipe(SSPItem.moleculartransformer, "MXM", "ABA", "MXM", Character.valueOf('M'), IC2Items.getItem("advancedMachine"), Character.valueOf('X'), IC2Items.getItem("evTransformer"), Character.valueOf('A'), IC2Items.getItem("advancedCircuit"), Character.valueOf('B'),
       SSPItem.itemMTCore);
-
     //TODO Recipes Panels
     GameRegistry.addRecipe( new ItemStack(SSPItem.blockSSPSolarPanel, 1, 0), "ABA","RHR", " L ",'B', SSPItem.advanced_core,'A',SSPItem.photoniyglass1,'H',IC2Items.getItem("advancedCircuit"), 'G',IC2Items.getItem("iridiumPlate"),'R', IC2Items.getItem("carbonPlate"),'Y',SSPItem.photoniy,'L', IC2Items.getItem("solarPanel"));
     GameRegistry.addRecipe( new ItemStack(SSPItem.blockSSPSolarPanel, 1, 1), "ABA","YDY","DDD", 'B', SSPItem.hybrid_core,'A', SSPItem.photoniyglass2,'D',new ItemStack(SSPItem.blockSSPSolarPanel, 1, 0),'Y', Ic2Items.iridiumPlate);

@@ -99,9 +99,9 @@ public class ClientProxy extends CommonProxy  implements IGuiHandler {
     catch (Exception e)
     {
       sideAndFacingToSpriteOffset = new int[][]{
-      {
-              3, 2, 0, 0, 0, 0
-      }, {
+              {
+                      3, 2, 0, 0, 0, 0
+              }, {
               2, 3, 1, 1, 1, 1
       }, {
               1, 1, 3, 2, 5, 4
@@ -189,37 +189,34 @@ public class ClientProxy extends CommonProxy  implements IGuiHandler {
   }
   public void registerEvents() {
     MinecraftForge.EVENT_BUS.register(new EventDarkQuantumSuitEffect());
-    if (Config.Streak) {
-      FMLCommonHandler.instance().bus().register(new EventDarkQuantumSuitEffect());
-    }
-
+    if(Config.Streak == true) {
+      FMLCommonHandler.instance().bus().register(new EventDarkQuantumSuitEffect());}
     if(Config.newsystem)
       IUCore.initENet();
 
     if(Config.DraconicLoaded && Config.EnchantingPlus &&Config.MineFactory) {
       MinecraftForge.EVENT_BUS.register(new SSPMFDEEventHandler());
 
-    } else if(Config.DraconicLoaded &&Config.EnchantingPlus) {
+    }else if(Config.DraconicLoaded &&Config.EnchantingPlus) {
       MinecraftForge.EVENT_BUS.register(new SSPDEEPEventHandler());
-    } else if(Config.DraconicLoaded && Config.MineFactory) {
+    }else if(Config.DraconicLoaded && Config.MineFactory) {
       MinecraftForge.EVENT_BUS.register(new SSPDEMFEventHandler());
-    } else if(Config.EnchantingPlus && Config.MineFactory) {
+    }else if(Config.EnchantingPlus && Config.MineFactory) {
       MinecraftForge.EVENT_BUS.register(new SSPMPMFEventHandler());
-    } else {
+    }
+    else {
       if(Config.DraconicLoaded) {
         MinecraftForge.EVENT_BUS.register(new SSPDEEventHandler());
       }
 
-      if (Config.EnchantingPlus) {
+      if(Config.EnchantingPlus) {
         MinecraftForge.EVENT_BUS.register(new SSPEPEventHandler());
       }
-      if (Config.MineFactory) {
+      if(Config.MineFactory) {
         MinecraftForge.EVENT_BUS.register(new SSPMFEventHandler());
-      }
-    }
+      }}
     MinecraftForge.EVENT_BUS.register(new SSPEventHandler());
   }
-
   @Override
   public Object getClientGuiElement(final int ID, final EntityPlayer player, final World world, final int X, final int Y, final int Z) {
     final TileEntity te = world.getTileEntity(X, Y, Z);

@@ -426,7 +426,7 @@ public class Config {
       //
       storage_limit=config.get("Module", "Limit in energy storage", 2).getInt(2);
       damagecable=config.get("Events", "Damage", true).getBoolean(true);
-      newsystem=config.get("Events", "New system transfer energy", false).getBoolean(false);
+      newsystem=config.get("Events", "New system transfer energy", true).getBoolean(true);
       EnableMagnetitOre=config.get("Generation", "Spawn Magnetit Ore", true).getBoolean(true);
       EnableToriyOre=config.get("Generation", "Spawn Toriy Ore", true).getBoolean(true);
       EnableNickelOre=config.get("Generation", "Spawn Nickel Ore", true).getBoolean(true);

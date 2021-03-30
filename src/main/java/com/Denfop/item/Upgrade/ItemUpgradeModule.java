@@ -108,18 +108,18 @@ public void registerIcons(final IIconRegister IIconRegister) {
     super.addInformation(stack, player, list, par4);
     switch (type) {
       case Overclocker1:
-        list.add(StatCollector.translateToLocalFormatted("ic2.tooltip.upgrade.overclocker.time", decimalformat
-                .format(100.0D * Math.pow(getProcessTimeMultiplier(stack, (IUpgradableBlock)null), stack.stackSize))));
-        list.add(StatCollector.translateToLocalFormatted("ic2.tooltip.upgrade.overclocker.power", decimalformat
-                .format(100.0D * Math.pow(getEnergyDemandMultiplier(stack, (IUpgradableBlock)null), stack.stackSize))));
+        list.add(StatCollector.translateToLocalFormatted("ic2.tooltip.upgrade.overclocker.time", new Object[] { decimalformat
+                .format(100.0D * Math.pow(getProcessTimeMultiplier(stack, (IUpgradableBlock)null), stack.stackSize)) }));
+        list.add(StatCollector.translateToLocalFormatted("ic2.tooltip.upgrade.overclocker.power", new Object[] { decimalformat
+                .format(100.0D * Math.pow(getEnergyDemandMultiplier(stack, (IUpgradableBlock)null), stack.stackSize)) }));
         break;
       case Overclocker2:
-          list.add(StatCollector.translateToLocalFormatted("ic2.tooltip.upgrade.overclocker.time", decimalformat
-                  .format(100.0D * Math.pow(getProcessTimeMultiplier(stack, (IUpgradableBlock)null), stack.stackSize))));
-          list.add(StatCollector.translateToLocalFormatted("ic2.tooltip.upgrade.overclocker.power", decimalformat
-                  .format(100.0D * Math.pow(getEnergyDemandMultiplier(stack, (IUpgradableBlock)null), stack.stackSize))));
+          list.add(StatCollector.translateToLocalFormatted("ic2.tooltip.upgrade.overclocker.time", new Object[] { decimalformat
+                  .format(100.0D * Math.pow(getProcessTimeMultiplier(stack, (IUpgradableBlock)null), stack.stackSize)) }));
+          list.add(StatCollector.translateToLocalFormatted("ic2.tooltip.upgrade.overclocker.power", new Object[] { decimalformat
+                  .format(100.0D * Math.pow(getEnergyDemandMultiplier(stack, (IUpgradableBlock)null), stack.stackSize)) }));
           break;
-
+      
     } 
   }
   
@@ -214,9 +214,9 @@ public void registerIcons(final IIconRegister IIconRegister) {
       return 1.0D; 
     switch (type) {
       case Overclocker1:
-        return 1.4D;
+        return 1.3D;
       case Overclocker2:
-          return 1.3D;
+          return 1.2D;
     } 
     return 1.0D;
   }

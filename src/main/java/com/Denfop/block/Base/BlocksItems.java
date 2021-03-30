@@ -16,11 +16,11 @@ import com.Denfop.item.energy.AdvancedMultiTool;
 import com.Denfop.item.energy.ItemBattery;
 import com.Denfop.item.energy.ItemQuantumSaber;
 import com.Denfop.item.energy.ItemSpectralSaber;
-import com.Denfop.item.reactor.ItemRadiationToriyRod;
 import com.Denfop.item.reactor.ItemRadioactive;
 import com.Denfop.item.reactor.ItemReactorHeatStorage;
-import com.Denfop.item.reactor.ItemReactorprotonRod;
+import com.Denfop.item.reactor.ItemReactorproton;
 import com.Denfop.item.rotor.ItemAdvancedWindRotor;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
 import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -76,8 +76,8 @@ public class BlocksItems {
         SSPItem.ultDDrill = new AdvancedMultiTool(Item.ToolMaterial.EMERALD).setUnlocalizedName("advDDrill");
 
         SSPItem.lapotronCrystal = new ItemBattery("itemBatLamaCrystal", Config.Storagequantumsuit, 8092.0D, 4);
-        SSPItem.nanoSaber = new ItemSpectralSaber("itemNanoSaber", Config.maxCharge, Config.transferLimit, Config.tier, Config.spectralsaberactive, Config.spectralsabernotactive);
-        SSPItem.nanoSaber1 = new ItemQuantumSaber("itemNanoSaber1", Config.maxCharge1, Config.transferLimit1, Config.tier1, Config.spectralsaberactive1, Config.spectralsabernotactive1);
+        SSPItem.nanoSaber = new ItemSpectralSaber("itemNanoSaber",Config.maxCharge,Config.transferLimit,Config.tier,Config.spectralsaberactive,Config.spectralsabernotactive);
+        SSPItem.nanoSaber1 = new ItemQuantumSaber("itemNanoSaber1",Config.maxCharge1,Config.transferLimit1,Config.tier1,Config.spectralsaberactive1,Config.spectralsabernotactive1);
         SSPItem.quantumHelmet = new ItemArmorImprovemedQuantum("itemArmorQuantumHelmet", 0, Config.armor_maxcharge, Config.armor_transferlimit, Config.tier);
         SSPItem.quantumBodyarmor = new ItemArmorImprovemedQuantum("itemArmorQuantumChestplate", 1, Config.armor_maxcharge_body, Config.armor_transferlimit, Config.tier);
         SSPItem.quantumLeggings = new ItemArmorImprovemedQuantum("itemArmorQuantumLegs", 2, Config.armor_maxcharge, Config.armor_transferlimit, Config.tier);
@@ -89,24 +89,20 @@ public class BlocksItems {
         SSPItem.iridium = new ItemStack((Item)new ItemAdvancedWindRotor("iridium", Config.Radius, Config.durability, Config.efficiency, Config.minWindStrength, Config.maxWindStrength, new ResourceLocation("supersolarpanel", "textures/items/carbon_rotor_model1.png")));
         SSPItem.compressiridium = new ItemStack((Item)new ItemAdvancedWindRotor("compressiridium", Config.Radius1, Config.durability1, Config.efficiency1, Config.minWindStrength1, Config.maxWindStrength1, new ResourceLocation("supersolarpanel", "textures/items/carbon_rotor_model2.png")));
         SSPItem.spectral = new ItemStack((Item)new ItemAdvancedWindRotor("spectral", Config.Radius2, Config.durability2, Config.efficiency2, Config.minWindStrength2, Config.maxWindStrength2, new ResourceLocation("supersolarpanel", "textures/items/carbon_rotor_model3.png")));
-
         SSPItem.reactorDepletedprotonSimple = new ItemStack((Item)new ItemRadioactive("reactorDepletedprotonSimple", 10, 100));
         SSPItem.reactorDepletedprotonDual = new ItemStack((Item)new ItemRadioactive("reactorDepletedprotonDual", 10, 100));
         SSPItem.reactorDepletedprotonQuad = new ItemStack((Item)new ItemRadioactive("reactorDepletedprotonQuad", 10, 100));
         SSPItem.reactorDepletedprotoneit = new ItemStack((Item)new ItemRadioactive("reactorDepletedprotoneit", 10, 100));
-
-        SSPItem.reactorprotonSimple = new ItemStack((Item)new ItemReactorprotonRod("reactorprotonSimple", 1, Config.ProtonRodCells, Config.ProtonRodHeat, Config.ProtonPower));
-        SSPItem.reactorprotonDual = new ItemStack((Item)new ItemReactorprotonRod("reactorprotonDual", 2, Config.ProtonRodCells, Config.ProtonRodHeat, Config.ProtonPower));
-        SSPItem.reactorprotonQuad = new ItemStack((Item)new ItemReactorprotonRod("reactorprotonQuad", 4, Config.ProtonRodCells, Config.ProtonRodHeat, Config.ProtonPower));
-        SSPItem.reactorprotoneit = new ItemStack((Item)new ItemReactorprotonRod("reactorprotoneit", 8, Config.ProtonRodCells, Config.ProtonRodHeat, Config.ProtonPower));
-
+        SSPItem.reactorprotonSimple = new ItemStack((Item)new ItemReactorproton("reactorprotonSimple", 1,Config.ProtonRodCells,Config.ProtonRodHeat,Config.ProtonPower));
+        SSPItem.reactorprotonDual = new ItemStack((Item)new ItemReactorproton("reactorprotonDual", 2,Config.ProtonRodCells,Config.ProtonRodHeat,Config.ProtonPower));
+        SSPItem.reactorprotonQuad = new ItemStack((Item)new ItemReactorproton("reactorprotonQuad", 4,Config.ProtonRodCells,Config.ProtonRodHeat,Config.ProtonPower));
+        SSPItem.reactorprotoneit = new ItemStack((Item)new ItemReactorproton("reactorprotoneit", 8,Config.ProtonRodCells,Config.ProtonRodHeat,Config.ProtonPower));
         SSPItem.proton = new ItemRadioactive("proton", 150, 100);
         SSPItem.toriy = new ItemRadioactive("toriy", 150, 100);
         //
-        SSPItem.reactortoriySimple = new ItemStack((Item)new ItemRadiationToriyRod("reactortoriySimple", 1, Config.toriyRodCells, Config.toriyRodHeat, Config.toriyPower));
-        SSPItem.reactortoriyDual = new ItemStack((Item)new ItemRadiationToriyRod("reactortoriyDual", 2, Config.toriyRodCells, Config.toriyRodHeat, Config.toriyPower));
-        SSPItem.reactortoriyQuad = new ItemStack((Item)new ItemRadiationToriyRod("reactortoriyQuad", 4, Config.toriyRodCells, Config.toriyRodHeat, Config.toriyPower));
-
+        SSPItem.reactortoriySimple = new ItemStack((Item)new ItemReactorproton("reactortoriySimple", 1,Config.toriyRodCells,Config.toriyRodHeat,Config.toriyPower));
+        SSPItem.reactortoriyDual = new ItemStack((Item)new ItemReactorproton("reactortoriyDual", 2,Config.toriyRodCells,Config.toriyRodHeat,Config.toriyPower));
+        SSPItem.reactortoriyQuad = new ItemStack((Item)new ItemReactorproton("reactortoriyQuad", 4,Config.toriyRodCells,Config.toriyRodHeat,Config.toriyPower));
         SSPItem.reactorDepletedtoriySimple = new ItemStack((Item)new ItemRadioactive("reactorDepletedtoriySimple", 10, 100));
         SSPItem.reactorDepletedtoriyDual = new ItemStack((Item)new ItemRadioactive("reactorDepletedtoriyDual", 10, 100));
         SSPItem.reactorDepletedtoriyQuad = new ItemStack((Item)new ItemRadioactive("reactorDepletedtoriyQuad", 10, 100));
@@ -115,10 +111,10 @@ public class BlocksItems {
         SSPItem.protonshard = new ItemRadioactive("protonshard", 150, 100);
         SSPItem.reactorCoolantmax = new ItemStack((Item)new ItemReactorHeatStorage("reactorCoolantmax", 240000));
         SSPItem.reactorCoolanttwelve = new ItemStack((Item)new ItemReactorHeatStorage("reactorCoolanttwelve", 120000));
-        SSPItem.module = new ItemUpgradeModule();
+        SSPItem.module =new ItemUpgradeModule();
         SSPItem.cable = new ItemCable();
 
-        if (Config.BotaniaLoaded) {
+        if(Config.BotaniaLoaded) {
             BotaniaIntegration.reactorterastrellSimple = new ItemStack((Item)new ItemReactorTerasteel("reactorterastrellSimple", 1));
             BotaniaIntegration.reactorterastrellDual = new ItemStack((Item)new ItemReactorTerasteel("reactorterastrellDual", 2));
             BotaniaIntegration.reactorterastrellQuad = new ItemStack((Item)new ItemReactorTerasteel("reactorterastrellQuad", 4));
