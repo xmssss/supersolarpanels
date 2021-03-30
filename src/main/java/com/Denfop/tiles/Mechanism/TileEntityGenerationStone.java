@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import com.Denfop.SSPItem;
+import com.Denfop.IUItem;
 import com.Denfop.IUCore;
 import com.Denfop.InvSlot.InvSlotProcessableStone;
 
@@ -42,9 +42,8 @@ public TileEntityGenerationStone() {
   }
   
   public String getInventoryName() {
-	return null;
-	  
- //  return StatCollector.translateToLocal("ssp.genstone");
+	
+	  return StatCollector.translateToLocal("ssp.genstone");
   }
   
   public static void addGen(IRecipeInput container, IRecipeInput fill, ItemStack output) {

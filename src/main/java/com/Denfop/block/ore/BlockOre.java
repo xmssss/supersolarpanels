@@ -10,6 +10,8 @@ import net.minecraft.item.Item;
 
 public class BlockOre extends Block{
 
+public class BlockOre extends Block {
+
 	public BlockOre(Material material) {
 		super(material);
 		this.setCreativeTab(IUCore.tabssp4);
@@ -18,8 +20,8 @@ public class BlockOre extends Block{
 		this.setLightLevel(0.3F);
 		this.setStepSound(Block.soundTypeGlass);
 	}
-	
-	  public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		    return Item.getItemFromBlock(this);
-		  }
+
+	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+		return Item.getItemFromBlock(this);
+	}
 }

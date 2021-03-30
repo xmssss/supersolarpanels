@@ -45,7 +45,7 @@ public class GuiMultiMetalFormer extends GuiMultiMachine {
 			tooltip = StatCollector.translateToLocal("ic2.MetalFormer.gui.switch.Cutting");
 			break;
 		}
-		GuiTooltipHelper.drawAreaTooltip(mouseX - this.guiLeft+4, mouseY  - this.guiTop, tooltip, 6, 22, 26, 42);
+		GuiTooltipHelper.drawAreaTooltip(mouseX - this.guiLeft + 4, mouseY - this.guiTop, tooltip, 6, 22, 26, 42);
 		GL11.glPopAttrib();
 		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 	}
@@ -58,7 +58,8 @@ public class GuiMultiMetalFormer extends GuiMultiMachine {
 
 	public void initGui() {
 		super.initGui();
-		this.buttonList.add(new GuiButton(0, (this.width - this.xSize) / 2 + 6 + 10, (this.height - this.ySize + 1) / 2 + 6, 20, 20, ""));
+		this.buttonList.add(new GuiButton(0, (this.width - this.xSize) / 2 + 6 + 10,
+				(this.height - this.ySize + 1) / 2 + 6, 20, 20, ""));
 	}
 
 }

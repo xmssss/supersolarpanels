@@ -30,11 +30,15 @@ public class ContainerChargepadBlock extends ContainerFullInv<TileEntityChargepa
 
 
     public List<String> getNetworkedFields() {
-        List<String> ret = super.getNetworkedFields();
-        ret.add("energy2");
-        ret.add("energy");
-        ret.add("redstoneMode");
-        ret.add("chargeSlots");
-        return ret;
     }
+    List<String> ret = super.getNetworkedFields();
+    ret.add("energy2");
+    ret.add("energy");
+	ret.add("personality");
+	ret.add("inputslotA");
+	ret.add("inputslotB");
+	ret.add("inputslotC");
+   ret.add("output_plus");
+    return ret;
+  }
 }

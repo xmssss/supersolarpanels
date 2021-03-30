@@ -11,6 +11,8 @@ import net.minecraft.item.Item;
 
 public class BlockSSPEmerald extends Block{
 
+public class BlockSSPEmerald extends Block {
+
 	public BlockSSPEmerald(Material material) {
 		super(material);
 		this.setCreativeTab(IUCore.tabssp4);
@@ -19,6 +21,7 @@ public class BlockSSPEmerald extends Block{
 		this.setLightLevel(0.3F);
 		this.setStepSound(Block.soundTypeGlass);
 	}
+
 	public int quantityDropped(Random random) {
 	    return 1 ;
 	  }

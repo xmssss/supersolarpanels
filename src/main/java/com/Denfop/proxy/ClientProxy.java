@@ -1,10 +1,23 @@
 package com.Denfop.proxy;
 
+import java.util.HashMap;
+import java.util.Map;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.Denfop.Config;
+import com.Denfop.IUItem;
 import com.Denfop.IUCore;
-import com.Denfop.Recipes.*;
-import com.Denfop.SSPItem;
+import com.Denfop.Recipes.BasicRecipe;
+import com.Denfop.Recipes.CannerRecipe;
+import com.Denfop.Recipes.CentrifugeRecipe;
+import com.Denfop.Recipes.CompressorRecipe;
+import com.Denfop.Recipes.FurnaceRecipes;
+import com.Denfop.Recipes.MaceratorRecipe;
+import com.Denfop.Register.Register;
+import com.Denfop.Register.RegisterOreDict;
+import com.Denfop.World.GenOre;
+import com.Denfop.block.Base.BlocksItems;
 import com.Denfop.container.*;
 import com.Denfop.events.DE.SSPDEEventHandler;
 import com.Denfop.events.DE_MF.SSPDEMFEventHandler;
@@ -27,30 +40,27 @@ import com.Denfop.integration.crafttweaker.CTCore;
 import com.Denfop.render.Cable.RenderBlock;
 import com.Denfop.render.Cable.RenderBlockCable;
 import com.Denfop.render.Cable.RenderBlockWall;
-import com.Denfop.render.EntityRendererStreak;
-import com.Denfop.render.Sintezaor.TileEntitySintezatorItemRender;
-import com.Denfop.render.Sintezaor.TileEntitySintezatorRender;
+import com.Denfop.render.Sintezator.TileEntitySintezatorItemRender;
+import com.Denfop.render.Sintezator.TileEntitySintezatorRender;
 import com.Denfop.render.tile.TileEntityPanelItemRender;
 import com.Denfop.render.tile.TileEntityPanelRender;
-import com.Denfop.tiles.Mechanism.TileEntityAlloySmelter;
-import com.Denfop.tiles.Mechanism.TileEntityGenerationMicrochip;
-import com.Denfop.tiles.Mechanism.TileEntityGenerationStone;
-import com.Denfop.tiles.Mechanism.TileEntityQuantumQuarry;
+import com.Denfop.tiles.Mechanism.*;
 import com.Denfop.tiles.NeutroniumGenerator.TileneutronGenerator;
 import com.Denfop.tiles.Sintezator.TileEntitySintezator;
 import com.Denfop.tiles.base.*;
 import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFE;
 import com.Denfop.utils.Check;
-import com.brandon3055.draconicevolution.client.render.IRenderTweak;
-import com.brandon3055.draconicevolution.client.render.item.RenderBow;
+import com.Denfop.utils.graviSuite;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.LoaderException;
 import cpw.mods.fml.common.network.IGuiHandler;
 import ic2.core.Ic2Items;
+import ic2.core.item.tool.ItemToolWrench;
 import modtweaker2.utils.TweakerPlugin;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.creativetab.CreativeTabs;
@@ -65,239 +75,298 @@ import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.HashMap;
-import java.util.Map;
+public class ClientProxy extends CommonProxy implements IGuiHandler {
 
-public class ClientProxy extends CommonProxy  implements IGuiHandler {
+	Map<String, RenderBlock> renders;
+	public static int adminpanel;
 
-  Map<String, RenderBlock> renders;
-  public static int adminpanel;
+	public boolean isClient() {
 
-  public boolean isClient() {
+		return true;
+	}
 
-    return true;
-  }
+	public void registerTabs(CreativeTabs tab, final ItemStack icon) {
 
-  public void registerTabs(CreativeTabs tab, final ItemStack icon) {
+	}
 
-  }
-  public RenderBlock getRender(String name) {
-    return this.renders.get(name);
-  }
-  public static Logger logger = LogManager.getLogger("supersolarpanel");
-  public static int[][] sideAndFacingToSpriteOffset;
-  public void check() {
-    Check.check();
-  }
-  @Override
-  public void load() {
+	public RenderBlock getRender(String name) {
+		return this.renders.get(name);
+	}
 
-    try
-    {
-      sideAndFacingToSpriteOffset = (int[][])Class.forName("ic2.core.block.BlockMultiID").getField("sideAndFacingToSpriteOffset").get(null);
-    }
-    catch (Exception e)
-    {
-      sideAndFacingToSpriteOffset = new int[][]{
-      {
-              3, 2, 0, 0, 0, 0
-      }, {
-              2, 3, 1, 1, 1, 1
-      }, {
-              1, 1, 3, 2, 5, 4
-      }, {
-              0, 0, 2, 3, 4, 5
-      }, {
-              4, 5, 4, 5, 3, 2
-      }, {
-              5, 4, 5, 4, 2, 3
-      }
-      };
-    }
-  }
-  private void addBlockRenderer(String name, RenderBlock renderer) {
-    RenderingRegistry.registerBlockHandler((ISimpleBlockRenderingHandler)renderer);
-    this.renders.put(name, renderer);
-  }
-  public void integration() {
-    Config.DraconicLoaded = Loader.isModLoaded("DraconicEvolution");
-    Config.AvaritiaLoaded = Loader.isModLoaded("Avaritia");
-    Config.BotaniaLoaded = Loader.isModLoaded("Botania");
-    Config.EnchantingPlus = Loader.isModLoaded("eplus");
-    Config.MineFactory = Loader.isModLoaded("MineFactoryReloaded");
-    if(Loader.isModLoaded("modtweaker2")) {
-      TweakerPlugin.register("industrialupgrade", CTCore.class);
+	public static Logger logger = LogManager.getLogger("industrialupgrade");
+	public static int[][] sideAndFacingToSpriteOffset;
 
-    }
-    if(Config.DraconicLoaded && Config.Draconic) {
-      DraconicIntegration.init();
-    }
-    if(Config.AvaritiaLoaded && Config.Avaritia ) {
-      AvaritiaIntegration.init();
-    }
+	public void check() {
+		Check.check();
+	}
 
-    if(Config.BotaniaLoaded && Config.Botania) {
-      BotaniaIntegration.init();
-    }
-  }
-  public void initCore() {
+	@Override
+	public void load() {
 
-    TileEntityAlloySmelter.init();
-    TileEntityMolecularTransformer.init();
-    TileEntityGenerationMicrochip.init();
-    TileEntityGenerationStone.init();
+		try {
+			sideAndFacingToSpriteOffset = (int[][]) Class.forName("ic2.core.block.BlockMultiID")
+					.getField("sideAndFacingToSpriteOffset").get(null);
+		} catch (Exception e) {
+			sideAndFacingToSpriteOffset = new int[][] { { 3, 2, 0, 0, 0, 0 }, { 2, 3, 1, 1, 1, 1 },
+					{ 1, 1, 3, 2, 5, 4 }, { 0, 0, 2, 3, 4, 5 }, { 4, 5, 4, 5, 3, 2 }, { 5, 4, 5, 4, 2, 3 } };
+		}
+	}
 
-  }
-  public void registerRenderers() {
-    RenderingRegistry.registerEntityRenderingHandler(EntityStreak.class, (Render)new EntityRendererStreak());
-    //
+	private void addBlockRenderer(String name, RenderBlock renderer) {
+		RenderingRegistry.registerBlockHandler((ISimpleBlockRenderingHandler) renderer);
+		this.renders.put(name, renderer);
+	}
 
-    //
+	public void integration() {
+		Config.DraconicLoaded = Loader.isModLoaded("DraconicEvolution");
+		Config.AvaritiaLoaded = Loader.isModLoaded("Avaritia");
+		Config.BotaniaLoaded = Loader.isModLoaded("Botania");
+		Config.EnchantingPlus = Loader.isModLoaded("eplus");
+		Config.MineFactory = Loader.isModLoaded("MineFactoryReloaded");
+		if (Loader.isModLoaded("modtweaker2")) {
+			TweakerPlugin.register("supersolarpanel", CTCore.class);
 
-    this.renders = new HashMap<String, RenderBlock>();
-	  addBlockRenderer("cable", (RenderBlock)new RenderBlockCable());
-	  addBlockRenderer("wall", (RenderBlock)new RenderBlockWall());
-	  if(Config.DraconicLoaded) 
-		DraconicIntegration.render();
-	  
-	  ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAdminSolarPanel.class, new TileEntityPanelRender());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(SSPItem.blockadmin),
+		}
+		if (Config.DraconicLoaded && Config.Draconic) {
+			DraconicIntegration.init();
+		}
+		if (Config.AvaritiaLoaded && Config.Avaritia) {
+			AvaritiaIntegration.init();
+		}
+
+		if (Config.BotaniaLoaded && Config.Botania) {
+			BotaniaIntegration.init();
+		}
+	}
+
+	public void initCore() {
+
+		TileEntityAlloySmelter.init();
+		TileEntityMolecularTransformer.init();
+		TileEntityGenerationMicrochip.init();
+		TileEntityGenerationStone.init();
+
+	}
+
+	public void registerRenderers() {
+		RenderingRegistry.registerEntityRenderingHandler(EntityStreak.class, (Render) new EntityRendererStreak());
+		//
+
+		//
+
+		this.renders = new HashMap<String, RenderBlock>();
+		addBlockRenderer("cable", (RenderBlock) new RenderBlockCable());
+		addBlockRenderer("wall", (RenderBlock) new RenderBlockWall());
+		if (Config.DraconicLoaded)
+			DraconicIntegration.render();
+
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAdminSolarPanel.class, new TileEntityPanelRender());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(IUItem.blockadmin),
 				new TileEntityPanelItemRender());
 		//
-		  ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySintezator.class, new TileEntitySintezatorRender());
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(SSPItem.blocksintezator),
-					new TileEntitySintezatorItemRender());
-  }
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySintezator.class, new TileEntitySintezatorRender());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(IUItem.blocksintezator),
+				new TileEntitySintezatorItemRender());
+		
+	}
 
-  public void registerRecipe() {
+	public void registerRecipe() {
 
-    if(Config.BotaniaLoaded && Config.Botania)
-      BotaniaIntegration.recipe();
-    BasicRecipe.recipe();
-    if(Config.DraconicLoaded && Config.Draconic)
-      DraconicIntegration.Recipes();
-    if(Config.AvaritiaLoaded && Config.Avaritia )
-      AvaritiaIntegration.recipe();
+		if (Config.BotaniaLoaded && Config.Botania)
+			BotaniaIntegration.recipe();
+		BasicRecipe.recipe();
+		if (Config.DraconicLoaded && Config.Draconic)
+			DraconicIntegration.Recipes();
+		if (Config.AvaritiaLoaded && Config.Avaritia)
+			AvaritiaIntegration.recipe();
 
+		CompressorRecipe.recipe();
+		CannerRecipe.recipe();
+		FurnaceRecipes.recipe();
+		CentrifugeRecipe.init();
+		MaceratorRecipe.recipe();
 
-    CompressorRecipe.recipe();
-    CannerRecipe.recipe();
-    FurnaceRecipes.recipe();
-    CentrifugeRecipe.init();
-    MaceratorRecipe.recipe();
+	}
 
-  }
-  public void registerEvents() {
-    MinecraftForge.EVENT_BUS.register(new EventDarkQuantumSuitEffect());
-    if (Config.Streak) {
-      FMLCommonHandler.instance().bus().register(new EventDarkQuantumSuitEffect());
-    }
+	public void registerEvents() {
+		MinecraftForge.EVENT_BUS.register(new EventDarkQuantumSuitEffect());
+		if (Config.Streak == true) {
+			FMLCommonHandler.instance().bus().register(new EventDarkQuantumSuitEffect());
+		}
+		
 
-    if(Config.newsystem)
-      IUCore.initENet();
+		if (Config.DraconicLoaded && Config.EnchantingPlus && Config.MineFactory) {
+			MinecraftForge.EVENT_BUS.register(new SSPMFDEEventHandler());
 
-    if(Config.DraconicLoaded && Config.EnchantingPlus &&Config.MineFactory) {
-      MinecraftForge.EVENT_BUS.register(new SSPMFDEEventHandler());
+		} else if (Config.DraconicLoaded && Config.EnchantingPlus) {
+			MinecraftForge.EVENT_BUS.register(new SSPDEEPEventHandler());
+		} else if (Config.DraconicLoaded && Config.MineFactory) {
+			MinecraftForge.EVENT_BUS.register(new SSPDEMFEventHandler());
+		} else if (Config.EnchantingPlus && Config.MineFactory) {
+			MinecraftForge.EVENT_BUS.register(new SSPMPMFEventHandler());
+		} else {
+			if (Config.DraconicLoaded) {
+				MinecraftForge.EVENT_BUS.register(new SSPDEEventHandler());
+			}
 
-    } else if(Config.DraconicLoaded &&Config.EnchantingPlus) {
-      MinecraftForge.EVENT_BUS.register(new SSPDEEPEventHandler());
-    } else if(Config.DraconicLoaded && Config.MineFactory) {
-      MinecraftForge.EVENT_BUS.register(new SSPDEMFEventHandler());
-    } else if(Config.EnchantingPlus && Config.MineFactory) {
-      MinecraftForge.EVENT_BUS.register(new SSPMPMFEventHandler());
-    } else {
-      if(Config.DraconicLoaded) {
-        MinecraftForge.EVENT_BUS.register(new SSPDEEventHandler());
-      }
+			if (Config.EnchantingPlus) {
+				MinecraftForge.EVENT_BUS.register(new SSPEPEventHandler());
+			}
+			if (Config.MineFactory) {
+				MinecraftForge.EVENT_BUS.register(new SSPMFEventHandler());
+			}
+		}
+		MinecraftForge.EVENT_BUS.register(new SSPEventHandler());
+	}
 
-      if (Config.EnchantingPlus) {
-        MinecraftForge.EVENT_BUS.register(new SSPEPEventHandler());
-      }
-      if (Config.MineFactory) {
-        MinecraftForge.EVENT_BUS.register(new SSPMFEventHandler());
-      }
-    }
-    MinecraftForge.EVENT_BUS.register(new SSPEventHandler());
-  }
+	@Override
+	public Object getClientGuiElement(final int ID, final EntityPlayer player, final World world, final int X,
+			final int Y, final int Z) {
+		final TileEntity te = world.getTileEntity(X, Y, Z);
 
-  @Override
-  public Object getClientGuiElement(final int ID, final EntityPlayer player, final World world, final int X, final int Y, final int Z) {
-    final TileEntity te = world.getTileEntity(X, Y, Z);
+		if (te == null) {
+			return null;
+		}
+		
+		if(!Loader.isModLoaded("GraviSuite")) {
+		if (!(graviSuite.gettrue1(player))) {
+			if (te instanceof TileEntitySolarPanel) {
 
-    if (te == null) {
-      return null;
-    }
+				return new GuiSolarPanels(new ContainerSolarPanels(player, (TileEntitySolarPanel) te));
+			}
+			if (te instanceof TileSintezator) {
+				return new GUISintezator(new ContainerSinSolarPanel(player, (TileSintezator) te));
+			}
 
-    if (te instanceof TileEntitySolarPanel) {
-      return new GuiAdvSolarPanel(player.inventory, (TileEntitySolarPanel)te);
-    }
-    if (te instanceof TileSintezator) {
-      return new GUISintezator(player.inventory, (TileSintezator)te);
-    }
+			if (te instanceof TileEntityMolecularTransformer) {
+				return new GuiMolecularTransformer(new ContainerBaseMolecular(player, (TileEntityMolecularTransformer) te));
+			}
+			if (te instanceof TileEntityMultiMachine) {
+				return ((TileEntityMultiMachine) te).getGui(player, false);
+			}
 
+			if (player.getHeldItem() != Ic2Items.electricWrench) {
+				if (te instanceof TileEntityMultiMachine1) {
+					return ((TileEntityMultiMachine1) te).getGui(player, false);
+				}
+			}
+			if (player.getHeldItem() != Ic2Items.electricWrench) {
+				if (te instanceof TileEntityMultiMatter) {
+					return ((TileEntityMultiMatter) te).getGui(player, false);
+				}
+			}
+			if (te instanceof TileEntityAlloySmelter) {
+				return new GuiAlloySmelter(new ContainerStandardMachine(player, (TileEntityAlloySmelter) te));
+			}
+			if (te instanceof TileEntityElectricMFE) {
 
-    if (te instanceof TileEntityMolecularTransformer) {
-      return new GuiMolecularTransformer(new ContainerBaseMolecular(player, (TileEntityMolecularTransformer) te));
-    }
-    if (player.getHeldItem() != Ic2Items.electricWrench) {
-      if (te instanceof TileEntityMultiMachine) {
-        return ((TileEntityMultiMachine) te).getGui(player, false);
-      }
+				return new GuiElectricBlock(new ContainerElectricBlock(player, (TileEntityElectricMFE) te));
+			}
 
-      if (player.getHeldItem() != Ic2Items.electricWrench) {
-        if (te instanceof TileEntityMultiMachine1) {
-          return ((TileEntityMultiMachine1) te).getGui(player, false);
-        }
-      }
-      if (player.getHeldItem() != Ic2Items.electricWrench) {
-        if (te instanceof TileEntityMultiMatter) {
-          return ((TileEntityMultiMatter) te).getGui(player, false);
-        }
-      }
-      if (te instanceof TileEntityAlloySmelter)
-      {
-        return new GuiAlloySmelter(new ContainerStandardMachine(player, (TileEntityAlloySmelter) te));
-      }
-      if (te instanceof TileEntityElectricMFE)
-      {
+			if (te instanceof TileEntityElectricBlock) {
 
-        return new GuiElectricBlock(new ContainerElectricBlock(player, (TileEntityElectricMFE) te));
-      }
+				return new GuiElectricBlock(new ContainerElectricBlock(player, (TileEntityElectricBlock) te));
+			}
+			if (te instanceof TileneutronGenerator) {
 
-      if (te instanceof TileEntityElectricBlock)
-      {
+				return new GuiNeutronGenerator(new ContainerNeutrniumGenerator(player, (TileneutronGenerator) te));
+			}
+			if (te instanceof TileEntityGenerationMicrochip) {
+				return new GuiGenerationMicrochip(
+						new ContainerBaseGenerationChipMachine(player, (TileEntityGenerationMicrochip) te));
+			}
+			if (te instanceof TileEntityChargepadBlock) {
 
-        return new GuiElectricBlock(new ContainerElectricBlock(player, (TileEntityElectricBlock) te));
-      }
-      if (te instanceof TileneutronGenerator)
-      {
+				return new GuiChargepadBlock(new ContainerChargepadBlock(player, (TileEntityChargepadBlock) te));
+			}
+			if (te instanceof TileEntityGenerationStone)
+				return new GuiGenStone(new ContainerGenStone(player, (TileEntityGenerationStone) te));
+			if (te instanceof TileEntityQuantumQuarry)
+				return new GuiQuantumQuarry(new ContainerQuantumQuarry(player, (TileEntityQuantumQuarry) te));
+		}
+		}else {
+			if (!(graviSuite.gettrue(player)) ) {
+				if (te instanceof TileEntitySolarPanel) {
 
-        return new GuiMatter(new ContainerNeutrniumGenerator (player, (TileneutronGenerator) te));
-      }
-      if (te instanceof TileEntityGenerationMicrochip)
-      {
-        return new GuiGenerationMicrochip(new ContainerBaseGenerationChipMachine(player, (TileEntityGenerationMicrochip) te));
-      }
-      if (te instanceof TileEntityChargepadBlock)
-      {
+					return new GuiSolarPanels(new ContainerSolarPanels(player, (TileEntitySolarPanel) te));
+				}
+				if (te instanceof TileSintezator) {
+					return new GUISintezator(new ContainerSinSolarPanel(player, (TileSintezator) te));
+				}
 
-        return new GuiChargepadBlock(new ContainerChargepadBlock(player, (TileEntityChargepadBlock) te));
-      }
-      if (te instanceof TileEntityGenerationStone)
-        return new GuiGenStone(new ContainerGenStone(player, (TileEntityGenerationStone) te));
-      if (te instanceof TileEntityQuantumQuarry)
-        return new GuiQuantumQuarry(new ContainerQuantumQuarry(player, (TileEntityQuantumQuarry) te));
-    }
-    return null;
-  }
+				if (te instanceof TileEntityMolecularTransformer) {
+					return new GuiMolecularTransformer(new ContainerBaseMolecular(player, (TileEntityMolecularTransformer) te));
+				}
+				if (te instanceof TileEntityMultiMachine) {
+					return ((TileEntityMultiMachine) te).getGui(player, false);
+				}
 
+				if (player.getHeldItem() != Ic2Items.electricWrench) {
+					if (te instanceof TileEntityMultiMachine1) {
+						return ((TileEntityMultiMachine1) te).getGui(player, false);
+					}
+				}
+				if (player.getHeldItem() != Ic2Items.electricWrench) {
+					if (te instanceof TileEntityMultiMatter) {
+						return ((TileEntityMultiMatter) te).getGui(player, false);
+					}
+				}
+				if (te instanceof TileEntityAlloySmelter) {
+					return new GuiAlloySmelter(new ContainerStandardMachine(player, (TileEntityAlloySmelter) te));
+				}
+				if (te instanceof TileEntityElectricMFE) {
 
+					return new GuiElectricBlock(new ContainerElectricBlock(player, (TileEntityElectricMFE) te));
+				}
 
-  @Override
-  public int addArmor(final String armorName) {
-    return RenderingRegistry.addNewArmourRendererPrefix(armorName);
-  }
-  public int getRenderId(String name) {
-    return ((RenderBlock)this.renders.get(name)).getRenderId();
-  }
+				if (te instanceof TileEntityElectricBlock) {
+
+					return new GuiElectricBlock(new ContainerElectricBlock(player, (TileEntityElectricBlock) te));
+				}
+				if (te instanceof TileneutronGenerator) {
+
+					return new GuiNeutronGenerator(new ContainerNeutrniumGenerator(player, (TileneutronGenerator) te));
+				}
+				if (te instanceof TileEntityGenerationMicrochip) {
+					return new GuiGenerationMicrochip(
+							new ContainerBaseGenerationChipMachine(player, (TileEntityGenerationMicrochip) te));
+				}
+				if (te instanceof TileEntityChargepadBlock) {
+
+					return new GuiChargepadBlock(new ContainerChargepadBlock(player, (TileEntityChargepadBlock) te));
+				}
+				if (te instanceof TileEntityGenerationStone)
+					return new GuiGenStone(new ContainerGenStone(player, (TileEntityGenerationStone) te));
+				if (te instanceof TileEntityQuantumQuarry)
+					return new GuiQuantumQuarry(new ContainerQuantumQuarry(player, (TileEntityQuantumQuarry) te));
+			
+		}}
+		return null;
+	}
+
+	public void preint() {
+		if (Loader.isModLoaded("AdvancedSolarPanel"))
+			throwInitException(new LoaderException(
+					"SuperSolarPanels is incompatible with Advanced Solar Panels.Please delete Advanced solar Panels"));
+		BlocksItems.init();
+		integration();
+		initCore();
+		GenOre.init();
+		Register.register();
+		Register.registertiles();
+		BlocksItems.registermetadata();
+		RegisterOreDict.oredict();
+		registerRenderers();
+		load();
+
+	}
+
+	@Override
+	public int addArmor(final String armorName) {
+		return RenderingRegistry.addNewArmourRendererPrefix(armorName);
+	}
+
+	public int getRenderId(String name) {
+		return ((RenderBlock) this.renders.get(name)).getRenderId();
+	}
 }
