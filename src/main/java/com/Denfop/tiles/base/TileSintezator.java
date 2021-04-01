@@ -11,13 +11,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.StatCollector;
 import net.minecraft.inventory.Container;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagCompound;
-import ic2.api.item.ElectricItem;
-import ic2.api.item.IElectricItem;
 import ic2.api.energy.event.EnergyTileUnloadEvent;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.Event;
@@ -25,7 +22,6 @@ import ic2.api.energy.event.EnergyTileLoadEvent;
 import net.minecraftforge.common.MinecraftForge;
 import java.util.List;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import java.util.Random;
 

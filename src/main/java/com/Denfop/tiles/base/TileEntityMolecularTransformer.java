@@ -1,6 +1,10 @@
 package com.Denfop.tiles.base;
 
-import cpw.mods.fml.common.Loader;
+import com.Denfop.Config;
+import com.Denfop.SSPItem;
+import com.Denfop.api.Recipes;
+import com.Denfop.container.ContainerBaseMolecular;
+import com.Denfop.gui.GuiMolecularTransformer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.network.INetworkClientTileEntityEventListener;
@@ -10,7 +14,6 @@ import ic2.api.recipe.RecipeInputItemStack;
 import ic2.api.recipe.RecipeInputOreDict;
 import ic2.api.recipe.RecipeOutput;
 import ic2.core.BasicMachineRecipeManager;
-import ic2.core.IC2;
 import ic2.core.Ic2Items;
 import ic2.core.block.invslot.InvSlotProcessable;
 import ic2.core.block.invslot.InvSlotProcessableGeneric;
@@ -38,7 +41,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.StatCollector;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class TileEntityMolecularTransformer extends TileEntityBaseMolecular

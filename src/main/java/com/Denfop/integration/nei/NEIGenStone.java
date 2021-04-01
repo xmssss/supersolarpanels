@@ -6,8 +6,6 @@ import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeOutput;
-import ic2.core.IC2;
-import ic2.core.block.machine.gui.GuiSolidCanner;
 import ic2.core.util.StackUtil;
 import java.awt.Rectangle;
 import java.util.ArrayList;

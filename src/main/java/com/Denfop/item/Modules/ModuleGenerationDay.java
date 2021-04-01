@@ -5,7 +5,6 @@ import java.util.List;
 import com.Denfop.Config;
 import com.Denfop.IUCore;
 import com.Denfop.api.module.IModulGenDay;
-import com.Denfop.api.module.IModulOutput;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;

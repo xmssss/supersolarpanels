@@ -2,13 +2,11 @@ package com.Denfop.tiles.Mechanism;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ic2.api.recipe.IMachineRecipeManager;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeInputItemStack;
 import ic2.api.recipe.RecipeInputOreDict;
 import ic2.core.Ic2Items;
 import ic2.core.block.invslot.InvSlotProcessable;
-import ic2.core.block.invslot.InvSlotProcessableGeneric;
 import ic2.core.upgrade.UpgradableProperty;
 import java.util.EnumSet;
 import java.util.List;

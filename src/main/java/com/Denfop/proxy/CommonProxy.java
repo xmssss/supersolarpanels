@@ -8,20 +8,28 @@ import com.Denfop.Recipes.CentrifugeRecipe;
 import com.Denfop.Recipes.CompressorRecipe;
 import com.Denfop.Recipes.FurnaceRecipes;
 import com.Denfop.Recipes.MaceratorRecipe;
+import com.Denfop.Register.Register;
+import com.Denfop.Register.RegisterOreDict;
+import com.Denfop.World.GenOre;
+import com.Denfop.block.Base.BlocksItems;
+import com.Denfop.events.EventDarkQuantumSuitEffect;
 import com.Denfop.events.SSPEventHandler;
 import com.Denfop.events.DE.SSPDEEventHandler;
 import com.Denfop.events.DE_MF.SSPDEMFEventHandler;
 import com.Denfop.events.DE_MF_EP.SSPMFDEEventHandler;
 import com.Denfop.events.EP.SSPEPEventHandler;
 import com.Denfop.events.EP_DE.SSPDEEPEventHandler;
+import com.Denfop.events.EventDarkQuantumSuitEffect;
 import com.Denfop.events.MF.SSPMFEventHandler;
 import com.Denfop.events.MF_EP.SSPMPMFEventHandler;
+import com.Denfop.events.SSPEventHandler;
 import com.Denfop.integration.Avaritia.AvaritiaIntegration;
 import com.Denfop.integration.Botania.BotaniaIntegration;
 import com.Denfop.integration.DE.DraconicIntegration;
 import com.Denfop.integration.crafttweaker.CTCore;
 import com.Denfop.render.Cable.RenderBlock;
 import com.Denfop.tiles.Mechanism.*;
+
 import com.Denfop.tiles.NeutroniumGenerator.TileneutronGenerator;
 import com.Denfop.tiles.base.TileEntityChargepadBlock;
 import com.Denfop.tiles.base.TileEntityElectricBlock;
@@ -33,8 +41,9 @@ import com.Denfop.tiles.base.TileEntitySolarPanel;
 import com.Denfop.tiles.base.TileSintezator;
 import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFE;
 import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFSU;
-import com.Denfop.utils.GraviSuite;
+import com.Denfop.utils.graviSuite;
 
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.LoaderException;
@@ -117,7 +126,7 @@ public class CommonProxy implements IGuiHandler {
 			return null;
 		}
 		if(!Loader.isModLoaded("GraviSuite")) {
-			if (!(GraviSuite.gettrue1(player))) {
+			if (!(graviSuite.gettrue1(player))) {
 		if (te instanceof TileEntitySolarPanel) {
 			return ((TileEntitySolarPanel) te).getGuiContainer(player);
 		}
@@ -194,7 +203,7 @@ public class CommonProxy implements IGuiHandler {
 		if (te instanceof TileEntityQuantumQuarry)
 			return ((TileEntityQuantumQuarry) te).getGuiContainer(player);
 			}}else {
-				if (!(GraviSuite.gettrue(player)) ) {
+				if (!(graviSuite.gettrue(player)) ) {
 					if (te instanceof TileEntitySolarPanel) {
 						return ((TileEntitySolarPanel) te).getGuiContainer(player);
 					}
@@ -350,5 +359,16 @@ public class CommonProxy implements IGuiHandler {
 		integration();
 		initCore();
 	}
+
+}
+
+    if(Config.BotaniaLoaded && Config.Botania) {
+      BotaniaIntegration.init();
+    }
+  }
+
+  public void check() {}
+
+
 
 }

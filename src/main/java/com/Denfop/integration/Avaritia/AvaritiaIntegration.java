@@ -6,16 +6,12 @@ import com.Denfop.integration.Botania.TileEntityElementumSolarPanel;
 import com.Denfop.integration.Botania.TileEntityManasteelSolarPanel;
 import com.Denfop.integration.DE.ItemDESolarPanel;
 import com.Denfop.integration.DE.SSPDEItem;
-import com.Denfop.integration.DE.blockDESolarPanel;
-import com.Denfop.tiles.base.TileEntityMolecularTransformer;
-import com.brandon3055.draconicevolution.common.ModItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.avaritia.items.LudicrousItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 
 public class AvaritiaIntegration {
 

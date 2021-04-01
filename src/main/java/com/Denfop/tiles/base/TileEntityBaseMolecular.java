@@ -1,5 +1,9 @@
 package com.Denfop.tiles.base;
 
+import com.Denfop.container.ContainerBaseMolecular;
+import cpw.mods.fml.common.FMLLog;
+import ic2.api.energy.event.EnergyTileLoadEvent;
+import ic2.api.energy.event.EnergyTileUnloadEvent;
 import ic2.api.network.INetworkTileEntityEventListener;
 import ic2.api.recipe.RecipeOutput;
 import ic2.core.ContainerBase;
@@ -10,18 +14,13 @@ import ic2.core.block.invslot.InvSlotOutput;
 import ic2.core.block.invslot.InvSlotProcessable;
 import ic2.core.block.invslot.InvSlotUpgrade;
 import ic2.core.network.NetworkManager;
-import ic2.core.upgrade.IUpgradableBlock;
-import ic2.core.upgrade.IUpgradeItem;
-import java.util.List;
-
-import com.Denfop.container.ContainerBaseMolecular;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.StatCollector;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
+import org.apache.logging.log4j.Level;
 
 public abstract class TileEntityBaseMolecular extends TileEntityElectricMachine
 		implements IHasGui, INetworkTileEntityEventListener {

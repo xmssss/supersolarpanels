@@ -5,9 +5,7 @@ import java.util.List;
 import com.Denfop.Constants;
 import com.Denfop.IUCore;
 import com.Denfop.api.inv.IInvSlotProcessableMulti;
-import com.Denfop.container.ContainerMultiMachine;
 import com.Denfop.container.ContainerMultiMachine1;
-import com.Denfop.tiles.base.TileEntityMultiMachine;
 import com.Denfop.tiles.base.TileEntityMultiMachine1;
 
 import cpw.mods.fml.relauncher.Side;

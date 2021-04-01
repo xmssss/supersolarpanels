@@ -10,7 +10,6 @@ import com.Denfop.IUCore;
 import com.Denfop.utils.NBTData;
 import com.aesireanempire.eplus.inventory.ContainerEnchantTable;
 
-import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import ic2.core.Ic2Items;
 import net.minecraft.enchantment.EnchantmentHelper;

@@ -9,7 +9,6 @@ import com.Denfop.tiles.base.TileEntityMultiMachine;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ic2.core.GuiIC2;
 import ic2.core.IC2;
 import ic2.core.Ic2Items;
 import ic2.core.network.NetworkManager;
@@ -18,7 +17,6 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 @SideOnly(Side.CLIENT)

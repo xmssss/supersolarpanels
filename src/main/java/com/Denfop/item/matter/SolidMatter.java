@@ -11,7 +11,6 @@ import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.ArrayList;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.StatCollector;
 
 import java.util.List;
 

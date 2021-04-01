@@ -9,9 +9,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.core.ContainerBase;
 import ic2.core.GuiIC2;
-import ic2.core.IC2;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 
 @SideOnly(Side.CLIENT)
 public class GuiGenerationMicrochip extends GuiIC2 {

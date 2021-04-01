@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
 public class TileEntityChargepadMFES extends TileEntityChargepadBlock {
+
   public TileEntityChargepadMFES() {
 	  super(Config.tier3_MFSU, Config.enegry1, Config.storage1);
   }

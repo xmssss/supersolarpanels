@@ -1,33 +1,24 @@
 package com.Denfop.block.AdminPanel;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.tile.IWrenchable;
 
-import java.util.List;
 import java.util.Random;
 
 import com.Denfop.IUCore;
 import com.Denfop.proxy.ClientProxy;
 import com.Denfop.tiles.base.TileEntityAdminSolarPanel;
 import com.Denfop.tiles.base.TileEntityBase;
-import com.Denfop.tiles.base.TileEntityElectricBlock;
 import com.Denfop.tiles.base.TileEntitySolarPanel;
-import com.Denfop.tiles.base.TileSintezator;
-import com.Denfop.tiles.overtimepanel.TileEntityAdvancedSolarPanel;
-import com.Denfop.utils.NBTData;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;

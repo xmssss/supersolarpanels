@@ -1,6 +1,5 @@
 package com.Denfop.item.armour;
 
-import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.Optional.Method;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -13,14 +12,10 @@ import ic2.api.item.IItemHudInfo;
 import ic2.api.item.IMetalArmor;
 import ic2.core.IC2;
 import ic2.core.IC2Potion;
-import ic2.core.Ic2Items;
 import ic2.core.audio.AudioSource;
-import ic2.core.audio.PositionSpec;
 import ic2.core.init.MainConfig;
-import ic2.core.item.ItemTinCan;
-import ic2.core.item.armor.ItemArmorElectric;
 import ic2.core.util.ConfigUtil;
-import ic2.core.util.StackUtil;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,7 +31,6 @@ import com.Denfop.utils.ModUtils;
 import com.Denfop.utils.NBTData;
 import com.brandon3055.draconicevolution.common.utills.IConfigurableItem;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -53,7 +47,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;

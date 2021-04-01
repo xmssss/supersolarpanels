@@ -13,12 +13,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-public class ItemReactorprotonRod extends ItemReactorBase {
+public class ItemReactorproton extends ItemReactorBase {
 	private int time;
 	private int heat;
 	private float power;
 
-	public ItemReactorprotonRod(String internalName, int cells, int time, int heat, float power) {
+	public ItemReactorproton(String internalName, int cells, int time, int heat, float power) {
 		super(internalName, cells, time);
 		this.time = time;
 		this.heat = heat;

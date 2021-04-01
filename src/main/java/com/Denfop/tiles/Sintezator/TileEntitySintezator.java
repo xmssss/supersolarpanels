@@ -3,8 +3,6 @@ package com.Denfop.tiles.Sintezator;
 import com.Denfop.IUCore;
 import com.Denfop.tiles.base.TileSintezator;
 
-import net.minecraft.util.AxisAlignedBB;
-
 
 public class TileEntitySintezator extends TileSintezator 
 {
