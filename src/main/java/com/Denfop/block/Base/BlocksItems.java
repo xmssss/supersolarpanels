@@ -1,10 +1,19 @@
 package com.Denfop.block.Base;
 
+import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
+import cpw.mods.fml.common.registry.GameData;
+import cpw.mods.fml.common.registry.GameRegistry;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+
 import com.Denfop.Config;
 import com.Denfop.IUItem;
 import com.Denfop.IUCore;
-import com.Denfop.block.Chargepad.BlockChargepad;
-import com.Denfop.block.cable.BlockCable;
 import com.Denfop.block.mechanism.BlockBaseMachine;
 import com.Denfop.fluid.Ic2Fluid;
 import com.Denfop.integration.Botania.BotaniaIntegration;
@@ -13,8 +22,8 @@ import com.Denfop.item.Modules.ItemWirelessModule;
 import com.Denfop.item.Upgrade.ItemUpgradeModule;
 import com.Denfop.item.armour.ItemArmorImprovemedQuantum;
 import com.Denfop.item.base.ItemCable;
-import com.Denfop.item.energy.AdvancedMultiTool;
 import com.Denfop.item.energy.ItemBattery;
+import com.Denfop.item.energy.ItemSpectralSaber;
 import com.Denfop.item.energy.ItemQuantumSaber;
 import com.Denfop.item.energy.AdvancedMultiTool;
 import com.Denfop.item.reactor.ItemRadiationToriyRod;
@@ -22,9 +31,7 @@ import com.Denfop.item.reactor.ItemRadioactive;
 import com.Denfop.item.reactor.ItemReactorHeatStorage;
 import com.Denfop.item.reactor.ItemReactorprotonRod;
 import com.Denfop.item.rotor.ItemAdvancedWindRotor;
-import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
-import cpw.mods.fml.common.registry.GameData;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -34,8 +41,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-
-import java.util.*;
 
 public class BlocksItems {
 	public static void init() {
@@ -123,13 +128,13 @@ public class BlocksItems {
 				(Item) new ItemRadioactive("reactorDepletedprotonQuad", 10, 100));
 		IUItem.reactorDepletedprotoneit = new ItemStack(
 				(Item) new ItemRadioactive("reactorDepletedprotoneit", 10, 100));
-		IUItem.reactorprotonSimple = new ItemStack((Item) new ItemReactorproton("reactorprotonSimple", 1,
+		IUItem.reactorprotonSimple = new ItemStack((Item) new ItemReactorprotonRod("reactorprotonSimple", 1,
 				Config.ProtonRodCells, Config.ProtonRodHeat, Config.ProtonPower));
-		IUItem.reactorprotonDual = new ItemStack((Item) new ItemReactorproton("reactorprotonDual", 2,
+		IUItem.reactorprotonDual = new ItemStack((Item) new ItemReactorprotonRod("reactorprotonDual", 2,
 				Config.ProtonRodCells, Config.ProtonRodHeat, Config.ProtonPower));
-		IUItem.reactorprotonQuad = new ItemStack((Item) new ItemReactorproton("reactorprotonQuad", 4,
+		IUItem.reactorprotonQuad = new ItemStack((Item) new ItemReactorprotonRod("reactorprotonQuad", 4,
 				Config.ProtonRodCells, Config.ProtonRodHeat, Config.ProtonPower));
-		IUItem.reactorprotoneit = new ItemStack((Item) new ItemReactorproton("reactorprotoneit", 8,
+		IUItem.reactorprotoneit = new ItemStack((Item) new ItemReactorprotonRod("reactorprotoneit", 8,
 				Config.ProtonRodCells, Config.ProtonRodHeat, Config.ProtonPower));
 		IUItem.proton = new ItemRadioactive("proton", 150, 100);
 		IUItem.toriy = new ItemRadioactive("toriy", 150, 100);

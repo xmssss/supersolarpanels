@@ -1,7 +1,6 @@
 package com.Denfop.block.Chargepad;
 
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.item.ElectricItem;
@@ -11,6 +10,10 @@ import ic2.api.tile.IWrenchable;
 import ic2.core.IC2;
 import ic2.core.block.TileEntityBlock;
 import ic2.core.util.Util;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -33,12 +36,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import org.apache.commons.lang3.mutable.MutableObject;
 import com.Denfop.IUCore;
-import com.Denfop.item.Modules.AdditionModule;
-import com.Denfop.item.base.ItemElectricBlock;
 import com.Denfop.proxy.ClientProxy;
-import com.Denfop.tiles.base.*;
 import com.Denfop.tiles.base.TileEntityChargepadBlock;
 import com.Denfop.tiles.base.TileEntityElectricBlock;
 import com.Denfop.tiles.wiring.Chargepad.*;
@@ -46,17 +45,11 @@ import com.Denfop.tiles.wiring.Chargepad.TileEntityChargepadBatBox;
 import com.Denfop.tiles.wiring.Chargepad.TileEntityChargepadCESU;
 import com.Denfop.tiles.wiring.Chargepad.TileEntityChargepadMFE;
 import com.Denfop.tiles.wiring.Chargepad.TileEntityChargepadMFSU;
-import com.Denfop.tiles.wiring.Storage.*;
-import com.Denfop.tiles.wiring.Storage.TileEntityElectricBatBox;
-import com.Denfop.tiles.wiring.Storage.TileEntityElectricCESU;
-import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFE;
-import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFSU;
-import com.Denfop.tiles.wiring.Storage.*;
 import com.Denfop.utils.ModUtils;
 import com.Denfop.utils.NBTData;
-import com.Denfop.utils.graviSuite;
+import com.Denfop.utils.GraviSuite;
 
-;
+import cofh.api.energy.IEnergyContainerItem;;
 
 public class BlockChargepad extends BlockContainer {
 	public BlockChargepad() {
@@ -428,10 +421,10 @@ public class BlockChargepad extends BlockContainer {
 			final TileEntity tileentity = world.getTileEntity(x, y, z);
 			if (tileentity != null) {
 				if(!Loader.isModLoaded("GraviSuite")) {
-					if(graviSuite.gettrue1(entityPlayer)) 
+					if(GraviSuite.gettrue1(entityPlayer))
 						return false;
 					}else 
-						if(graviSuite.gettrue(entityPlayer)) 
+						if(GraviSuite.gettrue(entityPlayer))
 							return false;
 				if (world.getTileEntity(x, y, z) instanceof TileEntityElectricBlock) {
 					TileEntityElectricBlock tile = (TileEntityElectricBlock) world.getTileEntity(x, y, z);

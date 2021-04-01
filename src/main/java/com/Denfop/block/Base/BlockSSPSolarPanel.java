@@ -2,6 +2,11 @@ package com.Denfop.block.Base;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import ic2.api.item.IC2Items;
+import ic2.api.tile.IWrenchable;
+import ic2.core.Ic2Items;
+import ic2.core.init.MainConfig;
+import ic2.core.util.ConfigUtil;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,6 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.inventory.IInventory;
@@ -23,6 +29,7 @@ import com.Denfop.item.Modules.ModuleType;
 import com.Denfop.item.Modules.AdditionModule;
 import com.Denfop.proxy.ClientProxy;
 import com.Denfop.tiles.base.TileEntityBase;
+import com.Denfop.tiles.base.TileEntityElectricBlock;
 import com.Denfop.tiles.base.TileEntitySolarPanel;
 import com.Denfop.tiles.base.TileSintezator;
 import com.Denfop.tiles.overtimepanel.TileAdminSolarPanel;
@@ -39,6 +46,7 @@ import com.Denfop.utils.NBTData;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -47,6 +55,7 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.ITileEntityProvider;
 
 public class BlockSSPSolarPanel extends BlockContainer {
 	public boolean qgActive;

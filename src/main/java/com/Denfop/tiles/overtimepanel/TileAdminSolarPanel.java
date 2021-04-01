@@ -5,6 +5,7 @@ import com.Denfop.Config;
 import com.Denfop.IUCore;
 import com.Denfop.tiles.base.TileEntitySolarPanel;
 
+import net.minecraft.util.AxisAlignedBB;
 
 public class TileAdminSolarPanel extends TileEntitySolarPanel {
 	public TileAdminSolarPanel() {

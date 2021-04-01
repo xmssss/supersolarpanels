@@ -6,6 +6,7 @@ import com.Denfop.IUItem;
 import com.Denfop.block.AdminPanel.Adminsolarpanel;
 import com.Denfop.block.AdminPanel.ItemAdminSolarPanel;
 import com.Denfop.block.Base.BlockElectric;
+import com.Denfop.block.Base.BlockSSP;
 import com.Denfop.block.Base.BlockSSPSolarPanel;
 import com.Denfop.block.Chargepad.BlockChargepad;
 import com.Denfop.block.Chargepad.ItemBlockChargepad;
@@ -25,10 +26,7 @@ import com.Denfop.item.Machina.ItemMoreMachine2;
 import com.Denfop.item.Modules.QuarryModule;
 import com.Denfop.item.RadionBlock.ItemToriyOre;
 import com.Denfop.item.armour.ItemSolarPanelHelmet;
-import com.Denfop.item.base.ItemBlockIC2;
-import com.Denfop.item.base.ItemElectricBlock;
-import com.Denfop.item.base.ItemSSPSolarPanel;
-import com.Denfop.item.base.SSPItemBase;
+import com.Denfop.item.base.*;
 import com.Denfop.item.block.ItemBlockOre;
 import com.Denfop.item.energy.EnergyAxe;
 import com.Denfop.item.energy.EnergyPickaxe;
@@ -38,18 +36,21 @@ import com.Denfop.item.reactor.ItemRadioactive;
 import com.Denfop.tiles.Mechanism.*;
 import com.Denfop.tiles.NeutroniumGenerator.TileneutronGenerator;
 import com.Denfop.tiles.Sintezator.TileEntitySintezator;
-import com.Denfop.tiles.base.TileEntityAdminSolarPanel;
-import com.Denfop.tiles.base.TileEntityCable;
-import com.Denfop.tiles.base.TileEntityMolecularTransformer;
-import com.Denfop.tiles.base.TileRadioation;
+import com.Denfop.tiles.base.*;
 import com.Denfop.tiles.overtimepanel.*;
 import com.Denfop.tiles.wiring.Chargepad.*;
 import com.Denfop.tiles.wiring.Storage.*;
+import com.Denfop.utils.NBTData;
+import com.Denfop.tiles.wiring.Storage.*;
+
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 
 public class Register {
 	public static void register() {

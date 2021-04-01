@@ -23,6 +23,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.common.item.ModItems;
+import vazkii.botania.common.item.material.ItemManaResource;
 import vazkii.botania.common.lib.LibOreDict;
 
 import ic2.api.recipe.IRecipeInput;

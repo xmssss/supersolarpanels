@@ -38,38 +38,38 @@ public abstract class TileEntityMultiMachine1 extends TileEntityElectricMachine 
 	protected double[] guiProgress;
 
 	public final int defaultTier, defaultEnergyStorage, defaultOperationsPerTick, defaultEnergyConsume;
-	public int expstorage = 0;
+public int expstorage = 0;
 	public int operationLength, operationsPerTick, sizeWorkingSlot, energyConsume;
 
 	public AudioSource audioSource;
 
 	/**
-	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	 * Инвентарь слотов для обработки и поиска крафтов в заданих слотах
 	 */
 	public IInvSlotProcessableMulti inputSlots;
 
 	/**
-	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	 * Инвентарь выходних слотов
 	 */
 	public final InvSlotOutput outputSlots;
 
 	/**
-	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	 * Инвентарь улучшений механизма
 	 */
 	public final InvSlotUpgrade upgradeSlot;
 	public int expmaxstorage;
 
 	/**
-	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ TileEntity пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
-	 * пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 1
+	 * Конструктор обычного мульти слотного TileEntity с дефолтним значением уровня
+	 * приема энергии 1
 	 */
 	public TileEntityMultiMachine1() {
 		this(1);
 	}
 
 	/**
-	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ TileEntity пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-	 * пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	 * Конструктор обычного мульти слотного TileEntity с указанием уровня дефолтного
+	 * уровня приема энергии
 	 */
 	public TileEntityMultiMachine1(int aDefaultTier) {
 		super(1, 1, 1);
@@ -105,7 +105,7 @@ public abstract class TileEntityMultiMachine1 extends TileEntityElectricMachine 
 	}
 
 	/**
-	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ GUI
+	 * Получить текущий прогресс для отображение в GUI
 	 * 
 	 * @param slotId
 	 * @return
@@ -199,10 +199,10 @@ public abstract class TileEntityMultiMachine1 extends TileEntityElectricMachine 
 	}
 
 	/**
-	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	 * Осуществляет последный тик крафта, для выдачи процесса крафта
 	 * 
-	 * @param slotId пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
-	 * @param output пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	 * @param slotId какой слот производит крафт
+	 * @param output выход крафта
 	 */
 	public void operate(int slotId, RecipeOutput output) {
 		for (int i = 0; i < this.operationsPerTick; i++) {
@@ -215,10 +215,10 @@ public abstract class TileEntityMultiMachine1 extends TileEntityElectricMachine 
 	}
 
 	/**
-	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	 * Последная операция по выдачи предмета
 	 * 
-	 * @param slotId        пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
-	 * @param processResult пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	 * @param slotId        какой слот производит крафт
+	 * @param processResult список предметов результата
 	 */
 	public void operateOnce(int slotId, List<ItemStack> processResult) {
 		this.inputSlots.consume(slotId);
@@ -229,9 +229,9 @@ public abstract class TileEntityMultiMachine1 extends TileEntityElectricMachine 
 		    return 8;
 		  }
 	/**
-	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	 * Возращает крафт если в слотах ожидания есть нужный предмет
 	 * 
-	 * @param slotId пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	 * @param slotId какой слот проверяется
 	 * @return object
 	 */
 	
@@ -259,7 +259,7 @@ public abstract class TileEntityMultiMachine1 extends TileEntityElectricMachine 
 	}
 
 	/**
-	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	 * Название звука старта/работы машинки
 	 * 
 	 * @return
 	 */
@@ -268,8 +268,8 @@ public abstract class TileEntityMultiMachine1 extends TileEntityElectricMachine 
 	}
 
 	/**
-	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
-	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
+	 * Название звука ошибки машинки (Например: кто-то забрал из входного слота
+	 * предметы, а производился процесс)
 	 * 
 	 * @return
 	 */
@@ -309,14 +309,14 @@ public abstract class TileEntityMultiMachine1 extends TileEntityElectricMachine 
 	}
 	
 	/**
-	 * пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	 * Буфер энергии
 	 */
 	public double getEnergy() {
 		return this.energy;
 	}
 
 	/**
-	 * пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	 * Использовать энергию
 	 */
 	public boolean useEnergy(double amount) {
 		if (this.energy >= amount) {

@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import ic2.core.Ic2Items;
 import ic2.core.util.StackUtil;
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;

@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 
 import com.Denfop.Config;
 import com.Denfop.IUItem;
-import com.Denfop.IUCore;
 import com.Denfop.Recipes.BasicRecipe;
 import com.Denfop.Recipes.CannerRecipe;
 import com.Denfop.Recipes.CentrifugeRecipe;
@@ -19,24 +18,22 @@ import com.Denfop.Register.RegisterOreDict;
 import com.Denfop.World.GenOre;
 import com.Denfop.block.Base.BlocksItems;
 import com.Denfop.container.*;
+import com.Denfop.events.EventDarkQuantumSuitEffect;
+import com.Denfop.events.SSPEventHandler;
 import com.Denfop.events.DE.SSPDEEventHandler;
 import com.Denfop.events.DE_MF.SSPDEMFEventHandler;
 import com.Denfop.events.DE_MF_EP.SSPMFDEEventHandler;
 import com.Denfop.events.EP.SSPEPEventHandler;
 import com.Denfop.events.EP_DE.SSPDEEPEventHandler;
-import com.Denfop.events.EventDarkQuantumSuitEffect;
 import com.Denfop.events.MF.SSPMFEventHandler;
 import com.Denfop.events.MF_EP.SSPMPMFEventHandler;
-import com.Denfop.events.SSPEventHandler;
 import com.Denfop.gui.*;
 import com.Denfop.handler.EntityStreak;
 import com.Denfop.integration.Avaritia.AvaritiaIntegration;
 import com.Denfop.integration.Botania.BotaniaIntegration;
 import com.Denfop.integration.DE.DraconicIntegration;
-import com.Denfop.integration.DE.RenderArmor;
-import com.Denfop.integration.DE.RenderBowModel;
-import com.Denfop.integration.DE.RenderTool;
 import com.Denfop.integration.crafttweaker.CTCore;
+import com.Denfop.render.EntityRendererStreak;
 import com.Denfop.render.Cable.RenderBlock;
 import com.Denfop.render.Cable.RenderBlockCable;
 import com.Denfop.render.Cable.RenderBlockWall;
@@ -47,10 +44,18 @@ import com.Denfop.render.tile.TileEntityPanelRender;
 import com.Denfop.tiles.Mechanism.*;
 import com.Denfop.tiles.NeutroniumGenerator.TileneutronGenerator;
 import com.Denfop.tiles.Sintezator.TileEntitySintezator;
-import com.Denfop.tiles.base.*;
+import com.Denfop.tiles.base.TileEntityAdminSolarPanel;
+import com.Denfop.tiles.base.TileEntityChargepadBlock;
+import com.Denfop.tiles.base.TileEntityElectricBlock;
+import com.Denfop.tiles.base.TileEntityMolecularTransformer;
+import com.Denfop.tiles.base.TileEntityMultiMachine;
+import com.Denfop.tiles.base.TileEntityMultiMachine1;
+import com.Denfop.tiles.base.TileEntityMultiMatter;
+import com.Denfop.tiles.base.TileEntitySolarPanel;
+import com.Denfop.tiles.base.TileSintezator;
 import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFE;
 import com.Denfop.utils.Check;
-import com.Denfop.utils.graviSuite;
+import com.Denfop.utils.GraviSuite;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
@@ -60,7 +65,6 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.LoaderException;
 import cpw.mods.fml.common.network.IGuiHandler;
 import ic2.core.Ic2Items;
-import ic2.core.item.tool.ItemToolWrench;
 import modtweaker2.utils.TweakerPlugin;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.creativetab.CreativeTabs;
@@ -69,11 +73,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class ClientProxy extends CommonProxy implements IGuiHandler {
 
@@ -229,7 +230,7 @@ public class ClientProxy extends CommonProxy implements IGuiHandler {
 		}
 		
 		if(!Loader.isModLoaded("GraviSuite")) {
-		if (!(graviSuite.gettrue1(player))) {
+		if (!(GraviSuite.gettrue1(player))) {
 			if (te instanceof TileEntitySolarPanel) {
 
 				return new GuiSolarPanels(new ContainerSolarPanels(player, (TileEntitySolarPanel) te));
@@ -285,7 +286,7 @@ public class ClientProxy extends CommonProxy implements IGuiHandler {
 				return new GuiQuantumQuarry(new ContainerQuantumQuarry(player, (TileEntityQuantumQuarry) te));
 		}
 		}else {
-			if (!(graviSuite.gettrue(player)) ) {
+			if (!(GraviSuite.gettrue(player)) ) {
 				if (te instanceof TileEntitySolarPanel) {
 
 					return new GuiSolarPanels(new ContainerSolarPanels(player, (TileEntitySolarPanel) te));
