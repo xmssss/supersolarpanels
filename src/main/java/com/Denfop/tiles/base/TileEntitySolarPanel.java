@@ -52,6 +52,10 @@ import com.Denfop.integration.GC.MorePlanetsIntegration;
 import com.Denfop.item.Modules.ItemWirelessModule;
 import com.Denfop.item.Modules.ModuleType;
 import com.Denfop.item.Modules.AdditionModule;
+import com.Denfop.item.Modules.BaseModuleGenDay;
+import com.Denfop.item.Modules.BaseModuleGenNight;
+import com.Denfop.item.Modules.BaseModuleOutput;
+import com.Denfop.item.Modules.BaseModuleStorage;
 import com.Denfop.utils.NBTData;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.Event;
@@ -305,19 +309,19 @@ public class TileEntitySolarPanel extends TileEntityBase
 		int genn[];
 		genn = new int[9];
 		for (int i = 0; i < 9; i++) {
-			if (this.chargeSlots[i] != null && this.chargeSlots[i].getItem() instanceof IModulGenDay) {
+			if (this.chargeSlots[i] != null && this.chargeSlots[i].getItem() instanceof BaseModuleGenDay) {
 
-				gend[i] = IModulGenDay.getData(this.chargeSlots[i]).get(0);
+				gend[i] = BaseModuleGenDay.percentday();
 			}
-			if (this.chargeSlots[i] != null && this.chargeSlots[i].getItem() instanceof IModulGenNight) {
-				genn[i] = IModulGenNight.getData(this.chargeSlots[i]).get(0);
+			if (this.chargeSlots[i] != null && this.chargeSlots[i].getItem() instanceof BaseModuleGenNight) {
+				genn[i] = BaseModuleGenNight.percentnight();
 			}
-			if (this.chargeSlots[i] != null && this.chargeSlots[i].getItem() instanceof IModulStorage) {
-				maxstorage1[i] = IModulStorage.getData(this.chargeSlots[i]).get(0);
+			if (this.chargeSlots[i] != null && this.chargeSlots[i].getItem() instanceof BaseModuleStorage) {
+				maxstorage1[i] = BaseModuleStorage.getpercent();
 
 			}
-			if (this.chargeSlots[i] != null && this.chargeSlots[i].getItem() instanceof IModulOutput) {
-				output[i] = IModulOutput.getData(this.chargeSlots[i]).get(0);
+			if (this.chargeSlots[i] != null && this.chargeSlots[i].getItem() instanceof BaseModuleOutput) {
+				output[i] = BaseModuleOutput.getpercent();
 
 			}
 
@@ -924,8 +928,8 @@ public class TileEntitySolarPanel extends TileEntityBase
 		maxstorage1 = new double[9];
 		double maxstorage_dob = 0;
 		for (int j = 0; j < 9; j++) {
-			if (this.chargeSlots[j] != null && this.chargeSlots[j].getItem() instanceof IModulStorage) {
-				maxstorage1[j] = IModulStorage.getData(this.chargeSlots[j]).get(0);
+			if (this.chargeSlots[j] != null && this.chargeSlots[j].getItem() instanceof BaseModuleStorage) {
+				maxstorage1[j] = BaseModuleStorage.getpercent();
 				if (maxstorage1[j] != 0) {
 					maxstorage_dob = maxstorage_dob + maxstorage1[j];
 				}
@@ -1009,7 +1013,12 @@ public class TileEntitySolarPanel extends TileEntityBase
 		NBTTagCompound nbttagcompound = NBTData.getOrCreateNbtData(ret);
 		nbttagcompound.setDouble("storage", this.storage);
 		nbttagcompound.setDouble("storage2", this.storage2);
-
+//
+		nbttagcompound.setDouble("genday", this.genDay);
+		nbttagcompound.setDouble("gennight", this.genNight);
+		nbttagcompound.setDouble("basestorage", this.maxStorage);
+		nbttagcompound.setDouble("output", this.production);
+		nbttagcompound.setDouble("tier", this.tier);
 		return ret;
 	}
 
