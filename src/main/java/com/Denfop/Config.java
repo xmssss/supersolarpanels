@@ -18,7 +18,7 @@ public class Config {
 	public static boolean EnableNetherOres;
 	public static int limit;
 	public static int tier;
-	public static int coefficientrf;
+	public static int convertratio;
 	public static double neutrongenday;
 	public static double neutronGenNight;
 	public static double neutronStorage;
@@ -342,18 +342,17 @@ public class Config {
 	public static int ultraLowPower1;
 	public static boolean promt;
 
-      convertratio = config.get("EU to RF convert ratio", "RF for 1EU", 4).getInt();
 	public static void config(final FMLPreInitializationEvent event) {
 		configFile = event.getSuggestedConfigurationFile();
 		 Configuration config = new Configuration(configFile);
 		try {
 			config.load();
 			
+			convertratio = config.get("general", "coefficient rf", 4).getInt(4);
+				if (convertratio < 1) convertratio = 4;
+
 			expstorage = config.get("Basic Mechanisms", "exp storage", 500).getInt(500);
 			enerycost = config.get("Quantum Querry", "energy consume", 55000).getInt(55000);
-			coefficientrf=config.get("general", "coefficient rf", 4).getInt(4);
-			if(coefficientrf < 1)
-				coefficientrf =4;
 			molecular = config.get("Crafts Molecular Transformer", "Wither Skeleton skull", 4000000D).getDouble(4000000D);
 			molecular1 = config.get("Crafts Molecular Transformer", "Nether Star", 250000000D).getDouble(250000000D);
 			molecular2 = config.get("Crafts Molecular Transformer", "Iridium Ore", 10000000D).getDouble(10000000D);
@@ -660,124 +659,5 @@ public class Config {
 			config.save();
 		}
 	}
-
-      advGenDay = config.get("general", "AdvancedSPGenDay", 10).getInt(10);
-      advGenNight = config.get("general", "AdvancedSPGenNight", 5).getInt(5);
-      advStorage = config.get("general", "AdvancedSPStorage", 3200).getInt(3200);
-      advOutput = config.get("general", "AdvancedSPOutput", 20).getInt(20);
-      hGenDay = config.get("general", "HybrydSPGenDay", 40).getInt(40);
-      hGenNight = config.get("general", "HybrydSPGenNight", 20).getInt(20);
-      hStorage = config.get("general", "HybrydSPStorage", 10000).getInt(10000);
-      hOutput = config.get("general", "HybrydSPOutput", 80).getInt(80);
-      uhGenDay = config.get("general", "UltimateHSPGenDay", 160).getInt(160);
-      uhGenNight = config.get("general", "UltimateHSPGenNight", 80).getInt(80);
-      uhStorage = config.get("general", "UltimateHSPStorage", 100000).getInt(100000);
-      uhOutput = config.get("general", "UltimateHSPOutput", 320).getInt(320);
-      qpGenDay = config.get("general", "QuantumSPGenDay", 640).getInt(640);
-      qpGenNight = config.get("general", "QuantumSPGenNight", 320).getInt(320);
-      qpStorage = config.get("general", "QuantumSPStorage", 200000).getInt(200000);
-      qpOutput = config.get("general", "QuantumSPOutput", 1280).getInt(1280);
-      //
-      TerrasteelRodHeat = config.get("TerrasteelRod", "Heat", 1).getInt(1);
-      TerrasteelRodCells = config.get("TerrasteelRod", "Cells", 20000).getInt(20000);
-      TerrasteelPower = config.get("TerrasteelRod", "Power", 2).getInt(2);
-      //
-      toriyRodHeat = config.get("ToriyRod", "Heat", 1).getInt(1);
-      toriyRodCells = config.get("ToriyRod", "Cells", 10000).getInt(10000);
-      toriyPower = config.get("ToriyRod", "Power", 1).getInt(1);
-      //
-      ProtonRodHeat = config.get("ProtonRod", "Heat", 1).getInt(1);
-      ProtonRodCells = config.get("ProtonRod", "Cells", 30000).getInt(30000);
-      ProtonPower = config.get("ProtonRod", "Power", 4).getInt(4);
-      //
-      Radius = config.get("Iridium rotor", "Radius", 11).getInt(11);
-      durability = config.get("Iridium rotor", "durability", 648000).getInt(648000);
-      efficiency = config.get("Iridium rotor", "efficiency", 2.0F).getInt((int) 2.0F);
-      minWindStrength = config.get("Iridium rotor", "minWindStrength", 25).getInt(25);
-      maxWindStrength = config.get("Iridium rotor", "maxWindStrength", 110).getInt(110);
-      //
-      Radius1 = config.get("Compress Iridium rotor", "Radius", 11).getInt(11);
-      durability1 = config.get("Compress Iridium rotor", "durability", 720000).getInt(720000);
-      efficiency1 = config.get("Compress Iridium rotor", "efficiency", 3.0F).getInt((int) 3.0F);
-      minWindStrength1 = config.get("Compress Iridium rotor", "minWindStrength", 25).getInt(25);
-      maxWindStrength1 = config.get("Compress Iridium rotor", "maxWindStrength", 110).getInt(110);
-      //
-      Radius2 = config.get("Spectral rotor", "Radius", 11).getInt(11);
-      durability2 = config.get("Spectral rotor", "durability", 172800).getInt(172800);
-      efficiency2 = config.get("Spectral rotor", "efficiency", 4.0F).getInt((int) 4.0F);
-      minWindStrength2 = config.get("Spectral rotor", "minWindStrength", 25).getInt(25);
-      maxWindStrength2 = config.get("Spectral rotor", "maxWindStrength", 110).getInt(110);
-      Streak = config.get("Quantum Armor", "Allow Streak", true).getBoolean(true);
-      //
-      Radius5 = config.get("Myphical rotor", "Radius", 11).getInt(11);
-      durability5 = config.get("Myphical rotor", "durability", 345600).getInt(345600);
-      efficiency5 = config.get("Myphical rotor", "efficiency", 5.0F).getInt((int) 5.0F);
-      minWindStrength5 = config.get("Myphical rotor", "minWindStrength", 25).getInt(25);
-      maxWindStrength5 = config.get("Myphical rotor", "maxWindStrength", 110).getInt(110);
-
-      //
-      Radius4 = config.get("Neutron rotor", "Radius", 11).getInt(11);
-      durability4 = config.get("Neutron rotor", "durability", 2764800).getInt(2764800);
-      efficiency4 = config.get("Neutron rotor", "efficiency", 7.0F).getInt((int) 7.0F);
-      minWindStrength4 = config.get("Neutron rotor", "minWindStrength", 25).getInt(25);
-      maxWindStrength4 = config.get("Neutron rotor", "maxWindStrength", 110).getInt(110);
-      //
-      Radius3 = config.get("Photon rotor", "Radius", 11).getInt(11);
-      durability3 = config.get("Photon rotor", "durability", 691200).getInt(691200);
-      efficiency3 = config.get("Photon rotor", "efficiency", 6.0F).getInt((int) 6.0F);
-      minWindStrength3 = config.get("Photon rotor", "minWindStrength", 25).getInt(25);
-      maxWindStrength3 = config.get("Photon rotor", "maxWindStrength", 110).getInt(110);
-      limit = config.get("Unifier panels", "Limit", 2).getInt(2);
-      //
-      manasteelgenday= config.get("Manasteel Solar Panel", "genday", 160).getInt(160);
-      manasteelgennight= config.get("Manasteel Solar Panel", "gennight", 80).getInt(80);
-      manasteelstorage= config.get("Manasteel Solar Panel", "storage", 100000).getInt(100000);
-      manasteeloutput= config.get("Manasteel Solar Panel", "output", 320).getInt(320);
-      manasteeltier= config.get("Manasteel Solar Panel", "tier", 3).getInt(3);
-      //
-      elementiumgenday= config.get("Elementium Solar Panel", "genday", 1280).getInt(1280);
-      elementiumgennight= config.get("Elementium Solar Panel", "gennight", 320).getInt(320);
-      elementiumstorage= config.get("Elementium Solar Panel", "storage", 100000).getInt(100000);
-      elementiumoutput= config.get("Elementium Solar Panel", "output", 2560).getInt(2560);
-      elementiumtier= config.get("Elementium Solar Panel", "tier", 4).getInt(4);
-      //
-      terasteelgenday= config.get("Terasteel Solar Panel", "genday", 10240).getInt(10240);
-      terasteelgennight= config.get("Terasteel Solar Panel", "gennight", 2560).getInt(2560);
-      terasteelstorage= config.get("Terasteel Solar Panel", "storage", 200000).getInt(200000);
-      terasteeloutput= config.get("Terasteel Solar Panel", "output", 20480).getInt(20480);
-      terasteeltier= config.get("Terasteel Solar Panel", "tier", 5).getInt(5);
-      //
-      draconicgenday= config.get("Draconic Solar Panel", "genday", 40).getInt(40);
-      draconicgennight= config.get("Draconic Solar Panel", "gennight", 10).getInt(10);
-      draconicstorage= config.get("Draconic Solar Panel", "storage", 10000).getInt(10000);
-      draconicoutput= config.get("Draconic Solar Panel", "output", 80).getInt(80);
-      draconictier= config.get("Draconic Solar Panel", "tier", 2).getInt(2);
-      //
-      awakenedgenday= config.get("Awakaned Solar Panel", "genday", 163840).getInt(163840);
-      awakenedgennight= config.get("Awakaned Solar Panel", "gennight", 81920).getInt(81920);
-      awakenedstorage= config.get("Awakaned Solar Panel", "storage", 10000000).getInt(10000000);
-      awakenedoutput= config.get("Awakaned Solar Panel", "output", 327680).getInt(327680);
-      awakenedtier= config.get("Awakaned Solar Panel", "tier", 7).getInt(7);
-      //
-      chaosgenday= config.get("Chaos Solar Panel", "genday", 1310720).getInt(1310720);
-      chaosgennight= config.get("Chaos Solar Panel", "gennight", 1310720).getInt(1310720);
-      chaosstorage= config.get("Chaos Solar Panel", "storage", 50000000).getInt(50000000);
-      chaosoutput= config.get("Chaos Solar Panel", "output", 2621440).getInt(2621440);
-      chaostier= config.get("Chaos Solar Panel", "tier", 10).getInt(10);
-      ASP = config.get("Integrestion", "Integrestion Advanced Solar Panels", true).getBoolean(true);
-
-      armor_maxcharge= config.get("Improvemed Quantum Armor", "maxcharge exept Improvemed Quantum Body", 100000000).getInt(100000000);
-      armor_transferlimit= config.get("Improvemed Quantum Armor", "transferlimit", 10000).getInt(10000);
-      armor_tier = config.get("Improvemed Quantum Armor", "tier", 4).getInt(4);
-      armor_maxcharge_body= config.get("Improvemed Quantum Armor", "maxcharge Improvemed Quantum Body", 300000000).getInt(300000000);
-      //
-    }
-    catch (Exception e) {
-      throw new RuntimeException(e);
-    }
-    finally {
-      config.save();
-    }
-  }
 
 }

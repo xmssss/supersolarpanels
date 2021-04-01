@@ -19,6 +19,7 @@ import java.util.List;
 import com.Denfop.Config;
 import com.Denfop.IUCore;
 import com.Denfop.api.IPanel;
+import com.Denfop.integration.Botania.blockBotSolarPanel;
 import com.Denfop.tiles.base.TileEntitySolarPanel;
 import com.Denfop.utils.ModUtils;
 

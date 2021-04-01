@@ -1,7 +1,6 @@
 package com.Denfop.block.Base;
 
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.item.ElectricItem;
@@ -38,22 +37,11 @@ import net.minecraftforge.common.util.ForgeDirection;
 import com.Denfop.IUCore;
 import com.Denfop.proxy.ClientProxy;
 import com.Denfop.tiles.base.TileEntityElectricBlock;
-import com.Denfop.tiles.base.TileEntitySolarPanel;
-import com.Denfop.tiles.overtimepanel.TileAdminSolarPanel;
-import com.Denfop.tiles.overtimepanel.TileEntityAdvancedSolarPanel;
-import com.Denfop.tiles.overtimepanel.TileEntityHybridSolarPanel;
-import com.Denfop.tiles.overtimepanel.TileEntityQuantumSolarPanel;
-import com.Denfop.tiles.overtimepanel.TileEntityUltimateSolarPanel;
-import com.Denfop.tiles.overtimepanel.TileNeutronSolarPanel;
-import com.Denfop.tiles.overtimepanel.TilePhotonicSolarPanel;
-import com.Denfop.tiles.overtimepanel.TileProtonSolarPanel;
-import com.Denfop.tiles.overtimepanel.TileSingularSolarPanel;
-import com.Denfop.tiles.overtimepanel.TileSpectralSolarPanel;
 import com.Denfop.tiles.wiring.Storage.TileEntityElectricMFE;
 import com.Denfop.tiles.wiring.Storage.*;
 import com.Denfop.utils.ModUtils;
 import com.Denfop.utils.NBTData;
-import com.Denfop.utils.graviSuite;
+import com.Denfop.utils.GraviSuite;
 
 import cofh.api.energy.IEnergyContainerItem;;
 
@@ -389,11 +377,11 @@ public class BlockElectric extends BlockContainer {
 			
 			if (tileentity != null) {
 				if(!Loader.isModLoaded("GraviSuite")) {
-					if(graviSuite.gettrue1(entityPlayer)) 
+					if(GraviSuite.gettrue1(entityPlayer))
 						return false;
 					}else {
 						
-						if(graviSuite.gettrue(entityPlayer)) 
+						if(GraviSuite.gettrue(entityPlayer))
 							return false;}
 				if (world.getTileEntity(x, y, z) instanceof TileEntityElectricBlock) {
 					TileEntityElectricBlock tile = (TileEntityElectricBlock) world.getTileEntity(x, y, z);

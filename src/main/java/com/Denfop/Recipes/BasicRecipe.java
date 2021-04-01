@@ -6,11 +6,16 @@ import com.Denfop.tiles.NeutroniumGenerator.TileneutronGenerator;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import ic2.api.item.IC2Items;
+import ic2.api.recipe.IRecipeInput;
+import ic2.api.recipe.RecipeInputItemStack;
 import ic2.api.recipe.Recipes;
 import ic2.core.Ic2Items;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 

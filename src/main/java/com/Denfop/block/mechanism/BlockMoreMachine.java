@@ -9,7 +9,7 @@ import com.Denfop.api.utils.textures.TextureAtlasSheet;
 import com.Denfop.tiles.Mechanism.*;
 import com.Denfop.tiles.base.TileEntityMultiMachine;
 import com.Denfop.utils.ExperienceUtils;
-import com.Denfop.utils.graviSuite;
+import com.Denfop.utils.GraviSuite;
 
 import cpw.mods.fml.common.Loader;
 import ic2.api.item.IC2Items;
@@ -203,10 +203,10 @@ public class BlockMoreMachine extends BlockContainer {
 			float par8, float par9) {
 		if (!entityPlayer.isSneaking()) {
 			if(!Loader.isModLoaded("GraviSuite")) {
-				if(graviSuite.gettrue1(entityPlayer)) 
+				if(GraviSuite.gettrue1(entityPlayer))
 					return false;
 				}else 
-					if(graviSuite.gettrue(entityPlayer)) 
+					if(GraviSuite.gettrue(entityPlayer))
 						return false;
 			entityPlayer.openGui(IUCore.instance, 0, world, x, y, z);
 			return true;

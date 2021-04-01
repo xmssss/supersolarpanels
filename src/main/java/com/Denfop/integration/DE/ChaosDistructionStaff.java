@@ -10,6 +10,7 @@ import com.brandon3055.draconicevolution.common.utills.IInventoryTool;
 import com.brandon3055.draconicevolution.common.utills.IUpgradableItem;
 import com.brandon3055.draconicevolution.common.utills.ItemConfigField;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
@@ -19,6 +20,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;

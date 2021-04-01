@@ -7,6 +7,7 @@ import com.Denfop.InvSlot.InvSlotElectricBlockA;
 import com.Denfop.InvSlot.InvSlotElectricBlockB;
 import com.Denfop.InvSlot.InvSlotQuantumQuarry;
 import com.Denfop.api.module.IModulOutput;
+import com.Denfop.api.module.IModulStorage;
 import com.Denfop.container.ContainerElectricBlock;
 import com.Denfop.gui.GuiElectricBlock;
 import com.Denfop.item.Modules.ItemWirelessModule;
@@ -32,9 +33,13 @@ import ic2.core.ContainerBase;
 import ic2.core.IC2;
 import ic2.core.IHasGui;
 import ic2.core.block.TileEntityInventory;
+import ic2.core.block.invslot.InvSlot;
+import ic2.core.block.invslot.InvSlotCharge;
+import ic2.core.block.invslot.InvSlotDischarge;
 import ic2.core.init.MainConfig;
 import ic2.core.util.ConfigUtil;
 import ic2.core.util.Util;
+import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -43,6 +48,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -249,26 +255,26 @@ this.movementchargerf=nbttagcompound.getBoolean("movementchargerf");
 			if (!this.rfeu) {
 				if (energy >= 0 && energy2 <= maxStorage2) {
 
-					energy2 += energy * Config.coefficientrf;
+					energy2 += energy * Config.convertratio;
 					energy -= energy;
 
 				}
 				if (energy2 > maxStorage2) {
 					double rf = (energy2 - maxStorage2);
-					energy += rf / Config.coefficientrf;
+					energy += rf / Config.convertratio;
 					energy2 = maxStorage2;
 				}
 			} else {
 
 				if (energy2 >= 0 && energy <= maxStorage) {
 
-					energy += (energy2 /  Config.coefficientrf);
+					energy += (energy2 /  Config.convertratio);
 					energy2 -= energy2;
 
 				}
 				if (energy > maxStorage) {
 					double rf = (energy - maxStorage);
-					energy2 += rf * Config.coefficientrf;
+					energy2 += rf * Config.convertratio;
 					energy = maxStorage;
 				}
 			}

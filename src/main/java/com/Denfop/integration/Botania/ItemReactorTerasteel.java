@@ -6,6 +6,7 @@ import com.Denfop.IUCore;
 import com.Denfop.item.reactor.ItemReactorBase;
 
 import ic2.api.reactor.IReactor;
+import ic2.core.Ic2Items;
 import net.minecraft.item.ItemStack;
 
 public class ItemReactorTerasteel extends ItemReactorBase {

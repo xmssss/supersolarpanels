@@ -1,5 +1,7 @@
 package com.Denfop.gui;
 
+import java.text.DecimalFormat;
+
 import com.Denfop.container.ContainerBaseMolecular;
 import com.Denfop.tiles.base.TileEntityMolecularTransformer;
 import com.Denfop.utils.ModUtils;
@@ -8,10 +10,14 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ic2.api.recipe.RecipeOutput;
 import ic2.core.ContainerBase;
+import ic2.core.GuiIC2;
+import ic2.core.GuiIconButton;
 import ic2.core.IC2;
 import ic2.core.network.NetworkManager;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;

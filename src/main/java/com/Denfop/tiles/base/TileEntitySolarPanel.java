@@ -50,23 +50,27 @@ import com.Denfop.integration.GC.GalacticraftIntegration;
 import com.Denfop.integration.GC.GalaxySpaceIntegration;
 import com.Denfop.integration.GC.MorePlanetsIntegration;
 import com.Denfop.item.Modules.ItemWirelessModule;
+import com.Denfop.item.Modules.ModuleGenerationDay;
+import com.Denfop.item.Modules.ModuleGenerationNight;
+import com.Denfop.item.Modules.ModuleStorage;
+import com.Denfop.item.Modules.ModuleOutput;
 import com.Denfop.item.Modules.ModuleType;
+import com.Denfop.item.Modules.ModuleTypePanel;
 import com.Denfop.item.Modules.AdditionModule;
 import com.Denfop.item.Modules.BaseModuleGenDay;
 import com.Denfop.item.Modules.BaseModuleGenNight;
 import com.Denfop.item.Modules.BaseModuleOutput;
 import com.Denfop.item.Modules.BaseModuleStorage;
 import com.Denfop.utils.NBTData;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.eventhandler.Event;
-import ic2.api.energy.event.EnergyTileLoadEvent;
-import ic2.api.energy.event.EnergyTileUnloadEvent;
-import ic2.api.energy.tile.IEnergySource;
-import ic2.api.energy.tile.IEnergyTile;
-import ic2.api.item.ElectricItem;
+import com.mojang.authlib.GameProfile;
+
+import cofh.api.energy.IEnergyContainerItem;
+import cofh.api.energy.IEnergyHandler;
+import ic2.api.network.INetworkUpdateListener;
 import ic2.api.network.INetworkClientTileEntityEventListener;
 import ic2.api.network.INetworkDataProvider;
-import ic2.api.network.INetworkUpdateListener;
+import net.minecraft.inventory.IInventory;
+import ic2.api.energy.tile.IEnergySource;
 import ic2.api.tile.IWrenchable;
 import ic2.core.ContainerBase;
 import ic2.core.IC2;
@@ -278,8 +282,8 @@ public class TileEntitySolarPanel extends TileEntityBase
 					}
 				} else {
 
-					if ((this.storage2 + (this.generating * Config.coefficientrf)) <= this.maxStorage2) {
-						this.storage2 += (this.generating* Config.coefficientrf);
+					if ((this.storage2 + (this.generating * Config.convertratio)) <= this.maxStorage2) {
+						this.storage2 += (this.generating* Config.convertratio);
 					} else {
 						this.storage2 = this.maxStorage2;
 

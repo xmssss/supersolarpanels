@@ -1,7 +1,7 @@
 
 package com.Denfop.item.base;
 
-import com.Denfop.IUCore;
+import java.util.List;
 
 import com.Denfop.Config;
 import com.Denfop.IUCore;
@@ -10,14 +10,14 @@ import com.Denfop.api.module.IModulGenDay;
 import com.Denfop.utils.NBTData;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
-
-import java.util.List;
 
 public class SSPItemBase extends Item {
 
