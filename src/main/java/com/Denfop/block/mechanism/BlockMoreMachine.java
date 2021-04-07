@@ -214,11 +214,11 @@ public class BlockMoreMachine extends BlockContainer {
 			
 			TileEntityMultiMachine tile = (TileEntityMultiMachine) world.getTileEntity(x, y, z);
 			if(!Loader.isModLoaded("GraviSuite")) {
-				if(graviSuite.gettrue1(entityPlayer)) 
+				if(GraviSuite.gettrue1(entityPlayer))
 					return false;
 				}else {
 					
-					if(graviSuite.gettrue(entityPlayer)) 
+					if(GraviSuite.gettrue(entityPlayer))
 						return false;}
 			if(tile != null) {
 			int currentXP = ExperienceUtils.getPlayerXP(entityPlayer);

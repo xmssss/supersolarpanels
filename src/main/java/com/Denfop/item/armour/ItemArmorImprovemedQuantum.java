@@ -1,5 +1,6 @@
 package com.Denfop.item.armour;
 
+import cofh.api.energy.IEnergyContainerItem;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.Optional.Method;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -511,9 +512,9 @@ public class ItemArmorImprovemedQuantum extends ItemArmor
 						item = (IEnergyContainerItem) player.inventory.armorInventory[i].getItem();
 					
 						int amountRfCanBeReceivedIncludesLimit = item.receiveEnergy( player.inventory.armorInventory[i], Integer.MAX_VALUE, true);
-						double realSentEnergyRF = Math.min(amountRfCanBeReceivedIncludesLimit, ElectricItem.manager.getCharge(itemStack)*Config.coefficientrf);
+						double realSentEnergyRF = Math.min(amountRfCanBeReceivedIncludesLimit, ElectricItem.manager.getCharge(itemStack)*Config.convertratio);
 						item.receiveEnergy(player.inventory.armorInventory[i], (int)realSentEnergyRF, false);
-						 ElectricItem.manager.discharge(itemStack, (double)(realSentEnergyRF/(double)Config.coefficientrf), Integer.MAX_VALUE, true, false, false);
+						 ElectricItem.manager.discharge(itemStack, (double)(realSentEnergyRF/(double)Config.convertratio), Integer.MAX_VALUE, true, false, false);
 						}
 					} 
 			}
@@ -540,9 +541,9 @@ public class ItemArmorImprovemedQuantum extends ItemArmor
 						item = (IEnergyContainerItem) player.inventory.mainInventory[j].getItem();
 					
 						int amountRfCanBeReceivedIncludesLimit = item.receiveEnergy( player.inventory.mainInventory[j], Integer.MAX_VALUE, true);
-						double realSentEnergyRF = Math.min(amountRfCanBeReceivedIncludesLimit, ElectricItem.manager.getCharge(itemStack)*Config.coefficientrf);
+						double realSentEnergyRF = Math.min(amountRfCanBeReceivedIncludesLimit, ElectricItem.manager.getCharge(itemStack)*Config.convertratio);
 						item.receiveEnergy(player.inventory.mainInventory[j], (int)realSentEnergyRF, false);
-						 ElectricItem.manager.discharge(itemStack, (double)(realSentEnergyRF/(double)Config.coefficientrf), Integer.MAX_VALUE, true, false, false);
+						 ElectricItem.manager.discharge(itemStack, (double)(realSentEnergyRF/(double)Config.convertratio), Integer.MAX_VALUE, true, false, false);
 						}
 					} 
 			}

@@ -344,7 +344,7 @@ public class Config {
 
 	public static void config(final FMLPreInitializationEvent event) {
 		configFile = event.getSuggestedConfigurationFile();
-		 Configuration config = new Configuration(configFile);
+		Configuration config = new Configuration(configFile);
 		try {
 			config.load();
 			

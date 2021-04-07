@@ -186,11 +186,11 @@ public class BlockMoreMachine2 extends BlockContainer {
 			return true;
 		} else {
 			if(!Loader.isModLoaded("GraviSuite")) {
-				if(graviSuite.gettrue1(entityPlayer)) 
+				if(GraviSuite.gettrue1(entityPlayer))
 					return false;
-				}else {
+				} else {
 					
-					if(graviSuite.gettrue(entityPlayer)) 
+					if(GraviSuite.gettrue(entityPlayer))
 						return false;}
 			TileEntityMultiMachine tile = (TileEntityMultiMachine) world.getTileEntity(x, y, z);
 			if(tile != null) {
