@@ -1,9 +1,5 @@
 package com.Denfop.tiles.base;
 
-import com.Denfop.container.ContainerBaseMolecular;
-import cpw.mods.fml.common.FMLLog;
-import ic2.api.energy.event.EnergyTileLoadEvent;
-import ic2.api.energy.event.EnergyTileUnloadEvent;
 import ic2.api.network.INetworkTileEntityEventListener;
 import ic2.api.recipe.RecipeOutput;
 import ic2.core.ContainerBase;
@@ -12,20 +8,25 @@ import ic2.core.IHasGui;
 import ic2.core.audio.AudioSource;
 import ic2.core.block.invslot.InvSlotOutput;
 import ic2.core.block.invslot.InvSlotProcessable;
+import ic2.core.block.invslot.InvSlotUpgrade;
 import ic2.core.block.machine.tileentity.TileEntityElectricMachine;
 import ic2.core.network.NetworkManager;
+import ic2.core.upgrade.IUpgradableBlock;
+import ic2.core.upgrade.IUpgradeItem;
+import java.util.List;
+
+import com.Denfop.container.ContainerBaseMolecular;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
-import org.apache.logging.log4j.Level;
 
-import java.util.List;
-
-public abstract class TileEntityBaseMolecular extends TileEntityElectricMachine implements IHasGui, INetworkTileEntityEventListener {
-  protected int progress;
+public abstract class TileEntityBaseMolecular extends TileEntityElectricMachine
+        implements IHasGui, INetworkTileEntityEventListener {
+  protected double progress;
 
   public final int defaultEnergyConsume;
 
@@ -57,10 +58,7 @@ public abstract class TileEntityBaseMolecular extends TileEntityElectricMachine 
 
   private boolean active;
 
-  protected double inputEU;
-
-  public boolean loaded;
-
+  public double inputEU;
 
   public TileEntityBaseMolecular(int energyPerTick, int length, int outputSlots) {
     this(energyPerTick, length, outputSlots, 1);
@@ -77,130 +75,111 @@ public abstract class TileEntityBaseMolecular extends TileEntityElectricMachine 
     this.outputSlot = new InvSlotOutput(this, "output", 2, 1);
     this.active = false;
   }
-
-  public void readFromNBT(NBTTagCompound nbttagcompound) {
-    this.energy = nbttagcompound.getInteger("energy");
-    this.maxEnergy = nbttagcompound.getInteger("maxEnergy");
-    this.progress = nbttagcompound.getInteger("progress");
-    this.inputEU = nbttagcompound.getDouble("inputEU");
-    super.readFromNBT(nbttagcompound);
-  }
-
-  public void writeToNBT(NBTTagCompound nbttagcompound) {
-    nbttagcompound.setInteger("energy", (int) this.energy);
-    nbttagcompound.setDouble("maxEnergy", this.maxEnergy);
-    nbttagcompound.setInteger("progress", this.progress);
-    nbttagcompound.setDouble("inputEU", this.inputEU);
-    super.writeToNBT(nbttagcompound);
-
-  }
-
-  public double getProgress() {
-    return this.guiProgress;
-  }
-
-  @Override
-  public void onLoaded() {
-    super.onLoaded();
-    if (IC2.platform.isSimulating()) {
-      MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
-      setOverclockRates();
-    }
-  }
-
-  public void onUnloaded() {
-    //setActive(false);
-    if ((IC2.platform.isSimulating())) {
-      MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
-    }
-    if (IC2.platform.isRendering() && this.audioSource != null) {
-      IC2.audioManager.removeSources(this);
-      this.audioSource = null;
-    }
-  }
-
   public void markDirty() {
     super.markDirty();
     if (IC2.platform.isSimulating())
       setOverclockRates();
   }
 
+  public void setOverclockRates() {
+    double previousProgress = (this.progress / this.operationLength);
+    double stackOpLen = (this.defaultOperationLength + 0) * 64.0D * 1.0D;
+    this.operationsPerTick = (int)Math.min(Math.ceil(64.0D / stackOpLen), 2.147483647E9D);
+    this.operationLength = (int)Math.round(stackOpLen * this.operationsPerTick / 64.0D);
+    this.energyConsume = applyModifier(this.defaultEnergyConsume, 0, 0.0D);
+    setTier(applyModifier(this.defaultTier, 0, 1.0D));
+    RecipeOutput output = getOutput();
+    if (output != null)
+      this.maxEnergy = (int) output.metadata.getDouble("energy");
+
+    this.progress = (short)(int)Math.floor(previousProgress * this.operationLength + 0.1D);
+  }
+  public void readFromNBT(NBTTagCompound nbttagcompound) {
+    super.readFromNBT(nbttagcompound);
+    this.progress = nbttagcompound.getDouble("progress");
+    this.maxEnergy = (int) nbttagcompound.getDouble("maxEnergy");
+    this.energy = nbttagcompound.getDouble("energy");
+    this.inputEU = nbttagcompound.getDouble("inputEU");
+  }
+
+  public void writeToNBT(NBTTagCompound nbttagcompound) {
+    super.writeToNBT(nbttagcompound);
+    nbttagcompound.setDouble("progress", this.progress);
+    nbttagcompound.setDouble("inputEU", this.inputEU);
+    nbttagcompound.setDouble("maxEnergy", this.maxEnergy);
+    nbttagcompound.setDouble("energy", this.energy);
+  }
+
+  public double getProgress() {
+    return this.guiProgress;
+  }
+
+  public void onLoaded() {
+    super.onLoaded();
+
+  }
+
+  public void onUnloaded() {
+    super.onUnloaded();
+    if (IC2.platform.isRendering() && this.audioSource != null) {
+      IC2.audioManager.removeSources(this);
+      this.audioSource = null;
+    }
+
+  }
+
+
+
   protected void updateEntityServer() {
     super.updateEntityServer();
     boolean needsInvUpdate = false;
     RecipeOutput output = getOutput();
-    if (output != null ) {
+    if (output != null) {
       setActive(true);
       this.active = true;
-      if (this.progress == 0) {
-        IC2.network.get().initiateTileEntityEvent(this, 0, true);
-      }
-      this.progress = (int) this.energy;
-      double k = this.progress;
-      double p = (k / output.metadata.getInteger("energy"));
+      if (this.progress == 0)
+        ((NetworkManager) IC2.network.get()).initiateTileEntityEvent((TileEntity) this, 0, true);
 
-      double u = this.inputEU;
-      this.inputEU = u;
-      if (p <= 1) {
+      this.progress = this.energy;
+      double k = this.progress;
+      double p = (k / output.metadata.getDouble("energy"));
+
+
+      if (p <= 1)
         this.guiProgress = p;
-      }
-      if (p > 1) {
+      if (p > 1)
         this.guiProgress = 1;
-      }
-      if (this.progress >= output.metadata.getInteger("energy")) {
+      if (this.progress >= output.metadata.getDouble("energy")) {
         operate(output);
         needsInvUpdate = true;
         this.progress = 0;
         this.energy = 0;
 
-        IC2.network.get().initiateTileEntityEvent(this, 2, true);
+
+        ((NetworkManager) IC2.network.get()).initiateTileEntityEvent((TileEntity) this, 2, true);
       }
     } else {
       if (this.progress != 0 && getActive())
-        IC2.network.get().initiateTileEntityEvent(this, 1, true);
+        ((NetworkManager) IC2.network.get()).initiateTileEntityEvent((TileEntity) this, 1, true);
       if (output == null)
-        this.progress = 0;
+        this.energy = 0;
       setActive(false);
     }
 
 
-    if (needsInvUpdate) {
-      super.markDirty();
-    }
   }
 
   public double injectEnergy(ForgeDirection directionFrom, double amount, double voltage) {
-    if (this.energy >= this.maxEnergy) {
-      return 0;
-    }
-    this.energy += amount;
-    double p = amount;
 
-    this.inputEU = p;
+    if (this.energy >= this.maxEnergy)
+      return amount;
+    this.energy += amount;
+
 
     return 0.0D;
   }
 
-  public void setOverclockRates() {
 
-    double previousProgress = this.progress / this.operationLength;
-    double stackOpLen = (this.defaultOperationLength + 0) * 64.0D * 1;
-    this.operationsPerTick = (int)Math.min(Math.ceil(64.0D / stackOpLen), 2.147483647E9D);
-    this.operationLength = (int)Math.round(stackOpLen * this.operationsPerTick / 64.0D);
-    this.energyConsume = applyModifier(this.defaultEnergyConsume,0, 0);
-    setTier(applyModifier(this.defaultTier, 0, 1.0D));
-    RecipeOutput output = getOutput();
-
-    if (inputSlot.isEmpty() ) {
-      this.maxEnergy = 0;
-    } else if(output != null ) {
-      this.maxEnergy = output.metadata.getInteger("energy");
-    } else {
-      this.maxEnergy = 0;
-    }
-
-    this.progress = (short)(int)Math.floor(previousProgress * this.operationLength + 0.1D);
-  }
 
   public void operate(RecipeOutput output) {
     for (int i = 0; i < this.operationsPerTick; i++) {
@@ -232,7 +211,7 @@ public abstract class TileEntityBaseMolecular extends TileEntityElectricMachine 
   public abstract String getInventoryName();
 
   public ContainerBase<? extends TileEntityBaseMolecular> getGuiContainer(EntityPlayer entityPlayer) {
-    return (ContainerBase<? extends TileEntityBaseMolecular>)new ContainerBaseMolecular(entityPlayer, this);
+    return (ContainerBase<? extends TileEntityBaseMolecular>) new ContainerBaseMolecular(entityPlayer, this);
   }
 
   public String getStartSoundFile() {
@@ -267,15 +246,17 @@ public abstract class TileEntityBaseMolecular extends TileEntityElectricMachine 
 
   public static int applyModifier(int base, int extra, double multiplier) {
     double ret = Math.round((base + extra) * multiplier);
-    return (ret > 2.147483647E9D) ? Integer.MAX_VALUE : (int)ret;
+    return (ret > 2.147483647E9D) ? Integer.MAX_VALUE : (int) ret;
   }
 
   public double getEnergy() {
     return this.energy;
   }
+
   public double getPower() {
     return this.inputEU;
   }
+
   public boolean useEnergy(double amount) {
     if (this.energy >= amount) {
       this.energy -= amount;
@@ -287,7 +268,8 @@ public abstract class TileEntityBaseMolecular extends TileEntityElectricMachine 
   public boolean getActive() {
     return this.active;
   }
-  public void onGuiClosed(EntityPlayer entityPlayer) {}
 
+  public void onGuiClosed(EntityPlayer entityPlayer) {
+  }
 
 }

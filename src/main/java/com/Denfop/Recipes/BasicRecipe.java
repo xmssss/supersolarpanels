@@ -53,32 +53,35 @@ public class BasicRecipe {
     GameRegistry.addRecipe(new ItemStack(SSPItem.nanoshovel,1), " B ", "CAC", " B ", 'A', Items.diamond_shovel, 'B', new ItemStack(SSPItem.QuantumItems9,1),'C', new ItemStack(SSPItem.photoniy,1));
     
     
-    GameRegistry.addRecipe(new ItemStack(SSPItem.quantumaxe,1), " B ", "CAC", " B ", 'A', new ItemStack(SSPItem.nanoaxe,1), 'B', new ItemStack(SSPItem.QuantumItems8,1),'C', new ItemStack(SSPItem.QuantumItems6,1));
-    GameRegistry.addRecipe(new ItemStack(SSPItem.quantumpickaxe,1), " B ", "CAC", " B ", 'A', new ItemStack(SSPItem.nanopickaxe,1), 'B', new ItemStack(SSPItem.QuantumItems8,1),'C', new ItemStack(SSPItem.QuantumItems6,1));
-    GameRegistry.addRecipe(new ItemStack(SSPItem.quantumshovel,1), " B ", "CAC", " B ", 'A', new ItemStack(SSPItem.nanoshovel,1), 'B', new ItemStack(SSPItem.QuantumItems8,1),'C', new ItemStack(SSPItem.QuantumItems6,1));
+    GameRegistry.addRecipe(new ItemStack(SSPItem.quantumaxe,1, OreDictionary.WILDCARD_VALUE), " B ", "CAC", " B ", 'A', new ItemStack(SSPItem.nanoaxe,1, OreDictionary.WILDCARD_VALUE), 'B', new ItemStack(SSPItem.QuantumItems8,1),'C', new ItemStack(SSPItem.QuantumItems6,1));
+    GameRegistry.addRecipe(new ItemStack(SSPItem.quantumpickaxe,1, OreDictionary.WILDCARD_VALUE), " B ", "CAC", " B ", 'A', new ItemStack(SSPItem.nanopickaxe,1, OreDictionary.WILDCARD_VALUE), 'B', new ItemStack(SSPItem.QuantumItems8,1),'C', new ItemStack(SSPItem.QuantumItems6,1));
+    GameRegistry.addRecipe(new ItemStack(SSPItem.quantumshovel,1, OreDictionary.WILDCARD_VALUE), " B ", "CAC", " B ", 'A', new ItemStack(SSPItem.nanoshovel,1, OreDictionary.WILDCARD_VALUE), 'B', new ItemStack(SSPItem.QuantumItems8,1),'C', new ItemStack(SSPItem.QuantumItems6,1));
     
-    GameRegistry.addRecipe(new ItemStack(SSPItem.spectralaxe,1), " B ", "CAC", " B ", 'A', new ItemStack(SSPItem.quantumaxe,1), 'B', new ItemStack(SSPItem.QuantumItems5,1),'C', new ItemStack(SSPItem.QuantumItems3,1));
-    GameRegistry.addRecipe(new ItemStack(SSPItem.spectralpickaxe,1), " B ", "CAC", " B ", 'A', new ItemStack(SSPItem.quantumpickaxe,1), 'B', new ItemStack(SSPItem.QuantumItems5,1),'C', new ItemStack(SSPItem.QuantumItems3,1));
-    GameRegistry.addRecipe(new ItemStack(SSPItem.spectralshovel,1), " B ", "CAC", " B ", 'A', new ItemStack(SSPItem.quantumshovel,1), 'B', new ItemStack(SSPItem.QuantumItems5,1),'C', new ItemStack(SSPItem.QuantumItems3,1));
+    GameRegistry.addRecipe(new ItemStack(SSPItem.spectralaxe,1, OreDictionary.WILDCARD_VALUE),  " B ", "CAC", " B ", 'A', new ItemStack(SSPItem.quantumaxe,1, OreDictionary.WILDCARD_VALUE), 'B', new ItemStack(SSPItem.QuantumItems5,1),'C', new ItemStack(SSPItem.QuantumItems3,1));
+    GameRegistry.addRecipe(new ItemStack(SSPItem.spectralpickaxe,1, OreDictionary.WILDCARD_VALUE), " B ", "CAC", " B ", 'A', new ItemStack(SSPItem.quantumpickaxe,1, OreDictionary.WILDCARD_VALUE), 'B', new ItemStack(SSPItem.QuantumItems5,1),'C', new ItemStack(SSPItem.QuantumItems3,1));
+    GameRegistry.addRecipe(new ItemStack(SSPItem.spectralshovel,1, OreDictionary.WILDCARD_VALUE), " B ", "CAC", " B ", 'A', new ItemStack(SSPItem.quantumshovel,1, OreDictionary.WILDCARD_VALUE), 'B', new ItemStack(SSPItem.QuantumItems5,1),'C', new ItemStack(SSPItem.QuantumItems3,1));
     
    //TODO Recipe Ultimate Drill
-    GameRegistry.addRecipe(new ItemStack(SSPItem.ultDDrill,1,OreDictionary.WILDCARD_VALUE), " L ", "ODO", "COC", 'O', SSPItem.overclockerUpgrade1, 'D', new ItemStack(Ic2Items.diamondDrill.getItem(),1,OreDictionary.WILDCARD_VALUE), 'C',SSPItem.QuantumItems5,'L',SSPItem.QuantumItems3);
+    GameRegistry.addRecipe(new ItemStack(SSPItem.ultDDrill,1, OreDictionary.WILDCARD_VALUE), " L ", "ODO", "COC", 'O', SSPItem.overclockerUpgrade1, 'D', new ItemStack(Ic2Items.diamondDrill.getItem(),1,OreDictionary.WILDCARD_VALUE), 'C',SSPItem.QuantumItems5,'L',SSPItem.QuantumItems3);
     
-      //TODO Recipe Advanced and Improvemed Overclockers
+    //TODO Recipe Advanced and Improvemed Overclockers
     GameRegistry.addRecipe(SSPItem.overclockerUpgrade , "BAB", 'A', Ic2Items.overclockerUpgrade,'B',SSPItem.QuantumItems9);
     GameRegistry.addRecipe(SSPItem.overclockerUpgrade1 , "BAB", 'A',SSPItem.overclockerUpgrade,'B',SSPItem.QuantumItems8);
+
     //TODO Reciper Rotor`s
-    GameRegistry.addRecipe(SSPItem.myphical , " B ", "BAB", " B ", 'A',SSPItem.spectral,'B',SSPItem.QuantumItems5);
-    GameRegistry.addRecipe(SSPItem.photon , " B ", "BAB", " B ", 'A', SSPItem.myphical,'B',SSPItem.QuantumItems8);
-    GameRegistry.addRecipe(SSPItem.neutron , "CBC", "BAB", "CBC", 'A', SSPItem.photon,'B',SSPItem.QuantumItems9,'C', Ic2Items.iridiumPlate);
+    GameRegistry.addRecipe(SSPItem.myphical, " B ", "BAB", " B ", 'A', new ItemStack(SSPItem.spectral.getItem(), 1, OreDictionary.WILDCARD_VALUE),'B',SSPItem.QuantumItems5);
+    GameRegistry.addRecipe(SSPItem.photon , " B ", "BAB", " B ", 'A', new ItemStack(SSPItem.myphical.getItem(), 1, OreDictionary.WILDCARD_VALUE),'B',SSPItem.QuantumItems8);
+    GameRegistry.addRecipe(SSPItem.neutron , "CBC", "BAB", "CBC", 'A', new ItemStack(SSPItem.photon.getItem(), 1, OreDictionary.WILDCARD_VALUE),'B',SSPItem.QuantumItems9,'C', Ic2Items.iridiumPlate);
     
-    GameRegistry.addRecipe(SSPItem.iridium , " B ", "BAB", " B ", 'A', Ic2Items.carbonrotor,'B',Ic2Items.iridiumPlate);
-    GameRegistry.addRecipe(SSPItem.compressiridium , " B ", "BAB", " B ", 'A', SSPItem.iridium,'B',SSPItem.compresscarbon);
-    GameRegistry.addRecipe(SSPItem.spectral , "C C", "BAB", "C C", 'A', SSPItem.compressiridium,'B',SSPItem.QuantumItems5,'C', Ic2Items.iridiumPlate);
+    GameRegistry.addRecipe(SSPItem.iridium , " B ", "BAB", " B ", 'A', new ItemStack(Ic2Items.carbonrotor.getItem(), 1, OreDictionary.WILDCARD_VALUE),'B',Ic2Items.iridiumPlate);
+    GameRegistry.addRecipe(SSPItem.compressiridium , " B ", "BAB", " B ", 'A', new ItemStack(SSPItem.iridium.getItem(), 1, OreDictionary.WILDCARD_VALUE),'B',SSPItem.compresscarbon);
+    GameRegistry.addRecipe(SSPItem.spectral , "C C", "BAB", "C C", 'A', new ItemStack(SSPItem.compressiridium.getItem(), 1, OreDictionary.WILDCARD_VALUE),'B',SSPItem.QuantumItems5,'C', Ic2Items.iridiumPlate);
+
+
     GameRegistry.addRecipe(SSPItem.reactorCoolanttwelve , "CCC", "ABA", "CCC", 'A', Ic2Items.reactorCoolantSix,'B',Ic2Items.plateiron,'C', Ic2Items.platetin);
     GameRegistry.addRecipe(SSPItem.reactorCoolantmax , "CCC", "ABA", "CCC", 'A', SSPItem.reactorCoolanttwelve,'B',Ic2Items.plateiron,'C', Ic2Items.platetin);
     
-       //TODO Recipes Machines and Quantum/Nano Chip
+    //TODO Recipes Machines and Quantum/Nano Chip
     Recipes.advRecipes.addRecipe(new ItemStack(SSPItem.QuantumItems9, 1), " D ","BAB"," C ", Character.valueOf('A'), Ic2Items.advancedCircuit, Character.valueOf('B'), new ItemStack(SSPItem.nanoBox,1), Character.valueOf('C'), OreDictionary.getOres("ingotNickel").get(0), Character.valueOf('D'),
             SSPItem.compresscarbon);
     
@@ -144,16 +147,6 @@ public class BasicRecipe {
     //TODO Recipe Advanced and Improvemed Overclockers
     GameRegistry.addRecipe(SSPItem.overclockerUpgrade , "BAB", 'A', Ic2Items.overclockerUpgrade,'B',SSPItem.QuantumItems9);
     GameRegistry.addRecipe(SSPItem.overclockerUpgrade1 , "BAB", 'A',SSPItem.overclockerUpgrade,'B',SSPItem.QuantumItems8);
-    //TODO Reciper Rotor`s
-    GameRegistry.addRecipe(SSPItem.myphical , " B ", "BAB", " B ", 'A',SSPItem.spectral,'B',SSPItem.QuantumItems5);
-    GameRegistry.addRecipe(SSPItem.photon , " B ", "BAB", " B ", 'A', SSPItem.myphical,'B',SSPItem.QuantumItems8);
-    GameRegistry.addRecipe(SSPItem.neutron , "CBC", "BAB", "CBC", 'A', SSPItem.photon,'B',SSPItem.QuantumItems9,'C', Ic2Items.iridiumPlate);
-
-    GameRegistry.addRecipe(SSPItem.iridium , " B ", "BAB", " B ", 'A', Ic2Items.carbonrotor,'B',Ic2Items.iridiumPlate);
-    GameRegistry.addRecipe(SSPItem.compressiridium , " B ", "BAB", " B ", 'A', SSPItem.iridium,'B',SSPItem.compresscarbon);
-    GameRegistry.addRecipe(SSPItem.spectral , "C C", "BAB", "C C", 'A', SSPItem.compressiridium,'B',SSPItem.QuantumItems5,'C', Ic2Items.iridiumPlate);
-    GameRegistry.addRecipe(SSPItem.reactorCoolanttwelve , "CCC", "ABA", "CCC", 'A', Ic2Items.reactorCoolantSix,'B',Ic2Items.plateiron,'C', Ic2Items.platetin);
-    GameRegistry.addRecipe(SSPItem.reactorCoolantmax , "CCC", "ABA", "CCC", 'A', SSPItem.reactorCoolanttwelve,'B',Ic2Items.plateiron,'C', Ic2Items.platetin);
 
     //TODO Recipes Machines and Quantum/Nano Chip
     Recipes.advRecipes.addRecipe(new ItemStack(SSPItem.QuantumItems9, 1), " D ","BAB"," C ", Character.valueOf('A'), Ic2Items.advancedCircuit, Character.valueOf('B'), new ItemStack(SSPItem.nanoBox,1), Character.valueOf('C'), OreDictionary.getOres("ingotNickel").get(0), Character.valueOf('D'),
@@ -221,16 +214,6 @@ public class BasicRecipe {
     //TODO Recipe Advanced and Improvemed Overclockers
     GameRegistry.addRecipe(SSPItem.overclockerUpgrade , "BAB", 'A', Ic2Items.overclockerUpgrade,'B',SSPItem.QuantumItems9);
     GameRegistry.addRecipe(SSPItem.overclockerUpgrade1 , "BAB", 'A',SSPItem.overclockerUpgrade,'B',SSPItem.QuantumItems8);
-    //TODO Reciper Rotor`s
-    GameRegistry.addRecipe(SSPItem.myphical , " B ", "BAB", " B ", 'A',SSPItem.spectral,'B',SSPItem.QuantumItems5);
-    GameRegistry.addRecipe(SSPItem.photon , " B ", "BAB", " B ", 'A', SSPItem.myphical,'B',SSPItem.QuantumItems8);
-    GameRegistry.addRecipe(SSPItem.neutron , "CBC", "BAB", "CBC", 'A', SSPItem.photon,'B',SSPItem.QuantumItems9,'C', Ic2Items.iridiumPlate);
-
-    GameRegistry.addRecipe(SSPItem.iridium , " B ", "BAB", " B ", 'A', Ic2Items.carbonrotor,'B',Ic2Items.iridiumPlate);
-    GameRegistry.addRecipe(SSPItem.compressiridium , " B ", "BAB", " B ", 'A', SSPItem.iridium,'B',SSPItem.compresscarbon);
-    GameRegistry.addRecipe(SSPItem.spectral , "C C", "BAB", "C C", 'A', SSPItem.compressiridium,'B',SSPItem.QuantumItems5,'C', Ic2Items.iridiumPlate);
-    GameRegistry.addRecipe(SSPItem.reactorCoolanttwelve , "CCC", "ABA", "CCC", 'A', Ic2Items.reactorCoolantSix,'B',Ic2Items.plateiron,'C', Ic2Items.platetin);
-    GameRegistry.addRecipe(SSPItem.reactorCoolantmax , "CCC", "ABA", "CCC", 'A', SSPItem.reactorCoolanttwelve,'B',Ic2Items.plateiron,'C', Ic2Items.platetin);
 
     //TODO Recipes Machines and Quantum/Nano Chip
     Recipes.advRecipes.addRecipe(new ItemStack(SSPItem.QuantumItems9, 1), " D ","BAB"," C ", Character.valueOf('A'), Ic2Items.advancedCircuit, Character.valueOf('B'), new ItemStack(SSPItem.nanoBox,1), Character.valueOf('C'), SSPItem.nickel, Character.valueOf('D'), SSPItem.compresscarbon);

@@ -178,12 +178,12 @@ public class BlockMoreMachine2 extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par6, float par7,
-			float par8, float par9) {
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par6, float par7, float par8, float par9) {
+		if (entityPlayer.getHeldItem().getItem() instanceof gravisuite.item.ItemGraviTool) return false;
 		if (!entityPlayer.isSneaking()) {
 			entityPlayer.openGui(IUCore.instance, 0, world, x, y, z);
 			return true;
-		}else {
+		} else {
 			TileEntityMultiMachine	tile = (TileEntityMultiMachine) world.getTileEntity(x, y, z);
 			int currentXP = ExperienceUtils.getPlayerXP(entityPlayer);
 			 int nextLevelXP = ExperienceUtils.getExperienceForLevel(entityPlayer.experienceLevel + 1);

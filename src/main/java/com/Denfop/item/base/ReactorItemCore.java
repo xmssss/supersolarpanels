@@ -20,7 +20,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 
 public class ReactorItemCore extends Item implements ICustomDamageItem {
-  private final int maxDmg;
+private final int maxDmg;
 private int rarity;
   
   public ReactorItemCore(String name, int maxdmg) {

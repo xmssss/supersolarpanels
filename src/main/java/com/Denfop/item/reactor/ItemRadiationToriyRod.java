@@ -7,14 +7,14 @@ import ic2.api.reactor.IReactor;
 import net.minecraft.item.ItemStack;
 
 public class ItemRadiationToriyRod extends ItemReactorBase {
-  private int time;
+private int time;
 private int heat;
 private float power;
 
 public ItemRadiationToriyRod(String internalName, int cells,int time,int heat,float power) {
     super(internalName, cells, time);
     this.time = time;
-    this.heat=heat;
+    this.heat = heat;
     this.power = power;
     this.setCreativeTab(IUCore.tabssp3);
   }
