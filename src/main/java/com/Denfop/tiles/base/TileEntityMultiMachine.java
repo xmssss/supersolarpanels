@@ -37,7 +37,7 @@ public abstract class TileEntityMultiMachine extends TileEntityElectricMachine i
 	protected double[] guiProgress;
 
 	public final int defaultTier, defaultEnergyStorage, defaultOperationsPerTick, defaultEnergyConsume;
-public int expstorage = 0;
+	public int expstorage = 0;
 	public int operationLength, operationsPerTick, sizeWorkingSlot, energyConsume;
 
 	public AudioSource audioSource;

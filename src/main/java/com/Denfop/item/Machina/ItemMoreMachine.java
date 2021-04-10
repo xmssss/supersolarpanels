@@ -1,12 +1,8 @@
 package com.Denfop.item.Machina;
 
-import java.util.List;
-
 import com.Denfop.IUCore;
-import com.Denfop.block.mechanism.BlockBaseMachine;
 import com.Denfop.block.mechanism.BlockMoreMachine;
 import com.Denfop.tiles.Mechanism.EnumMultiMachine;
-
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,6 +10,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
+
+import java.util.List;
 
 public class ItemMoreMachine extends ItemBlock {
 	public ItemMoreMachine(Block block) {

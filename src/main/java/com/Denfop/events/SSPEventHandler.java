@@ -200,9 +200,9 @@ public class SSPEventHandler {
 		if(player.inventory.armorInventory[3] != null) {
 			if(player.inventory.armorInventory[3].getItem() == SSPItem.quantumHelmet) {
 				nbtData.setBoolean("isNightVision", true);
-			}else if(player.inventory.armorInventory[3].getItem() ==Ic2Items.nanoHelmet.getItem()) {
+			}else if(player.inventory.armorInventory[3].getItem() == Ic2Items.nanoHelmet.getItem()) {
 				nbtData.setBoolean("isNightVision", true);
-			}else if(player.inventory.armorInventory[3].getItem() ==Ic2Items.quantumHelmet.getItem()){
+			}else if(player.inventory.armorInventory[3].getItem() == Ic2Items.quantumHelmet.getItem()){
 				nbtData.setBoolean("isNightVision", true);
 			}else if(player.inventory.armorInventory[3].getItem() == SSPItem.advancedSolarHelmet) {
 				nbtData.setBoolean("isNightVision", true);
@@ -216,7 +216,7 @@ public class SSPEventHandler {
 			}else if(player.inventory.armorInventory[3].getItem() == SSPItem.singularSolarHelmet) {
 				nbtData.setBoolean("isNightVision", true);
 				nbtData.setBoolean("isNightVisionEnable", true);
-			}else if(player.inventory.armorInventory[3].getItem() ==Ic2Items.nightvisionGoggles.getItem()){
+			}else if(player.inventory.armorInventory[3].getItem() == Ic2Items.nightvisionGoggles.getItem()){
 				nbtData.setBoolean("isNightVision", true);
 			}else if(player.inventory.armorInventory[3].getItem() == SSPItem.ultimateSolarHelmet) {
 				nbtData.setBoolean("isNightVision", true);
@@ -302,7 +302,7 @@ public class SSPEventHandler {
 			if(player.inventory.mainInventory[i] != null && (player.inventory.mainInventory[i].getItem() == SSPItem.ultDDrill )) {
 				ItemStack input = player.inventory.mainInventory[i];
 				NBTTagCompound nbtData = NBTData.getOrCreateNbtData(input);
-				if(nbtData.getBoolean("create") == true) {
+				if(nbtData.getBoolean("create")) {
 					Map<Integer, Integer> enchantmentMap4 = new HashMap<Integer, Integer>();
 					AdvancedMultiTool drill = (AdvancedMultiTool) input.getItem();
 					if(Config.enableefficiency && drill.mode == 0) {
@@ -362,7 +362,8 @@ public class SSPEventHandler {
 					if(block instanceof BlockCable) {
 						//if(player.inventory.armorInventory[2].getItem() != SuperSolarPanels.quantumBodyarmor && player.inventory.armorInventory[3].getItem() != SuperSolarPanels.quantumHelmet && player.inventory.armorInventory[1].getItem() != SuperSolarPanels.quantumLeggings && player.inventory.armorInventory[0].getItem() != SuperSolarPanels.quantumBoots) {
 						if(!ItemArmorImprovemedQuantum.hasCompleteHazmat(player) && !ItemArmorHazmat.hasCompleteHazmat(player)) {
-							player.attackEntityFrom(SSPDamageSource.current, 1.0F);}else {
+							player.attackEntityFrom(SSPDamageSource.current, 1.0F);
+						} else {
 							return;
 						}
 
@@ -372,11 +373,14 @@ public class SSPEventHandler {
 						int blockmeta = player.worldObj.getBlockMetadata(x+i, y, z+j);
 						if(blockmeta != 0 && blockmeta != 13 && blockmeta != 3 && blockmeta != 6) {
 							if(!ItemArmorImprovemedQuantum.hasCompleteHazmat(player) && !ItemArmorHazmat.hasCompleteHazmat(player)) {
-								player.attackEntityFrom(SSPDamageSource.current, 1.0F);}else {
+								player.attackEntityFrom(SSPDamageSource.current, 1.0F);
+							} else {
 								return;
-							}}
+							}
+						}
 					}
-			}}
+			}
+		}
 	}
 
 	@SubscribeEvent
@@ -403,11 +407,11 @@ public class SSPEventHandler {
 				player.addPotionEffect(new PotionEffect(Potion.jump.id, 300));
 			}
 			player.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 0, true));}else {
-			if(nbtData.getBoolean("stepHeight") == true) {
+			if(nbtData.getBoolean("stepHeight")) {
 				player.stepHeight = 0F;
 				nbtData.setBoolean("stepHeight", false);
 			}
-			if(nbtData.getBoolean("falldamage") == true) {
+			if(nbtData.getBoolean("falldamage")) {
 				player.fallDistance = 1;
 				nbtData.setBoolean("falldamage", false);
 			}
@@ -446,9 +450,9 @@ public class SSPEventHandler {
 
 
 					}
-					else if(block instanceof ic2.core.block.wiring.BlockCable) {
+					else if (block instanceof ic2.core.block.wiring.BlockCable) {
 						int blockmeta = player.worldObj.getBlockMetadata(x+i, y, z+j);
-						if(blockmeta != 0 && blockmeta != 13 && blockmeta != 3 && blockmeta != 6) {
+						if (blockmeta != 0 && blockmeta != 13 && blockmeta != 3 && blockmeta != 6) {
 
 							player.attackEntityFrom(SSPDamageSource.current, 1.0F);}
 					}
